@@ -33,7 +33,7 @@
       };
 
       C.getMovie = async function () {
-        let data = await DataMovie.
+        let data = await DataMovie.request();
         V.getMovieController(data);
       };
 
