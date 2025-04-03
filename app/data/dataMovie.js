@@ -2,12 +2,7 @@
 // URL où se trouve le répertoire "server" sur mmi.unilim.fr
 let HOST_URL = "..";//"http://mmi.unilim.fr/~????"; // CHANGE THIS TO MATCH YOUR CONFIG
 
-let DataMovie = [
-    {
-        name:"name",
-        image: "bon_brute_truand.jpg",
-    }
-];
+let DataMovie = {};
 
  /**
      * Fetches data from the server based on the specified day.
