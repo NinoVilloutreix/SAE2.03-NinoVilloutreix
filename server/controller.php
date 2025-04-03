@@ -20,3 +20,7 @@
  */
 require("model.php");
 
+function getMovieController(){
+    return getMovie();
+  }
+
