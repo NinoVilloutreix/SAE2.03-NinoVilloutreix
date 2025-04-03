@@ -2,7 +2,12 @@
 // URL où se trouve le répertoire "server" sur mmi.unilim.fr
 let HOST_URL = "..";//"http://mmi.unilim.fr/~????"; // CHANGE THIS TO MATCH YOUR CONFIG
 
-let DataMovie = {};
+let DataMovie = [
+    {
+        name:"name",
+        image: "bon_brute_truand.jpg",
+    }
+];
 
  /**
      * Fetches data from the server based on the specified day.
@@ -39,5 +44,6 @@ DataMovie.request = async function(){
    Et pour pouvoir utiliser await, il faut ajouter le mot clé async à la fonction.
 
 */
+
 
 export {DataMovie};
