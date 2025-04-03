@@ -23,19 +23,25 @@
 
       C.handlerAbout = function () {
         alert(
-          "Ceci est une base de projet pour la SAE2.03 édition 2025. Bonne chance !"
+          "Ceci est une base de projet pour la SAE2.03 édition 2025. Bonne chance!"
         );
       };
 
       C.start = function () {
         V.renderNavBar("C.handlerAbout()");
-        C.getMovie()
+        V.renderMovie("C.getMovie(DataMovie)")
+
+        
       };
 
+
+      
       C.getMovie = async function () {
         let data = await DataMovie.request();
         V.getMovieController(data);
       };
+
+      
 
       // Vue (contient tout ce qui est relatif à l'affichage)
       window.V = {};
@@ -51,11 +57,12 @@
         let header = document.querySelector("#header");
         header.innerHTML = NavBar.format(hAbout);
       };
-
-      V.renderMovie = function (hAbout) {
-        let header = document.querySelector("#header");
-        header.innerHTML = NavBar.format(hAbout);
+      V.renderMovie = function (data) {
+        let content = document.querySelector("#content");
+        content.innerHTML = Movie.format(data);
       };
+
+      
 
       C.start(); // Démarre l'application
     </script>
