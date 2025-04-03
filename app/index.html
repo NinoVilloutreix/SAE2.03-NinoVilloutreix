@@ -23,23 +23,24 @@
 
       C.handlerAbout = function () {
         alert(
-          "Ceci est une base de projet pour la SAE2.03 édition 2025. Bonne chance!"
+          "Ceci est une base de projet pour la SAE2.03 édition 2025. Bonne chance connard!"
         );
       };
 
-      C.start = function () {
+      C.start = async function () {
         V.renderNavBar("C.handlerAbout()");
-        V.renderMovie("C.getMovie(DataMovie)")
-
-        
+        await V.renderMovie();
       };
 
 
       
-      C.getMovie = async function () {
-        let data = await DataMovie.request();
-        V.getMovieController(data);
-      };
+      
+
+// Le jour où ça marchait que un peu
+      // C.getMovie = async function () {
+      //   let data = await DataMovie.request();
+      //   V.getMovieController(data);
+      // };
 
       
 
@@ -57,9 +58,16 @@
         let header = document.querySelector("#header");
         header.innerHTML = NavBar.format(hAbout);
       };
-      V.renderMovie = function (data) {
+
+
+
+      V.renderMovie = async function () {
         let content = document.querySelector("#content");
-        content.innerHTML = Movie.format(data);
+        let movies = await DataMovie.getMovie();
+        movies.forEach((movie)=>{
+          let cardHTML = Movie.format(Movie.image, Movie.name);
+          content.innerHTML += cardHTML
+        });
       };
 
       
