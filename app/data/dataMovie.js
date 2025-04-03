@@ -15,11 +15,11 @@ let DataMovie = {};
      * Elle prend en paramètre une semaine (1, 2, ..., 52) et un jour (lundi mardi...)
      * renvoie les données contenues dans la réponse du serveur (data).
      */
-DataMovie.request = async function(name, image){
+DataMovie.request = async function(){
     // fetch permet d'envoyer une requête HTTP à l'URL spécifiée. 
     // L'URL est construite en concaténant HOST_URL à "/server/script.php?direction=" et la valeur de la variable dir. 
     // L'URL finale dépend de la valeur de HOST_URL et de dir.
-    let answer = await fetch(HOST_URL + "/server/script.php?todo=read&name=" + name + "&image=" + image);
+    let answer = await fetch(HOST_URL + "/server/script.php?todo=readmovies");
     // answer est la réponse du serveur à la requête fetch.
     // On utilise ensuite la méthode json() pour extraire de cette réponse les données au format JSON.
     // Ces données (data) sont automatiquement converties en objet JavaScript.
