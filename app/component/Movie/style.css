@@ -11,18 +11,20 @@
 }
 
 .Movie__img {
+  display: block;
   width: 200px; /* Fixe une largeur spécifique */
   height: 300px; /* Fixe une hauteur spécifique */
   object-fit: cover; /* Maintient les proportions de l'image en remplissant l'espace */
   overflow: hidden; /* Coupe les débordements */
-  border: 1px solid #ccc;
+  border: 2px solid #ccc;
+  border-radius: 0.25rem;
 }
 
 .Movie {
-  flex: 0 1 calc(20% - 2rem); /* Ajuste la largeur en fonction de l'espace disponible et des gaps */
-  max-width: 25%; /* Limite la largeur maximale */
+  flex: 0 1 calc(12.5% - 2rem); /* Chaque carte occupe 12.5% de la largeur (1/8) */
+  max-width: 12.5%; /* Limite la largeur maximale à 12.5% */
   display: flex;
-  height: auto; /* Adaptation dynamique */
+  height: auto; /* Hauteur dynamique si nécessaire */
   position: relative;
   justify-content: center;
   flex-direction: column;
@@ -30,6 +32,7 @@
   align-items: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 
 .Movie:hover{
   transform: scale(1.05);

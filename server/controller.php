@@ -25,3 +25,25 @@ function getMovieController(){
     return getMovie();
   }
 
+
+function addMovieController(){
+
+  $name = $_REQUEST['name'];
+  $real = $_REQUEST['real'];
+  $annee = $_REQUEST['annee'];
+  $length = $_REQUEST['length'];
+  $description = $_REQUEST['description'];
+  $categorie = $_REQUEST['categorie'];
+  $image = $_REQUEST['image'];
+  $trailer = $_REQUEST['trailer'];
+  $pegi = $_REQUEST['pegi'];
+  
+  $ok = addMovie($name, $real, $annee, $length, $description, $categorie, $image, $trailer, $pegi);
+  
+  if ($ok!=0){
+    return "Le film '$name' existe déjà dans la base!";
+  }
+  else{
+    return false;
+  }
+}
