@@ -2,7 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  flex-direction: column;
+  flex-direction: row;
   gap: 5rem;
   align-items: center;
   padding: 1rem 3rem;
@@ -10,21 +10,22 @@
   background-color: rgb(255, 175, 175);
 }
 
-.Movie__row {
+.Movie {
+  flex: 20%;
   display: flex;
+  position: relative;
   justify-content: space-around;
   flex-direction: column;
   gap: 2rem;
   align-items: center;
   border: blue solid 1px;
 }
-.Movie__row-img{
+
+.Movie__img {
+  width: 100%; /* Adapter à la largeur du parent */
+  height: auto; /* Respecter le ratio d'origine */
   overflow: hidden;
-  width: 200px;
-  height: 300px;
-  overflow: hidden;
+  object-fit: cover; /* Ajuster sans distorsion */
   border: 1px solid #ccc;
-  width: 100%; /* adapter à la largeur */
-  height: 100%; /* adapter à la hauteur */
-  object-fit: cover; /* recadre sans distorsion */
 }
+
