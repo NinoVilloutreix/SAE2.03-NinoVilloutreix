@@ -10,6 +10,4 @@ Movie.format = function (movie) {
   html = html.replace("{{name}}", movie.name);
   return html;
 };
-
-
 export { Movie };
