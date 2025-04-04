@@ -31,7 +31,8 @@
 
       C.start = async function () {
         V.renderNavBar("C.handlerAbout()");
-        await V.renderMovie();
+        let movies =  await DataMovie.getMovie();
+        V.renderMovie( movies );
       };
 
 
@@ -63,10 +64,9 @@
 
 
 
-      V.renderMovie = async function () {
+      V.renderMovie = async function ( m ) {
         let content = document.querySelector("#content");
-        let movies = await DataMovie.getMovie();
-        movies.forEach((movie)=>{
+        m.forEach((movie)=>{
           let cardHTML = Movie.format(movie);
           content.innerHTML += cardHTML
         });
