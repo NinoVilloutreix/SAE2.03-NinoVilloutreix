@@ -10,31 +10,31 @@
   background-color: rgb(55, 56, 67);
 }
 
+.Movie__img {
+  width: 200px; /* Fixe une largeur spécifique */
+  height: 300px; /* Fixe une hauteur spécifique */
+  object-fit: cover; /* Maintient les proportions de l'image en remplissant l'espace */
+  overflow: hidden; /* Coupe les débordements */
+  border: 1px solid #ccc;
+}
+
 .Movie {
-  flex: 0 1 20%;
-  max-width: 25%;
+  flex: 0 1 calc(20% - 2rem); /* Ajuste la largeur en fonction de l'espace disponible et des gaps */
+  max-width: 25%; /* Limite la largeur maximale */
   display: flex;
-  height: 40rem;
+  height: auto; /* Adaptation dynamique */
   position: relative;
-  justify-content: space-around;
+  justify-content: center;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
   align-items: center;
-  /* border: blue solid 1px; */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 .Movie:hover{
   transform: scale(1.05);
 }
 
-
-.Movie__img {
-  width: 100%;
-  height: auto;
-  overflow: hidden;
-  object-fit: cover;
-  border: 1px solid #ccc;
-}
 
 .Movie__name{
   color: var(--color-white);
