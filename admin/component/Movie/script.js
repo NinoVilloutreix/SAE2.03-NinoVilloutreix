@@ -7,14 +7,6 @@ let template = await templateFile.text();
 let Movie = {};
 
 
-/** Movie.autoFill
- * 
- * Remplit automatiquement les champs d'un formulaire avec les données d'un menu.
- * @param {Object} menu - Un objet représentant un menu.
- * @param {string} menu.entree - Le nom de l'entrée du menu.
- * @param {string} menu.plat - Le nom du plat principal du menu.
- * @param {string} menu.dessert - Le nom du dessert du menu.
- */
 
 
 
@@ -43,12 +35,13 @@ Movie.autoFill = function(movie){
 
 
 
-// Movie.format = function(handlerC, handlerU){
-//     let html= template;
-//     html = html.replaceAll('{{handlerChange}}', handlerC);
-//     html = html.replace('{{handlerUpdate}}', handlerU);
-//     return html;
-// }
+Movie.format = function(handlerC, handlerU){
+    let html= template;
+    html = html.replaceAll('{{handlerChange}}', handlerC);
+    html = html.replace('{{handlerAdd}}', handlerU);
+    html = html.replace("{{movie}}", autoFill());
+    return html;
+}
 
 
 export {Movie};
