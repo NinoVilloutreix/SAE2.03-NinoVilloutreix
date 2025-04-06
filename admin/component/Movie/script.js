@@ -35,13 +35,12 @@ Movie.autoFill = function(movie){
 
 
 
-Movie.format = function(handlerC, handlerU){
-    let html= template;
-    html = html.replaceAll('{{handlerChange}}', handlerC);
-    html = html.replace('{{handlerAdd}}', handlerU);
-    html = html.replace("{{movie}}", autoFill());
+Movie.format = function(handlerAdd) {
+    let html = template;
+    html = html.replace('{{handler}}', handlerAdd); // Remplacez le handler par la fonction C.handlerAdd
     return html;
-}
+};
+
 
 
 export {Movie};

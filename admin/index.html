@@ -23,6 +23,10 @@
 
       C.handlerAdd = async function(){
             let form = document.querySelector('.AddMovie__form');
+            if (!form) {
+              V.renderLog("Erreur : formulaire introuvable.");
+              return;
+}
             let fd = new FormData(form);
             let res = await DataMovie.addMovie(fd);
             V.renderLog(res);

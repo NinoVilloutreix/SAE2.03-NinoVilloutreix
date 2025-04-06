@@ -3,22 +3,24 @@ let HOST_URL = "https://mmi.unilim.fr/~villoutreix8/SAE2.03-NinoVilloutreix/";//
 
 let DataMovie = {};
 
-DataMovie.addMovie = async function(fdata){
-    // fetch permet d'envoyer une requête HTTP à l'URL spécifiée. 
-    // L'URL est construite en concaténant HOST_URL à "/server/script.php?direction=" et la valeur de la variable dir. 
-    // L'URL finale dépend de la valeur de HOST_URL et de dir.
-    let config = {
-        method: "POST", // méthode HTTP à utiliser
-        body: fdata // données à envoyer sous forme d'objet FormData
-    };
-    let answer = await fetch(HOST_URL + "/server/script.php?todo=addmovies", config);
-    // answer est la réponse du serveur à la requête fetch.
-    // On utilise ensuite la méthode json() pour extraire de cette réponse les données au format JSON.
-    // Ces données (data) sont automatiquement converties en objet JavaScript.
-    let data = await answer.json();
-    // Enfin, on retourne ces données.
-    return data;
-}
+DataMovie.addMovie = async function(fdata) {
+    try {
+        let config = {
+            method: "POST",
+            body: fdata
+        };
+        let answer = await fetch(HOST_URL + "/server/script.php?todo=addmovies", config);
+        if (!answer.ok) {
+            throw new Error(`Erreur serveur : ${answer.status}`);
+        }
+        let data = await answer.json();
+        return data;
+    } catch (error) {
+        console.error(error);
+        return { success: false, message: "Une erreur est survenue lors de la communication avec le serveur." };
+    }
+};
+
 
 /* C'EST QUOI async/await ?
     
