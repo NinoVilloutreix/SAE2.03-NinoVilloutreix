@@ -1,1 +1,7 @@
 Ce document rendra compte des modifications réalisées sur la base de donnée.
+
+-J'ai rajouté un film, Ponyo sur la falaise, pour vérifier que mon I1 l'affichait bien.
+Elle l'affiche bien.
+
+-J'ai rajouté le film Minecraft (beurk), pour tester le formulaire de mon I2.
+Il marche bien.

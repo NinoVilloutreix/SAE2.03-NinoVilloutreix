@@ -38,12 +38,15 @@ function addMovieController(){
   $trailer = $_REQUEST['trailer'];
   $pegi = $_REQUEST['pegi'];
 
-  
+  if (empty($name) || empty($real) || empty($annee) || empty($length) || empty($description) || empty($categorie) || empty($image) || empty($trailer) || empty($pegi)) {
+    return "Erreur : Tous les champs doivent être remplis.";
+  }
+
   
   $ok = addMovie($name, $real, $annee, $length, $description, $categorie, $image, $trailer, $pegi);
   
   if ($ok!=0){
-    return "c good";
+    return "Le film $name a été correctement intégré au catalogue :D";
   }
   else{
     return "Veuillez entrer des valeurs correctes dans les champs!";

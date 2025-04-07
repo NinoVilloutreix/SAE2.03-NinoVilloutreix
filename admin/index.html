@@ -27,7 +27,6 @@
         return;
       }
       let fd = new FormData(form);
-      console.log("test")
       let res = await DataMovie.addMovie(fd);
       V.renderLog(res);
     }
