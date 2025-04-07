@@ -19,23 +19,26 @@
 
     window.C = {};
 
-    C.start = function () {
-      V.renderLog("Démarrage de l'application");
-    };
-
-    C.handlerAdd = async function () {
+   
+    C.handler = async function () {
       let form = document.querySelector('.AddMovie__form');
       if (!form) {
         V.renderLog("Erreur : formulaire introuvable.");
         return;
       }
       let fd = new FormData(form);
+      console.log("test")
       let res = await DataMovie.addMovie(fd);
       V.renderLog(res);
     }
 
 
 
+    C.start = function () {
+      V.renderLog("Démarrage de l'application");
+      V.renderAddMovie("C.handler()"); 
+      
+    };
 
 
     window.V = {};
@@ -45,9 +48,9 @@
       content.innerHTML = Log.format(txt);
     };
 
-    V.renderAddMovie = function (handlerAdd) {
+    V.renderAddMovie = function (handler) {
       let content = document.querySelector('#movie');
-      content.innerHTML = Movie.format(handlerAdd);
+      content.innerHTML = Movie.format(handler);
     };
 
 

@@ -37,13 +37,15 @@ function addMovieController(){
   $image = $_REQUEST['image'];
   $trailer = $_REQUEST['trailer'];
   $pegi = $_REQUEST['pegi'];
+
+  
   
   $ok = addMovie($name, $real, $annee, $length, $description, $categorie, $image, $trailer, $pegi);
   
   if ($ok!=0){
-    return "Le film '$name' existe déjà dans la base!";
+    return "c good";
   }
   else{
-    return false;
+    return "Veuillez entrer des valeurs correctes dans les champs!";
   }
 }

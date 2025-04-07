@@ -1,25 +1,21 @@
 // URL où se trouve le répertoire "server" sur mmi.unilim.fr
-let HOST_URL = "https://mmi.unilim.fr/~villoutreix8/SAE2.03-NinoVilloutreix/";//"http://mmi.unilim.fr/~????"; // CHANGE THIS TO MATCH YOUR CONFIG
+let HOST_URL = "https://mmi.unilim.fr/~villoutreix8/SAE2.03-NinoVilloutreix";//"http://mmi.unilim.fr/~????"; // CHANGE THIS TO MATCH YOUR CONFIG
 
 let DataMovie = {};
 
 DataMovie.addMovie = async function (fdata) {
-    try {
-        let config = {
-            method: "POST",
-            body: fdata
-        };
-        let answer = await fetch(HOST_URL + "/server/script.php?todo=addmovies", config);
-        if (!answer.ok) {
-            throw new Error(`Erreur serveur : ${answer.status}`);
-        }
-        let data = await answer.json();
-        return data;
-    } catch (error) {
-        console.error(error);
-        return { success: false, message: "Une erreur est survenue lors de la communication avec le serveur." };
-    }
+    let config = {
+                 method: "POST",
+                 body: fdata
+    };
+    let answer = await fetch(
+        HOST_URL + "/server/script.php?todo=addmovies",
+        config
+    );
+    let data = await answer.json();
+    return data;
 };
+
 
 
 /* C'EST QUOI async/await ?
@@ -34,5 +30,35 @@ DataMovie.addMovie = async function (fdata) {
 
 */
 
-
 export { DataMovie };
+
+
+
+
+
+
+
+
+
+
+
+
+// try {
+//     let config = {
+//         method: "POST",
+//         body: fdata
+//     };
+//     let answer = await fetch(HOST_URL + "/server/script.php?todo=addmovies", config);
+//     if (!answer.ok) {
+//         throw new Error(`Erreur serveur : ${answer.status}`);
+//     }
+//     let data = await answer.json();
+//     return data;
+// } catch (error) {
+//     if (error instanceof Error) {
+//         console.error(error.message);
+//     } else {
+//         console.error("Une erreur inattendue est survenue.");
+//     }
+//     return { success: false, message: "Une erreur est survenue lors de la communication avec le serveur." };
+// }

@@ -4,10 +4,24 @@
     
     <input required type="text" name="Titre" id="name" placeholder="Saisir un nom...">
     <input required type="text" name="Réalisateur" id="real" placeholder="Saisir un nom de réalisateur...">
-    <input required type="number" name="Année" id="year" placeholder="Saisir l'année de sortie...">
+    <input required type="number" name="Année" id="year" min="1895" max="2100"placeholder="Saisir l'année de sortie...">
     <input required type="text" name="Durée" id="length" placeholder="Saisir la durée...">
     <input required type="text" name="Description" id="description" placeholder="Saisir une description...">
-    <input required type="text" name="Catégorie" id="categorie" placeholder="Saisir une catégorie...">
+
+    <select required type="text" name="categorie" placeholder="Catégorie">
+      <option value ="" disabled selected>Sélectionner une catégorie</option>
+      <option value="1">Action</option>
+      <option value="2">Comédie</option>
+      <option value="3">Drame</option>
+      <option value="4">Science-fiction</option>
+      <option value="5">Animation</option>
+      <option value="6">Thriller</option>
+      <option value="7">Horreur</option>
+      <option value="8">Aventure</option>
+      <option value="9">Fantaisie</option>
+      <option value="10">Documentaire</option>
+    </select>
+
     <input required type="text" name="Image" id="image" placeholder="Saisir l'affiche publicitaire...">
     <input required type="text" name="URL" id="=url" placeholder="Saisir l'URL...">
     <input required type="number" name="Age" id="pegi" placeholder="Saisir la limite d'âge...">

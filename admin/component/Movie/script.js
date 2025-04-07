@@ -35,9 +35,9 @@ Movie.autoFill = function (movie) {
 
 
 
-Movie.format = function (handlerAdd) {
+Movie.format = function (handler) {
     let html = template;
-    html = html.replace('{{handler}}', handlerAdd);
+    html = html.replace('{{handler}}', handler);
     return html;
 };
 
