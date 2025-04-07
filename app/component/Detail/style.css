@@ -10,7 +10,7 @@
   background-color: rgb(55, 56, 67);
 }
 
-.Movie__img {
+.Detail__img {
   display: block;
   position: relative;
   width: 200px; /* Fixe une largeur spécifique */
@@ -21,7 +21,7 @@
   border-radius: 0.25rem;
 }
 
-.Movie {
+.Detail {
   flex: 0 1 calc(12.5% - 2rem); /* Chaque carte occupe 12.5% de la largeur (1/8) */
   max-width: 12.5%; /* Limite la largeur maximale à 12.5% */
   display: flex;
@@ -35,12 +35,12 @@
 }
 
 
-.Movie:hover{
+.Detail:hover{
   transform: scale(1.05);
 }
 
 
-.Movie__name{
+.Detail__name{
   color: var(--color-white);
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   margin: 0;

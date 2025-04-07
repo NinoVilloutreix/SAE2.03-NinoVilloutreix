@@ -52,3 +52,7 @@ function addMovieController(){
     return "Veuillez entrer des valeurs correctes dans les champs!";
   }
 }
+
+function detailMovieController(){
+  return detailMovie();
+}
