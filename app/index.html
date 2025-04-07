@@ -33,6 +33,14 @@
     C.start = async function () {
       V.renderNavBar("C.handlerAbout()");
       let movies = await DataMovie.getMovie();
+      if (movies.length == 0) {
+        movies = [
+          {
+            image: "",
+            name: "Nope"
+          }
+        ]
+      }
       V.renderMovie(movies);
     };
 

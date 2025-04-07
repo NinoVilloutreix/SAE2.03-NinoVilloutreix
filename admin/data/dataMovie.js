@@ -3,7 +3,7 @@ let HOST_URL = "https://mmi.unilim.fr/~villoutreix8/SAE2.03-NinoVilloutreix/";//
 
 let DataMovie = {};
 
-DataMovie.addMovie = async function(fdata) {
+DataMovie.addMovie = async function (fdata) {
     try {
         let config = {
             method: "POST",
@@ -35,4 +35,4 @@ DataMovie.addMovie = async function(fdata) {
 */
 
 
-export {DataMovie};
+export { DataMovie };
