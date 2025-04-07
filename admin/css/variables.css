@@ -7,7 +7,10 @@
   --color-gray-light: hsl(0, 0%, 80%);
   --color-gray: hsl(0, 0%, 50%);
   --color-gray-dark: hsl(0, 0%, 20%);
+  --color-gray-dark2: hsl(0, 0%, 29%);
   --color-green: hsl(120, 100%, 37%);
+  --color-bright: hsl(0, 0%, 100%);
+  --color-dark: hsl(0, 0%, 0%);
 
   --ff-sans: "DM sans", sans-serif;
 

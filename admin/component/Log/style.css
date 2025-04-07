@@ -1,14 +1,16 @@
 .log {
   display: flex;
+  position: fixed;
   align-items: flex-end;
   width: 30rem;
   height: 8rem;
   padding: 1rem 1rem 1rem 1.5rem;
-
-  background-color: var(--color-bg);
-  border-style: solid;
-  border-color: var(--color-fg);
-  border-width: 1px;
+  margin-bottom: 2rem;
+  background-color: var(--color-dark);
+  border-radius: 0rem 0rem 1rem 0rem;
+  /* border-style: solid; */
+  /* border-color: var(--color-fg);
+  border-width: 1px; */
   overflow: hidden;
   .log__list {
     font-size: smaller;
