@@ -53,6 +53,7 @@ function addMovieController(){
   }
 }
 
+
 function detailMovieController(){
   return detailMovie();
 }

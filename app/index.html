@@ -10,13 +10,17 @@
 
 <body>
   <header id="header"></header>
-
   <section id="content"></section>
+  <section id="detail"></section>
 
   <script type="module">
     import { NavBar } from "./component/NavBar/script.js";
+
     import { Movie } from "./component/Movie/script.js";
     import { DataMovie } from './data/dataMovie.js';
+    
+    import { Detail } from "./component/Detail/script.js";
+    import { DataDetail } from './data/dataDetail.js';
 
 
     // Controleur
@@ -42,6 +46,8 @@
         ]
       }
       V.renderMovie(movies);
+      let details = await DataDetail.detailMovie();
+      V.renderDetail(movies);
     };
 
 
@@ -80,6 +86,12 @@
         content.innerHTML += cardHTML
       });
     };
+
+    V.renderDetail = async function (m) {
+  let content = document.querySelector("#detail");
+  let detailHTML = Detail.format(m);
+  content.innerHTML = detailHTML; // Insère le contenu dans le DOM
+};
 
 
 

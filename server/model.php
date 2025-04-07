@@ -64,14 +64,15 @@ function addMovie($name, $real, $annee, $length, $description, $categorie, $imag
     return $res; // Retourne le nombre de lignes affectées
 }
 
-
-function detailMovie(){
+function detailMovie($id){
     // Connexion à la base de données
     $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
     // Requête SQL pour récupérer le menu avec des paramètres
-    $sql = "select id, name, director, year, length, description, id_category, image, trailer, min_age from Movie";
+    $sql = "select id, name, director, year, length, description, id_category, image, trailer, min_age from Movie where id = :id";
     // Prépare la requête SQL
     $stmt = $cnx->prepare($sql);
+    // Lie les paramètres aux valeurs
+    $stmt->bindParam(':id', $id);
     // Exécute la requête SQL
     $stmt->execute();
     // Récupère les résultats de la requête sous forme d'objets
