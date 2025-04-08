@@ -20,7 +20,6 @@
     import { DataMovie } from './data/dataMovie.js';
     
     import { Detail } from "./component/Detail/script.js";
-    import { DataDetail } from './data/dataDetail.js';
 
 
     // Controleur
@@ -46,7 +45,7 @@
     // }
 
     C.handlerDetail = async function (movieId) {
-        let movieData = await DataDetail.detailMovie(movieId); // Récupère les détails du film
+        let movieData = await DataMovie.detailMovie(movieId); // Récupère les détails du film
         V.renderDetail(movieData); // Affiche les détails du film
        
       };
@@ -66,8 +65,7 @@
         ]
       }
       V.renderMovie(movies);
-      let details = await DataDetail.detailMovie();
-      V.renderDetail("C.handlerDetail()");
+      let details = await DataMovie.detailMovie();
     };
 
 
@@ -98,7 +96,7 @@
 
     V.renderDetail = async function (handlerDetail) {
   let content = document.querySelector("#detail");
-  let detailHTML = Detail.format(handler);
+  let detailHTML = Detail.format(handlerDetail);
   content.innerHTML = detailHTML; // Insère le contenu dans le DOM
 };
 
