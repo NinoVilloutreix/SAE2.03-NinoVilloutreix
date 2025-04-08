@@ -49,6 +49,15 @@ body{
     transition: transform 0.3s ease;
 }
 
+.AddMovie__form-inputs-field input {
+    color: red;
+}
+
+.AddMovie__form-inputs-field select {
+    color: green;
+}
+
+
 .AddMovie__form-inputs-field:hover {
     transform: scale(1.25);
     cursor: pointer;

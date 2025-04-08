@@ -58,3 +58,31 @@ function detailMovieController(){
   $id = $_REQUEST['id'];
   return detailMovie($id);
 }
+
+
+
+function getCategoryController() {
+  // Récupération des catégories
+  $categories = getCategory();
+  if ($categories !=0) {
+      return $categories;
+  }
+  else{
+      return "Erreur lors de la récupération des films de la catégorie $category";
+   };
+}
+
+
+
+function getMovieCategoryController(){
+  // Récupération des paramètres de la requête
+  $id = $_REQUEST["id"];
+  $movies = getMovieCategory($id);
+
+  if ($movies !=0) {
+      return $movies ;
+  }
+  else{
+     return "Erreur lors de la récupération des films de la catégorie $category";
+  };
+} 
