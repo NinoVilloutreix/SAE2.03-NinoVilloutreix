@@ -65,8 +65,11 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   background-color: rgb(50, 55, 102); 
   padding: 5rem;
+  transition: transform 0.3s ease, opacity 0.3s ease; /* Animation de transition */
 }
-
+.Detail.show {
+  transform: scale(1); /* Grossit jusqu'à sa taille normale */
+}
 .Detail__left{
   flex: 1;
   border: red 2px solid ;
