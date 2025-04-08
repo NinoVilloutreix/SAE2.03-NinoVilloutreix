@@ -1,3 +1,5 @@
+
+
 .bg {
   display: flex;
   width: 100vw;
@@ -10,6 +12,14 @@
   z-index: 5;
 }
 
+.big_parent{
+  border: red solid 1px;
+}
+
+
+.hidden {
+  display: none;
+}
 
 
 
@@ -41,7 +51,6 @@
 
 .Detail {
   z-index: 10;
-  flex: 0 1 calc(12.5% - 2rem);
   width: auto; 
   display: flex;
   height: auto; 
@@ -55,9 +64,44 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   background-color: rgb(50, 55, 102); 
+  padding: 5rem;
 }
 
+.Detail__left{
+  flex: 1;
+  border: red 2px solid ;
+}
+.Detail__left-img{
+  display: block;
+  position: relative;
+  width: 200px; /* Fixe une largeur spécifique */
+  height: 300px; /* Fixe une hauteur spécifique */
+  object-fit: cover; /* Maintient les proportions de l'image en remplissant l'espace */
+  overflow: hidden; /* Coupe les débordements */
+  border: 2px solid #ccc;
+  border-radius: 0.25rem;
+}
 
+.Detail__right{
+  flex: 1;
+  border: blue 2px solid ;
+}
+
+.Detail__right-card{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.Detail__right-card-trailer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
 
 
 .Detail__name{

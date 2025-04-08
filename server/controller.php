@@ -29,14 +29,14 @@ function getMovieController(){
 function addMovieController(){
 
   $name = $_REQUEST['name'];
-  $real = $_REQUEST['real'];
-  $annee = $_REQUEST['annee'];
+  $real = $_REQUEST['director'];
+  $annee = $_REQUEST['year'];
   $length = $_REQUEST['length'];
   $description = $_REQUEST['description'];
-  $categorie = $_REQUEST['categorie'];
+  $categorie = $_REQUEST['id_category'];
   $image = $_REQUEST['image'];
   $trailer = $_REQUEST['trailer'];
-  $pegi = $_REQUEST['pegi'];
+  $pegi = $_REQUEST['min_age'];
 
   if (empty($name) || empty($real) || empty($annee) || empty($length) || empty($description) || empty($categorie) || empty($image) || empty($trailer) || empty($pegi)) {
     return "Erreur : Tous les champs doivent être remplis.";

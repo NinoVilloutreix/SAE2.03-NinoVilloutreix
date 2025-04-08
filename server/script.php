@@ -74,6 +74,8 @@ if ( isset($_REQUEST['todo']) ){
       exit();
   }
 
+
+
   /**
    * A ce stade, on a appelé la fonction de contrôleur appropriée et stocké le résultat dans la variable $data.
    * 

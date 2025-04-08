@@ -1,25 +1,27 @@
-<div class="bg">
-</div>
-<div class="Detail">
-  <div class="Detail__left">
-    <h2 class="Detail__left-title">{{name}}</h2>
-    <div>
-      <h2 class="Detail__left-real">{{real}}</h2>
-      <h2 class="Detail__left-categorie">{{categorie}}</h2>
-      <img class="Detail__left-img"
-        src="https://mmi.unilim.fr/~villoutreix8/SAE2.03-NinoVilloutreix/server/images/{{image}}">
-      <h2 class="Detail__left-annee">{{annee}}</h2>
-    </div>
+<div id="big_parent">
+  <div class="bg" onclick="offclick">
   </div>
-  <div class="Detail__right">
-    <h2 class="Detail_right-pegi"></h2>
-    <div class="Detail__right-card">
-      <h2 class="Detail__right-card-length">{{categorie}}</h2>
-      <p class="Detail__right-card-description">{{description}}</p>
-      <iframe class="Detail__right-card-trailer" width="1250" height="703" src="{{trailer}}"
-        title="🚸 WALL-E Bande Annonce VF 2008 HD" frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  <div class="Detail">
+    <div class="Detail__left">
+      <h2 class="Detail__left-title">{{name}}</h2>
+      <div>
+        <h2 class="Detail__left-real">{{real}}</h2>
+        <img class="Detail__left-img"
+          src="https://mmi.unilim.fr/~villoutreix8/SAE2.03-NinoVilloutreix/server/images/{{image}}">
+        <h2 class="Detail__left-annee">{{annee}}</h2>
+      </div>
+    </div>
+    <div class="Detail__right">
+      <h2 class="Detail_right-pegi"></h2>
+      <div class="Detail__right-card">
+        <h2 class="Detail__right-card-length">{{categorie}}</h2>
+        <p class="Detail__right-card-description">{{description}}</p>
+        <iframe class="Detail__right-card-trailer" width="1250" height="703" src="{{trailer}}"
+          title="🚸 WALL-E Bande Annonce VF 2008 HD" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+        </iframe>
+      </div>
     </div>
   </div>
 </div>

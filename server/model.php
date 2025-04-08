@@ -64,18 +64,57 @@ function addMovie($name, $real, $annee, $length, $description, $categorie, $imag
     return $res; // Retourne le nombre de lignes affectées
 }
 
-function detailMovie($id){
-    // Connexion à la base de données
-    $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
-    // Requête SQL pour récupérer le menu avec des paramètres
-    $sql = "select * from Movie where id = :id";
-    // Prépare la requête SQL
-    $stmt = $cnx->prepare($sql);
-    // Lie les paramètres aux valeurs
-    $stmt->bindParam(':id', $id);
-    // Exécute la requête SQL
-    $stmt->execute();
-    // Récupère les résultats de la requête sous forme d'objets
-    $res = $stmt->fetchAll(PDO::FETCH_OBJ);
-    return $res; 
+// function detailMovie($id){
+//     $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
+//     $sql = "SELECT * FROM Movie WHERE id = :id";
+//     $stmt = $cnx->prepare($sql);
+//     $stmt->bindParam(':id', $id);
+//     $stmt->execute();
+
+
+
+//     $res = $stmt->fetchAll(PDO::FETCH_OBJ);
+//     return $res; 
+// }
+
+function detailMovie($id) {
+    try {
+       
+        $cnx = new PDO("mysql:host=" . HOST . ";dbname=" . DBNAME, DBLOGIN, DBPWD, [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+        ]);
+
+
+       
+        $sql = "SELECT
+                    Movie.id,
+                    Movie.name,
+                    Movie.director,
+                    Movie.year,
+                    Movie.length,
+                    Movie.description,
+                    Movie.image,
+                    Movie.trailer,
+                    Movie.min_age,
+                    Movie.id_category,
+                    Category.name AS category
+                FROM Movie
+                JOIN Category ON Movie.id_category = Category.id
+                WHERE Movie.id = :id";
+
+
+        $stmt = $cnx->prepare($sql);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+
+
+       
+        $res = $stmt->fetch(PDO::FETCH_OBJ);
+
+
+        return $res;
+    } catch (Exception $e) {
+        error_log("Erreur SQL : " . $e->getMessage()); // Log dans les erreurs PHP
+        return false;
+    }
 }

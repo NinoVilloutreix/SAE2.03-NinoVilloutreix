@@ -33,23 +33,23 @@
       );
     };
 
-    // C.handlerDetail = async function () {
-    //   let form = document.querySelector('.Detail');
-    //   if (!form) {
-    //     V.renderLog("Erreur : formulaire introuvable.");
-    //     return;
-    //   }
-    //   let fd = new FormData(form);
-    //   let res = await DataDetail.addDetail(fd);
-    //   V.renderLog(res);
-    // }
+
 
     C.handlerDetail = async function (movieId) {
-        let movieData = await DataMovie.detailMovie(movieId); // Récupère les détails du film
-        V.renderDetail(movieData); // Affiche les détails du film
-       
-      };
+    console.log("Movie ID:", movieId); // Vérifiez si movieId est défini
+    let movieData = await DataMovie.detailMovie(movieId); // Récupère les détails du film
+    V.renderDetail(movieData); // Affiche les détails du film
+};
 
+    C.handlerReverse = function () {
+        const detailElement = document.querySelector("#big_parent"); // Sélectionne l'élément avec l'ID #detail
+        if (detailElement) {
+            detailElement.classList.toggle("hidden"); // Ajoute ou supprime la classe 'hidden'
+            console.log("Toggled visibility of #detail");
+        } else {
+            console.log("Element with ID #detail not found");
+        }
+    };
 
 
 
@@ -95,10 +95,16 @@
     };
 
     V.renderDetail = async function (handlerDetail) {
-  let content = document.querySelector("#detail");
-  let detailHTML = Detail.format(handlerDetail);
-  content.innerHTML = detailHTML; // Insère le contenu dans le DOM
-};
+      let content = document.querySelector("#detail");
+      let detailHTML = Detail.format(handlerDetail);
+      content.innerHTML = detailHTML; // Insère le contenu dans le DOM
+    };
+
+    V.reverseDetail = async function (handlerReverse) {
+      let content = document.querySelector("#detail");
+      let detailHTML = Detail.format(handlerReverse);
+      content.innerHTML = detailHTML; // Retire le contenu du DOM... je crois??
+    };
 
 
 
