@@ -1,14 +1,36 @@
+import { Movie } from "../Movie/script.js";
+import { DataMovie } from "../../data/dataMovie.js";
 
-let templateFile = await fetch("./component/Movie/template.html");
+let templateFile = await fetch("./component/Moviecategory/template.html");
 let template = await templateFile.text();
 
-let Movie = {};
+let MovieCategory = {};
 
-Movie.format = function (movie) {
+MovieCategory.format = function (category, movies) {
   let html = template;
-  html = html.replace("{{image}}", movie.image);
-  html = html.replace("{{name}}", movie.name);
-  html = html.replace("{{onclick}}", `C.handlerDetail(${movie.id})`);
+  html = html.replace("{{category}}", category);
+
+  let HTMLmovies = Movie.formatmany(movies)
+  html = html.replace("{{movies}}", HTMLmovies);
   return html;
 };
-export { Movie };
+
+
+MovieCategory.formatMany = async function (category) {
+  let html = "";
+  for (const obj of category) {
+      const movies = await DataMovie.getMovieCategory(obj.id);
+      if (movies.length === 0) {
+          continue;
+      }
+      html += MovieCategory.format(obj.name, movies);
+  }
+  return html;
+};
+
+
+
+
+
+
+export { MovieCategory };

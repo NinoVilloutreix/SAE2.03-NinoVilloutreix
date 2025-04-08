@@ -10,10 +10,13 @@
 
 <body>
   <header id="header"></header>
-  <section id="content"></section>
+  <section id="content">
+    <section id="movies__body"></section>
+    <section id="movie"></section>
+  </section>
   <section id="detail"></section>
-
   <script type="module">
+
     import { NavBar } from "./component/NavBar/script.js";
 
     import { Movie } from "./component/Movie/script.js";
@@ -21,7 +24,8 @@
     
     import { Detail } from "./component/Detail/script.js";
 
-
+    import { MovieCategory } from "./component/MovieCategory/script.js"
+ 
     // Controleur
     // Rappel, écrire window.C plutôt que let C est nécessaire pour tester depuis la console du navigateur
     // Une fois l'application terminée, on pourrait remettre let C.
@@ -42,14 +46,17 @@
 };
 
     C.handlerReverse = function () {
-        const detailElement = document.querySelector("#big_parent"); // Sélectionne l'élément avec l'ID #detail
+        const detailElement = document.querySelector("#big_parent");
         if (detailElement) {
-            detailElement.classList.toggle("hidden"); // Ajoute ou supprime la classe 'hidden'
+            detailElement.classList.toggle("hidden");
             console.log("Toggled visibility of #detail");
         } else {
             console.log("Element with ID #detail not found");
         }
     };
+
+
+
 
 
 
@@ -66,7 +73,15 @@
       }
       V.renderMovie(movies);
       let details = await DataMovie.detailMovie();
+      V.renderMovieCategory(movies);
     };
+
+    
+    C.getMovieCategory = async function () {
+    let categories = await DataMovie.getCategory(); // Récupère les catégories
+    let html = await MovieCategory.formatMany(categories); // Génère le HTML pour les catégories
+    V.renderMovieCategory(html); // Affiche les catégories et leurs films
+};
 
 
     // Vue (contient tout ce qui est relatif à l'affichage)
@@ -106,7 +121,10 @@
       content.innerHTML = detailHTML; // Retire le contenu du DOM... je crois??
     };
 
-
+    V.renderMovieCategory = async function (html) {
+    let content = document.querySelector("#movies__body");
+    content.innerHTML = html; // Remplace le contenu par le HTML généré
+};
 
     C.start(); // Démarre l'application
 

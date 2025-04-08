@@ -72,11 +72,11 @@ if ( isset($_REQUEST['todo']) ){
       break;
 
     case 'readcategories' :
-      $data = readCategoryController();
+      $data = getCategoryController();
       break;
 
-    case 'readmoviecategory' :
-      $data = readMovieCategoryController();
+    case 'readmoviecategories' :
+      $data = getMovieCategoryController();
       break;
     
 

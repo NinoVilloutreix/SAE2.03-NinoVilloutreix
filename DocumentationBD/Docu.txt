@@ -5,3 +5,22 @@ Elle l'affiche bien.
 
 -J'ai rajouté le film Minecraft (beurk), pour tester le formulaire de mon I2.
 Il marche bien.
+
+-J'ai trouvé une requête SQL qui me faciliterait la catégorisation: SELECT Movie.id,
+                                                                    Movie.name,
+                                                                    image,
+                                                                    id_category
+                                                                    FROM Movie
+                                                                    JOIN Category ON Movie.id_category = Category.id
+                                                                    ORDER BY id_category, name;
+
+-Màj: Je suis pas assez fort, j'ai utilisé une autre technique, deux fonctions en plus et deux requêtes différentes:
+
+SELECT id, name FROM Category;
+
+SELECT Movie.id, Movie.name, Movie.year, Movie.length, Movie.description, Movie.director, 
+            Movie.image, Movie.trailer, Movie.min_age, Category.id AS category_id ,Category.name AS category
+            FROM Movie JOIN Category ON Movie.id_category = Category.id 
+            WHERE Category.id = :category"
+
+Elles marchent bien (j'espère)

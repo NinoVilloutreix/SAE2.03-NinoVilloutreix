@@ -68,7 +68,7 @@ function getCategoryController() {
       return $categories;
   }
   else{
-      return "Erreur lors de la récupération des films de la catégorie $category";
+      return "Nous n'avons pas pu récupérer les films de la catégorie $category !";
    };
 }
 
@@ -83,6 +83,6 @@ function getMovieCategoryController(){
       return $movies ;
   }
   else{
-     return "Erreur lors de la récupération des films de la catégorie $category";
+     return "Nous n'avons pas pu récupérer les films de la catégorie $category!";
   };
 } 
