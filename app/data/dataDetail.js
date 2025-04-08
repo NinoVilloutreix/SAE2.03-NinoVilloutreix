@@ -4,11 +4,11 @@ let HOST_URL = "https://mmi.unilim.fr/~villoutreix8/SAE2.03-NinoVilloutreix";//"
 
 let DataDetail = {};
 
-DataDetail.detailMovie = async function(){
-    let answer = await fetch(HOST_URL + "/server/script.php?todo=detailmovies");
+DataDetail.detailMovie = async function (movieId) {
+    let answer = await fetch(HOST_URL + "/server/script.php?todo=detailmovies&id=" + movieId);
     let data = await answer.json();
     return data;
-}
+};
 
 /* C'EST QUOI async/await ?
     

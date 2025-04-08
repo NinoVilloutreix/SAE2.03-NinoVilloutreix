@@ -55,5 +55,6 @@ function addMovieController(){
 
 
 function detailMovieController(){
-  return detailMovie();
+  $id = $_REQUEST['id'];
+  return detailMovie($id);
 }

@@ -34,6 +34,26 @@
       );
     };
 
+    // C.handlerDetail = async function () {
+    //   let form = document.querySelector('.Detail');
+    //   if (!form) {
+    //     V.renderLog("Erreur : formulaire introuvable.");
+    //     return;
+    //   }
+    //   let fd = new FormData(form);
+    //   let res = await DataDetail.addDetail(fd);
+    //   V.renderLog(res);
+    // }
+
+    C.handlerDetail = async function (movieId) {
+        let movieData = await DataDetail.detailMovie(movieId); // Récupère les détails du film
+        V.renderDetail(movieData); // Affiche les détails du film
+       
+      };
+
+
+
+
     C.start = async function () {
       V.renderNavBar("C.handlerAbout()");
       let movies = await DataMovie.getMovie();
@@ -47,19 +67,8 @@
       }
       V.renderMovie(movies);
       let details = await DataDetail.detailMovie();
-      V.renderDetail(movies);
+      V.renderDetail("C.handlerDetail()");
     };
-
-
-
-
-
-    // Le jour où ça marchait que un peu
-    // C.getMovie = async function () {
-    //   let data = await DataMovie.request();
-    //   V.getMovieController(data);
-    // };
-
 
 
     // Vue (contient tout ce qui est relatif à l'affichage)
@@ -87,9 +96,9 @@
       });
     };
 
-    V.renderDetail = async function (m) {
+    V.renderDetail = async function (handlerDetail) {
   let content = document.querySelector("#detail");
-  let detailHTML = Detail.format(m);
+  let detailHTML = Detail.format(handler);
   content.innerHTML = detailHTML; // Insère le contenu dans le DOM
 };
 
