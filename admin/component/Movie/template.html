@@ -3,13 +3,13 @@
   <form class="AddMovie__form">
     <div class="AddMovie__form-inputs">
       <input required class="AddMovie__form-inputs-field" type="text" name="name" id="name" placeholder="Saisir un nom...">
-      <input required class="AddMovie__form-inputs-field" type="text" name="real" id="real" placeholder="Saisir un nom de réalisateur...">
-      <input required class="AddMovie__form-inputs-field" type="number" name="annee" id="annee" min="1895" max="2100"placeholder="Saisir l'année de sortie...">
+      <input required class="AddMovie__form-inputs-field" type="text" name="director" id="director" placeholder="Saisir un nom de réalisateur...">
+      <input required class="AddMovie__form-inputs-field" type="number" name="year" id="year" min="1895" max="2100" placeholder="Saisir l'année de sortie...">
       <input required class="AddMovie__form-inputs-field" type="number" name="length" id="length" placeholder="Saisir la durée...">
       <input required class="AddMovie__form-inputs-field" type="text" name="description" id="description" placeholder="Saisir une description...">
 
-      <select required class="AddMovie__form-inputs-field" type="text" name="categorie" placeholder="Catégorie">
-        <option value ="" disabled selected>Sélectionner une catégorie...</option>
+      <select required class="AddMovie__form-inputs-field" name="id_category" id="id_category">
+        <option value="" disabled selected>Sélectionner une catégorie...</option>
         <option value="1">Action</option>
         <option value="2">Comédie</option>
         <option value="3">Drame</option>
@@ -23,8 +23,8 @@
       </select>
 
       <input required class="AddMovie__form-inputs-field" type="text" name="image" id="image" placeholder="Saisir l'affiche publicitaire...">
-      <input required class="AddMovie__form-inputs-field" type="text" name="trailer" id="=url" placeholder="Saisir l'URL...">
-      <input required class="AddMovie__form-inputs-field" type="number" name="pegi" id="pegi" placeholder="Saisir la limite d'âge...">
+      <input required class="AddMovie__form-inputs-field" type="text" name="trailer" id="trailer" placeholder="Saisir l'URL...">
+      <input required class="AddMovie__form-inputs-field" type="number" name="min_age" id="min_age" placeholder="Saisir la limite d'âge...">
     </div>
     <input class="AddMovie__form-button" onclick="{{handler}}" type="button" value="Add" name="todo">
   </form>

@@ -53,7 +53,8 @@ function addMovieController(){
   }
 }
 
-
+// director, year, id_category, min_age
+// name, length, description, image, trailer
 function detailMovieController() {
 
   $id = $_REQUEST['id'];
