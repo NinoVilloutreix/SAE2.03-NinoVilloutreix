@@ -40,11 +40,10 @@
 
 
     C.handlerDetail = async function (movieId) {
-    console.log("Movie ID:", movieId); // Vérifiez si movieId est défini
-    let movieData = await DataMovie.detailMovie(movieId); // Récupère les détails du film
-    V.renderDetail(movieData); // Affiche les détails du film
+    console.log("Movie ID passed to handlerDetail:", movieId); // Vérifiez la valeur de movieId
+    let movieData = await DataMovie.detailMovie(movieId);
+    V.renderDetail(movieData);
 };
-
     C.handlerReverse = function () {
         const detailElement = document.querySelector("#big_parent");
         if (detailElement) {

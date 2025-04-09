@@ -97,11 +97,11 @@ if ( isset($_REQUEST['todo']) ){
    * Si la fonction de contrôleur retourne false, on renvoie une réponse JSON avec un message d'erreur 
    * et un code de réponse HTTP 500 (Internal error), puis termine l'exécution du script (exit()).
    */
-  if ($data===false){
-    echo json_encode('[error] Controller returns false');
-    http_response_code(500); // 500 == "Internal error"
-    exit();
-  }
+  // if ($data===false){
+  //   echo json_encode('[error] Controller returns false');
+  //   http_response_code(500); // 500 == "Internal error"
+  //   exit();
+  // }
 
   /**
    * Si tout s'est bien passé, on renvoie la réponse HTTP avec les données ($data) retournées

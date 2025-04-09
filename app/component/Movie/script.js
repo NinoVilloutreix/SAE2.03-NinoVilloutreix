@@ -11,4 +11,14 @@ Movie.format = function (movie) {
   html = html.replace("{{onclick}}", `C.handlerDetail(${movie.id})`);
   return html;
 };
+
+Movie.formatMany = function(movies) {
+  let html = "";
+  for (const r of movies) {
+    html = html + Movie.format(r);
+  }
+  return html;
+};
+
+
 export { Movie };

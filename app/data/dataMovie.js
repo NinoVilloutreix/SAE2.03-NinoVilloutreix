@@ -11,9 +11,12 @@ DataMovie.getMovie = async function(){
     return data;
 };
 
+// console.log("Movie ID passed to detailMovie:", movieId);
 
-DataMovie.detailMovie = async function (movieId) {
-    let url = HOST_URL + "/server/script.php?todo=detailmovies&id=" + movieId;
+
+DataMovie.detailMovie = async function (id) {
+    console.log("Movie ID:", id);
+    let url = HOST_URL + "/server/script.php?todo=detailmovies&id=" + id;
     console.log("Fetching URL:", url); // Vérifiez l'URL générée
     let answer = await fetch(url);
     let data = await answer.json();

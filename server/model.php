@@ -139,7 +139,9 @@ function getMovieCategory($category){
     }
     $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
     $sql = "SELECT Movie.id, Movie.name, Movie.year, Movie.length, Movie.description, Movie.director, 
-            Movie.image, Movie.trailer, Movie.min_age, Category.id AS category_id ,Category.name AS category
+            Movie.image, Movie.trailer, Movie.min_age,
+            Category.id AS category_id,
+            Category.name AS category
             FROM Movie JOIN Category ON Movie.id_category = Category.id 
             WHERE Category.id = :category";
     $stmt = $cnx->prepare($sql);
