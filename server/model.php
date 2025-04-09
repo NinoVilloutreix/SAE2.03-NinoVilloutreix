@@ -23,6 +23,7 @@ define("DBPWD", "villoutreix8");
  *
  * 
  */
+
 function getMovie(){
     // Connexion à la base de données
     $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
@@ -142,23 +143,30 @@ function getMovieCategory($category){
 }
 
 function addProfile($id, $name, $avatar, $min_age) {
-    $cnx = new PDO("mysql:host=" . HOST . ";dbname=" . DBNAME, DBLOGIN, DBPWD);
+    try {
+        $cnx = new PDO("mysql:host=" . HOST . ";dbname=" . DBNAME, DBLOGIN, DBPWD, [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+        ]);
+        error_log("Connexion à la base réussie");
 
-    // Utilisation de REPLACE INTO pour insérer ou remplacer une ligne
-    $sql = "INSERT INTO Profile(id, name, avatar, min_age) VALUES (:id,:name,:avatar,:min_age)";
+        $sql = "INSERT INTO Profile(id, name, avatar, min_age) VALUES (:id, :name, :avatar, :min_age)";
+        $stmt = $cnx->prepare($sql);
 
-    $stmt = $cnx->prepare($sql);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+        $stmt->bindParam(':avatar', $avatar, PDO::PARAM_STR);
+        $stmt->bindParam(':min_age', $min_age, PDO::PARAM_INT);
 
-    // Liaison des paramètres
-    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-    $stmt->bindParam(':name', $name, PDO::PARAM_STR);
-    $stmt->bindParam(':avatar', $avatar, PDO::PARAM_STR);
-    $stmt->bindParam(':min_age', $min_age, PDO::PARAM_INT);
+        $stmt->execute();
+        error_log("Insertion réussie");
+        return $stmt->rowCount();
 
-    $stmt->execute();
-    $res = $stmt->rowCount();
-    return $res; // Retourne le nombre de lignes affectées par l'opération
+    } catch (Exception $e) {
+        error_log("Erreur dans addProfile : " . $e->getMessage());
+        return 0;
+    }
 }
+
 
 function readProfile() {
     // Connexion à la base de données
@@ -173,3 +181,24 @@ function readProfile() {
     $res = $stmt->fetchAll(PDO::FETCH_OBJ);
     return $res; // Retourne les résultats
 }
+
+function readOneProfile($id) {
+    // Connexion à la base de données
+    $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
+    // Requête SQL pour récupérer le menu avec des paramètres
+    $sql = "select * from Profil where id = :id";
+    // Prépare la requête SQL
+    $stmt = $cnx->prepare($sql);
+    
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    // Exécute la requête SQL
+    $stmt->execute();
+    // Récupère les résultats de la requête sous forme d'objets
+    $res = $stmt->fetchAll(PDO::FETCH_OBJ);
+    return $res; // Retourne les résultats
+}
+
+// if ($_REQUEST['todo'] === 'addprofile') {
+//     error_log("Requête reçue pour addprofile"); // Vérifiez que la requête arrive ici
+//     error_log(print_r($_POST, true)); // Affichez les données reçues
+// }

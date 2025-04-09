@@ -95,7 +95,10 @@ if ( isset($_REQUEST['todo']) ){
       exit();
   }
 
-
+// if ($_REQUEST['todo'] === 'addprofile') {
+//     error_log("Requête reçue pour addprofile"); // Vérifiez que la requête arrive ici
+//     error_log(print_r($_POST, true)); // Affichez les données reçues
+// }
 
   /**
    * A ce stade, on a appelé la fonction de contrôleur appropriée et stocké le résultat dans la variable $data.

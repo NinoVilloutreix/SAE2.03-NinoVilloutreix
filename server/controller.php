@@ -99,9 +99,9 @@ function addProfileController() {
   $ok = addProfile($id, $name, $avatar, $min_age);
 
   if ($ok != 0) {
-      return "$name a été ajouté ou remplacé avec succès";
+      return "Le profil $name a été ajouté :3";
   } else {
-      return "Le profil n'a pas pu être ajouté ou remplacé";
+      return "Le profil n'a pas pu être ajouté...";
   }
 }
 
@@ -109,3 +109,8 @@ function readProfileController(){
   $profiles = readProfile();
   return $profiles;
 }
+
+// if ($_REQUEST['todo'] === 'addprofile') {
+//   error_log("Requête reçue pour addprofile"); // Vérifiez que la requête arrive ici
+//   error_log(print_r($_POST, true)); // Affichez les données reçues
+// }
