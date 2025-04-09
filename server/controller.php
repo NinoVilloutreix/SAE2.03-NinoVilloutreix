@@ -89,23 +89,23 @@ function getMovieCategoryController(){
 } 
 
 
-function addProfile(){
+// function addProfile(){
 
-  $name = $_REQUEST['nom'];
-  $real = $_REQUEST['image'];
-  $annee = $_REQUEST['age'];
+//   $name = $_REQUEST['nom'];
+//   $real = $_REQUEST['image'];
+//   $annee = $_REQUEST['age'];
 
-  if (empty($nom) || empty($image) || empty($age)) {
-    return "Erreur : Tous les champs doivent être remplis.";
-  }
+//   if (empty($nom) || empty($image) || empty($age)) {
+//     return "Erreur : Tous les champs doivent être remplis.";
+//   }
 
   
-  $ok = addMovie($nom, $image, $age);
+//   $ok = addMovie($nom, $image, $age);
   
-  if ($ok!=0){
-    return "Le film $name a été correctement intégré au catalogue :D";
-  }
-  else{
-    return "Veuillez entrer des valeurs correctes dans les champs!";
-  }
-}
+//   if ($ok!=0){
+//     return "Le film $name a été correctement intégré au catalogue :D";
+//   }
+//   else{
+//     return "Veuillez entrer des valeurs correctes dans les champs!";
+//   }
+// }
