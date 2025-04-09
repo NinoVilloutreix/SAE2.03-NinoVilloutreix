@@ -89,3 +89,23 @@ function getMovieCategoryController(){
   };
 } 
 
+function addProfileController() {
+  $id = isset($_REQUEST['id']) ? $_REQUEST['id'] : null; // Récupère l'ID s'il est fourni
+  $name = $_REQUEST['name'];
+  $avatar = $_REQUEST['avatar'];
+  $min_age = $_REQUEST['min_age'];
+
+  // Appel de la fonction addProfile déclarée dans model.php
+  $ok = addProfile($id, $name, $avatar, $min_age);
+
+  if ($ok != 0) {
+      return "$name a été ajouté ou remplacé avec succès";
+  } else {
+      return "Le profil n'a pas pu être ajouté ou remplacé";
+  }
+}
+
+function readProfileController(){
+  $profiles = readProfile();
+  return $profiles;
+}

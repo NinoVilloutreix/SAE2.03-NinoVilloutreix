@@ -11,15 +11,17 @@
 <body>
   <section id="log"></section>
   <section id="movie"></section>
-  <!-- <section id="profile"></section> -->
+  <section id="addProfile"></section>
 
   <script type="module">
     import { Log } from "./component/Log/script.js";
     import { Movie } from "./component/Movie/script.js";
-    // import { Profile } from "./component/Profile/script.js";
+    import { ProfileForm } from "./component/ProfileForm/script.js";
+   
+
 
     import { DataMovie } from './data/dataMovie.js';
-    // import { DataProfile } from './data/dataProfile.js';
+    import { DataProfile } from "./data/dataProfile.js";
  
     window.C = {};
 
@@ -36,7 +38,13 @@
     }
 
 
+    C.handlerAddProfile = async function () {
+        let form = document.querySelector(".addProfile__form");
 
+        let fd = new FormData(form); // Declare and initialize the FormData object
+        let res = await DataProfile.addProfile(fd);
+        V.renderLog(res);
+      };
 
 
 
@@ -45,6 +53,7 @@
     C.start = function () {
       V.renderLog("Démarrage de l'application");
       V.renderAddMovie("C.handler()"); 
+      V.renderAddProfile("C.handlerAddProfile()");
     };
 
 
@@ -59,7 +68,13 @@
       let content = document.querySelector('#movie');
       content.innerHTML = Movie.format(handler);
     };
-
+    
+    V.renderAddProfile = async function (handler) {
+        let content = document.querySelector("#addProfile");
+        let profiles = await DataProfile.getProfiles();
+        content.innerHTML = ProfileForm.format(profiles, handler);
+     
+      };
 
 
     C.start();

@@ -141,3 +141,35 @@ function getMovieCategory($category){
     return $res; 
 }
 
+function addProfile($id, $name, $avatar, $min_age) {
+    $cnx = new PDO("mysql:host=" . HOST . ";dbname=" . DBNAME, DBLOGIN, DBPWD);
+
+    // Utilisation de REPLACE INTO pour insérer ou remplacer une ligne
+    $sql = "INSERT INTO Profile(id, name, avatar, min_age) VALUES (:id,:name,:avatar,:min_age)";
+
+    $stmt = $cnx->prepare($sql);
+
+    // Liaison des paramètres
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+    $stmt->bindParam(':avatar', $avatar, PDO::PARAM_STR);
+    $stmt->bindParam(':min_age', $min_age, PDO::PARAM_INT);
+
+    $stmt->execute();
+    $res = $stmt->rowCount();
+    return $res; // Retourne le nombre de lignes affectées par l'opération
+}
+
+function readProfile() {
+    // Connexion à la base de données
+    $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
+    // Requête SQL pour récupérer le menu avec des paramètres
+    $sql = "SELECT id, name, avatar, min_age from Profile";
+    // Prépare la requête SQL
+    $stmt = $cnx->prepare($sql);
+    // Exécute la requête SQL
+    $stmt->execute();
+    // Récupère les résultats de la requête sous forme d'objets
+    $res = $stmt->fetchAll(PDO::FETCH_OBJ);
+    return $res; // Retourne les résultats
+}
