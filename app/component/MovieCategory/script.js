@@ -11,7 +11,7 @@ MovieCategory.format = function (category, movies) {
   let html = template;
   console.log("Formatting category:", category, "with movies:", movies); // Vérifiez les données
   html = html.replace("{{category}}", category);
-  html = html.replace("{{movies}}", Movie.formatmany(movies));
+  html = html.replace("{{movies}}", Movie.formatMany(movies));
   return html;
 };
 

@@ -24,3 +24,5 @@ SELECT Movie.id, Movie.name, Movie.year, Movie.length, Movie.description, Movie.
             WHERE Category.id = :category"
 
 Elles marchent bien (j'espère)
+
+-Création d'une nouvelle table Profile contenant un premier utilisateur par défaut: KÉVIN (INSERT INTO Profile(nom, image, age) VALUES ("Kévin","kevin.jpg","2003"))
