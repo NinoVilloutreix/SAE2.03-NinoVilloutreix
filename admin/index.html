@@ -11,12 +11,16 @@
 <body>
   <section id="log"></section>
   <section id="movie"></section>
+  <section id="profile"></section>
 
   <script type="module">
     import { Log } from "./component/Log/script.js";
     import { Movie } from "./component/Movie/script.js";
-    import { DataMovie } from './data/dataMovie.js';
+    import { Profile } from "./component/Profile/script.js";
 
+    import { DataMovie } from './data/dataMovie.js';
+    import { DataProfile } from './data/dataProfile.js';
+ 
     window.C = {};
 
    
@@ -32,11 +36,25 @@
     }
 
 
+    C.handlerProfile = async function () {
+      let form = document.querySelector('.AddProfile__form');
+      if (!form) {
+        V.renderLog("Erreur : formulaire introuvable.");
+        return;
+      }
+      let fd = new FormData(form);
+      let res = await DataProfile.addProfile(fd);
+      V.renderLog(res);
+    }
+
+
+
+
 
     C.start = function () {
       V.renderLog("Démarrage de l'application");
       V.renderAddMovie("C.handler()"); 
-      
+      V.renderAddProfile("C.handlerAddProfile()");
     };
 
 
@@ -52,6 +70,12 @@
       content.innerHTML = Movie.format(handler);
     };
 
+    V.renderAddProfile = async function (handlerProfile) {
+        let content = document.querySelector("#profile");
+        let profiles = await DataProfile.addProfile();
+        content.innerHTML = Profile.format(profiles, handlerProfile);
+     
+      };
 
     C.start();
   </script>

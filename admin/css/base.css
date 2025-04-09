@@ -6,3 +6,4 @@
 
 @import "../component/Log/style.css" layer(components);
 @import "../component/Movie/style.css" layer(components);
+@import "../component/Profile/style.css" layer(components);

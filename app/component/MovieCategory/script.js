@@ -30,15 +30,10 @@ MovieCategory.formatMany = async function (category) {
       if (movies.length === 0) {
           continue;
       }
-      console.log("Category:", obj.name, "Movies:", movies); // Vérifiez les films pour chaque catégorie
       html += MovieCategory.format(obj.name, movies);
   }
   console.log("Final HTML:", html); // Vérifiez le HTML généré
   return html;
 };
-
-
-
-
 
 export { MovieCategory };

@@ -1,0 +1,11 @@
+<div class="AddProfile">
+  <h2 class="AddProfile__title">Ajouter un profil :></h2>
+  <form class="AddProfile__form">
+    <div class="AddProfile__form-inputs">
+      <input required class="AddProfile__form-inputs-field" type="text" name="nom" id="nom" placeholder="Saisir un nom...">
+      <input required class="AddProfile__form-inputs-field" type="text" name="image" id="image" placeholder="Saisir un lien d'image...">
+      <input required class="AddProfile__form-inputs-field" type="date" name="age" id="age" min="1908" max="2025"placeholder="Saisir la date de naissance...">
+    </div>
+    <input class="AddProfile__form-button" onclick="{{handlerProfile}}" type="button" value="Add" name="todo">
+  </form>
+</div>

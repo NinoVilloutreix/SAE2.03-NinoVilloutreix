@@ -65,19 +65,6 @@ function addMovie($name, $real, $annee, $length, $description, $categorie, $imag
     return $res; // Retourne le nombre de lignes affectées
 }
 
-// function detailMovie($id){
-//     $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
-//     $sql = "SELECT * FROM Movie WHERE id = :id";
-//     $stmt = $cnx->prepare($sql);
-//     $stmt->bindParam(':id', $id);
-//     $stmt->execute();
-
-
-
-//     $res = $stmt->fetchAll(PDO::FETCH_OBJ);
-//     return $res; 
-// }
-
 function detailMovie($id) {
     try {
        
@@ -154,15 +141,16 @@ function getMovieCategory($category){
     return $res; 
 }
 
-function addProfile($nom, $image, $age){
+function addProfile($id, $nom, $image, $age){
     // Connexion à la base de données
     $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD); 
     // Requête SQL de mise à jour du menu avec des paramètres
-    $sql = "INSERT INTO Profile(nom, image, age) VALUES (:nom, :image, :age)";
+    $sql = "INSERT INTO Profile(id, nom, image, age) VALUES (:id, :nom, :image, :age)";
     // Prépare la requête SQL
     $stmt = $cnx->prepare($sql);
     // Lie les paramètres aux valeurs
 
+    $stmt->bindParam(':id', $id);
     $stmt->bindParam(':nom', $nom);
     $stmt->bindParam(':image', $image);
     $stmt->bindParam(':age', $age);

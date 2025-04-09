@@ -47,5 +47,4 @@ DataMovie.getMovieCategory = async function (idcategory) {
     return data;
 };
 
-
 export {DataMovie};
