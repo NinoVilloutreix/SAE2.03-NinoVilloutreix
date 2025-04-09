@@ -88,25 +88,3 @@ function getMovieCategoryController(){
   };
 } 
 
-
-function addProfileController(){
-
-  $id = isset($_REQUEST['id']) ? $_REQUEST['id'] : null;
-  $name = $_REQUEST['nom'];
-  $image = $_REQUEST['image'];
-  $age = $_REQUEST['age'];
-
-  if (empty($id) ||empty($nom) || empty($image) || empty($age)) {
-    return "Erreur : Tous les champs doivent être remplis.";
-  }
-
-  
-  $ok = addProfile($id, $nom, $image, $age);
-  
-  if ($ok!=0){
-    return "Le film $name a été correctement intégré au catalogue :D";
-  }
-  else{
-    return "Veuillez entrer des valeurs correctes dans les champs!";
-  }
-}
