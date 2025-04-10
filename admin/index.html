@@ -37,29 +37,12 @@
       V.renderLog(res);
     }
 
-
-    C.handlerAddProfile = function () {
-
-    let form = document.querySelector('.AddProfile__form');
-    
-
-    if (!form) {
-        console.error("Formulaire introuvable !");
-        return;
-    }
-
-    // console.log("Formulaire sélectionné :", form);
-
-
-    try {
-        let formData = new FormData(form);
-        console.log("Données du formulaire :", Array.from(formData.entries()));
-    } catch (error) {
-        console.error("Erreur lors de la création du FormData :", error);
-        return;
-    }
-
-};
+    C.handlerAddProfile = async function () {
+        let form = document.querySelector(".AddProfile__form");
+        let fd = new FormData(form);
+        let res = await DataProfile.addProfile(fd);
+        V.renderLog(res);
+      };
 
 
 

@@ -87,7 +87,7 @@
 
 .Detail__right{
   flex: 1;
-  border: green 2px solid ;
+  border: blue 2px solid ;
 }
 
 .Detail__right-card{
@@ -100,7 +100,7 @@
 
 .Detail__right-card-trailer {
   width: 100%; /* ou une largeur fixe, genre 500px */
-  max-width: 400px;
+  max-width: 600px;
   aspect-ratio: 16 / 9;
   border: none;
 }

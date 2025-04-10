@@ -47,18 +47,6 @@ DataProfile.addProfile = async function (fdata) {
  * @param {*} fdata un objet FormData contenant les données du formulaire à envoyer au serveur.
  * @returns la réponse du serveur.
  */
-DataProfile.updateProfile = async function (fdata) {
-  // Configuration de la requête HTTP
-  let config = {
-    method: "POST", // méthode HTTP POST pour envoyer les données
-    body: fdata, // données à envoyer sous forme d'objet FormData
-  };
-
-  // Envoi de la requête au serveur avec le paramètre `todo=updateProfile`
-  let answer = await fetch(HOST_URL + "/server/script.php?todo=updateProfile", config);
-  let data = await answer.json(); // Conversion de la réponse en JSON
-  return data; // Retourne la réponse du serveur
-};
 
 
 /** DataProfile.getProfiles

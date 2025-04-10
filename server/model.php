@@ -152,9 +152,9 @@ function addProfile($name, $avatar, $min_age) {
         $sql = "INSERT INTO Profile(name, avatar, min_age) VALUES (:name, :avatar, :min_age)";
         $stmt = $cnx->prepare($sql);
 
-        $stmt->bindParam(':name', $name, PDO::PARAM_STR);
-        $stmt->bindParam(':avatar', $avatar, PDO::PARAM_STR);
-        $stmt->bindParam(':min_age', $min_age, PDO::PARAM_INT);
+        $stmt->bindParam(':name', $name);
+        $stmt->bindParam(':avatar', $avatar);
+        $stmt->bindParam(':min_age', $min_age);
 
         $stmt->execute();
         error_log("Insertion réussie");
@@ -191,7 +191,7 @@ function readOneProfile($id) {
     // Prépare la requête SQL
     $stmt = $cnx->prepare($sql);
     
-    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    $stmt->bindParam(':id', $id);
     // Exécute la requête SQL
     $stmt->execute();
     // Récupère les résultats de la requête sous forme d'objets
