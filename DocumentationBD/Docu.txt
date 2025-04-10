@@ -2,6 +2,7 @@ Ce document rendra compte des modifications réalisées sur la base de donnée.
 
 -J'ai rajouté un film, Ponyo sur la falaise, pour vérifier que mon I1 l'affichait bien.
 Elle l'affiche bien.
+Commande: INSERT INTO Movie (name, year, length, description, director, id_category, image, trailer, min_age) VALUES (...)
 
 -J'ai rajouté le film Minecraft (beurk), pour tester le formulaire de mon I2.
 Il marche bien.
@@ -14,7 +15,7 @@ Il marche bien.
                                                                     JOIN Category ON Movie.id_category = Category.id
                                                                     ORDER BY id_category, name;
 
--Màj: Je suis pas assez fort, j'ai utilisé une autre technique, deux fonctions en plus et deux requêtes différentes:
+-Màj: J'y arrive pas avec ça, j'ai utilisé une autre technique, deux fonctions en plus et deux requêtes différentes:
 
 SELECT id, name FROM Category;
 
