@@ -90,13 +90,13 @@ function getMovieCategoryController(){
 } 
 
 function addProfileController() {
-  $id = isset($_REQUEST['id']) ? $_REQUEST['id'] : null; // Récupère l'ID s'il est fourni
+  // $id = isset($_REQUEST['id']) ? $_REQUEST['id'] : null; // Récupère l'ID s'il est fourni
   $name = $_REQUEST['name'];
   $avatar = $_REQUEST['avatar'];
   $min_age = $_REQUEST['min_age'];
 
   // Appel de la fonction addProfile déclarée dans model.php
-  $ok = addProfile($id, $name, $avatar, $min_age);
+  $ok = addProfile($name, $avatar, $min_age);
 
   if ($ok != 0) {
       return "Le profil $name a été ajouté :3";
@@ -114,3 +114,7 @@ function readProfileController(){
 //   error_log("Requête reçue pour addprofile"); // Vérifiez que la requête arrive ici
 //   error_log(print_r($_POST, true)); // Affichez les données reçues
 // }
+
+
+
+// CA A MARCHÉ https://mmi.unilim.fr/~villoutreix8/SAE2.03-NinoVilloutreix/server/script.php?todo=addProfile&id=6&name=1&avatar=1&min_age=1

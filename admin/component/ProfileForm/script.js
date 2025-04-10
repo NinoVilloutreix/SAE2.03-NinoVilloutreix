@@ -17,12 +17,12 @@ ProfileForm.format = function(profiles, handler) {
     const p = profiles[i];
 
     // Validation des propriétés du profil
-    if (!p.id || !p.name || !p.avatar || typeof p.min_age === "undefined") {
+    if (!p.name || !p.avatar || typeof p.min_age === "undefined") {
       console.warn("ProfileForm.format: Profil invalide détecté :", p);
       continue; // Ignore les profils invalides
     }
 
-    options += `<option value="${p.id}" data-name="${p.name}" data-avatar="${p.avatar}" data-age="${p.min_age}">${p.name}</option>`;
+    options += `<option data-name="${p.name}" data-avatar="${p.avatar}" data-age="${p.min_age}">${p.name}</option>`;
   }
 
   // Si aucune option valide n'est générée, afficher un message par défaut

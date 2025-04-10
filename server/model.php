@@ -142,17 +142,16 @@ function getMovieCategory($category){
     return $res; 
 }
 
-function addProfile($id, $name, $avatar, $min_age) {
+function addProfile($name, $avatar, $min_age) {
     try {
         $cnx = new PDO("mysql:host=" . HOST . ";dbname=" . DBNAME, DBLOGIN, DBPWD, [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
         ]);
         error_log("Connexion à la base réussie");
 
-        $sql = "INSERT INTO Profile(id, name, avatar, min_age) VALUES (:id, :name, :avatar, :min_age)";
+        $sql = "INSERT INTO Profile(name, avatar, min_age) VALUES (:name, :avatar, :min_age)";
         $stmt = $cnx->prepare($sql);
 
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->bindParam(':name', $name, PDO::PARAM_STR);
         $stmt->bindParam(':avatar', $avatar, PDO::PARAM_STR);
         $stmt->bindParam(':min_age', $min_age, PDO::PARAM_INT);
@@ -166,6 +165,8 @@ function addProfile($id, $name, $avatar, $min_age) {
         return 0;
     }
 }
+
+
 
 
 function readProfile() {
@@ -186,7 +187,7 @@ function readOneProfile($id) {
     // Connexion à la base de données
     $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
     // Requête SQL pour récupérer le menu avec des paramètres
-    $sql = "select * from Profil where id = :id";
+    $sql = "select * from Profile where id = :id";
     // Prépare la requête SQL
     $stmt = $cnx->prepare($sql);
     

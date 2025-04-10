@@ -25,4 +25,12 @@ SELECT Movie.id, Movie.name, Movie.year, Movie.length, Movie.description, Movie.
 
 Elles marchent bien (j'espère)
 
--Création d'une nouvelle table Profile contenant un premier utilisateur par défaut: KÉVIN (INSERT INTO Profile(nom, image, age) VALUES ("Kévin","kevin.jpg","2003"))
+-Création d'une nouvelle table Profile contenant un premier utilisateur par défaut:
+CREATE TABLE Profile (
+id INT AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(255),
+avatar VARCHAR(255),
+min_age INT(3)
+);
+
+INSERT INTO Profile(name, avatar, min_age) VALUES ("Kévin","kevin.jpg","2003")

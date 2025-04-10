@@ -87,7 +87,7 @@
 
 .Detail__right{
   flex: 1;
-  border: blue 2px solid ;
+  border: green 2px solid ;
 }
 
 .Detail__right-card{
@@ -98,13 +98,13 @@
   gap: 1rem;
 }
 
-.Detail__right-card-trailer{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
+.Detail__right-card-trailer {
+  width: 100%; /* ou une largeur fixe, genre 500px */
+  max-width: 400px;
+  aspect-ratio: 16 / 9;
+  border: none;
 }
+
 
 
 .Detail__name{

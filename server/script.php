@@ -1,4 +1,8 @@
 <?php
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 /** ARCHITECTURE PHP SERVEUR : Rôle du fichier script.php
  * 
  * Ce fichier est celui à qui on adresse toutes les requêtes HTTP.
@@ -99,6 +103,13 @@ if ( isset($_REQUEST['todo']) ){
 //     error_log("Requête reçue pour addprofile"); // Vérifiez que la requête arrive ici
 //     error_log(print_r($_POST, true)); // Affichez les données reçues
 // }
+
+
+
+
+
+
+
 
   /**
    * A ce stade, on a appelé la fonction de contrôleur appropriée et stocké le résultat dans la variable $data.
