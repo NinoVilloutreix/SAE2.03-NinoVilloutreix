@@ -35,3 +35,5 @@ min_age INT(3)
 );
 
 INSERT INTO Profile(name, avatar, min_age) VALUES ("Kévin","kevin.jpg","2003")
+
+INSERT INTO Movie (name, year, length, description, director, id_category, image, trailer, min_age) VALUES ("Wall-E",2008,98,"Wall-E, dernier robot resté sur Terre, se retrouve malgré lui emporté dans un conflit décisif dans l'avenir de l'humanité.","Andrew Stanton",5,"walle.jpg","https://youtu.be/twS3hYLmQI4",6)
