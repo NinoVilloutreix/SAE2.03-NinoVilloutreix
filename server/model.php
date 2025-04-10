@@ -196,7 +196,7 @@ function readOneProfile($id) {
     // Connexion à la base de données
     $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
     // Requête SQL pour récupérer le menu avec des paramètres
-    $sql = "select * from Profile where id = :id";
+    $sql = "select * from Profil where id = :id";
     // Prépare la requête SQL
     $stmt = $cnx->prepare($sql);
     

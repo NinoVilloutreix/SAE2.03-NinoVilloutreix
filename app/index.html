@@ -17,13 +17,12 @@
   <script type="module">
 
     import { NavBar } from "./component/NavBar/script.js";
-
     import { Movie } from "./component/Movie/script.js";
-    import { DataMovie } from './data/dataMovie.js';
-    
     import { Detail } from "./component/Detail/script.js";
-
     import { MovieCategory } from "./component/MovieCategory/script.js"
+
+    import { DataMovie } from './data/dataMovie.js';
+    import { DataProfile } from './data/dataProfile.js';
  
     // Controleur
     // Rappel, écrire window.C plutôt que let C est nécessaire pour tester depuis la console du navigateur
@@ -53,13 +52,35 @@
         }
     };
 
+    C.handlerProfile = async function () {
+        const select = document.querySelector("#profile-select");
+        let dataProfile = await DataProfile.readOne(select.value);
+        C.profile = dataProfile[0];
+      //  C.getMovie(C.profile.min_age);
+      };
 
+      C.setProfilImage = function (imageName) {
+      const profileImage = document.querySelector("#profile-picture");
+      const defaultImage =
+        "../server/images/placeholder.jpg"; // Chemin de l'image par défaut
 
+      // Construit l'Name complète de l'image ou utilise l'image par défaut si newImage est vide
+      profileImage.src = imageName
+        ? `../server/images/${imageName}`
+        : defaultImage;
 
+    }
+    C.handlerProfileChange = function (selectElement) {
+      const selectedOption =
+        selectElement.options[selectElement.selectedIndex];
+      const newImage = selectedOption.dataset.img; // Récupère l'attribut data-img
+      C.setProfilImage(newImage);
+    }
 
 
     C.start = async function () {
-      V.renderNavBar("C.handlerAbout()");
+      let profiles = await DataProfile.read();
+      V.renderNavBar("C.handlerAbout()",profiles);
       // let movies = await DataMovie.getMovie();
       // let categories = await DataMovie.getCategory();
       
@@ -73,7 +94,8 @@
       // }
       // V.renderMovie(movies)
       // V.renderMovieCategory(movies);
-      C.getMovieCategory()
+      C.getMovieCategory();
+      C.setProfilImage();
     };
 
     
@@ -94,9 +116,9 @@
      * Elle sélectionne l'élément HTML avec l'ID "header" et y insère le contenu
      * formaté par le composant NavBar.
      */
-    V.renderNavBar = function (hAbout) {
+    V.renderNavBar = function (hAbout, profiles) {
       let header = document.querySelector("#header");
-      header.innerHTML = NavBar.format(hAbout);
+      header.innerHTML = NavBar.format(hAbout, profiles);
     };
 
 

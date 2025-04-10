@@ -105,11 +105,18 @@ function addProfileController() {
   }
 }
 
-function readProfileController(){
-  $profiles = readProfile();
-  return $profiles;
-}
 
+function readProfileController(){
+      if (!isset($_REQUEST['id'])) {
+    $profiles = readProfile(); 
+  }
+  else{
+    $id = $_REQUEST['id'];
+    $profiles = readOneProfile($id); // Appel de la fonction getProfile
+  }
+ 
+    return $profiles;
+  }
 // if ($_REQUEST['todo'] === 'addprofile') {
 //   error_log("Requête reçue pour addprofile"); // Vérifiez que la requête arrive ici
 //   error_log(print_r($_POST, true)); // Affichez les données reçues
