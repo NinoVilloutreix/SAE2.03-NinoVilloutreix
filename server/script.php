@@ -19,9 +19,12 @@ ini_set('display_errors', 1);
  *  Et dans une véritable application il peut y avoir énormément de paramètres, ce qui deviendrait compliqué et illisible.
  * 
  */
+
+//Les lignes maaaagiques
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+//transmises de père en fils depuis l'anniversaire de Napoléon
 
 /**
  * Inclusion du fichier controller.php.

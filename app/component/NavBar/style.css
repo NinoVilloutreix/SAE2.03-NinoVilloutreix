@@ -2,20 +2,101 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 3rem;
-  color: var(--color-fg);
+  padding: 1rem 2rem;
   background-color: var(--color-gray-dark);
+  color: var(--color-fg);
+}
 
-  .navbar__item {
-    --_offset: 0.2rem;
-    padding: 0.5rem 1rem;
-    text-decoration: underline;
-    text-decoration-thickness: 0.1rem;
-    text-underline-offset: var(--_offset);
-    cursor: pointer;
-    transition: text-underline-offset 0.2s ease-in-out;
-    &:hover {
-      --_offset: 0.5rem;
-    }
-  }
+.navbar__logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.navbar__list {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar__item {
+  font-size: 1rem;
+  color: var(--color-fg);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.navbar__item:hover {
+  color: var(--color-primary);
+}
+
+.navbar__search {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navbar__search input {
+  padding: 0.5rem;
+  border: 1px solid var(--color-gray-light);
+  border-radius: 0.25rem;
+  background-color: var(--color-gray);
+  color: var(--color-fg);
+}
+
+.navbar__search input::placeholder {
+  color: var(--color-gray-light);
+}
+
+.navbar__search button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.25rem;
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.navbar__search button:hover {
+  background-color: var(--color-primary-dark);
+}
+
+.navbar__profile {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navbar__label {
+  font-size: 0.9rem;
+  color: var(--color-fg);
+}
+
+.navbar__select {
+  padding: 0.5rem;
+  border: 1px solid var(--color-gray-light);
+  border-radius: 0.25rem;
+  background-color: var(--color-gray);
+  color: var(--color-gray-light);
+  border-radius: 1rem;
+  font-size: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navbar__select:hover{
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.navbar__picture {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--color-primary);
 }
