@@ -13,8 +13,7 @@
 .Movie__img {
   display: block;
   position: relative;
-  width: 200px; /* Fixe une largeur spécifique */
-  height: 300px; /* Fixe une hauteur spécifique */
+  width: 100%; /* Fixe une largeur spécifique */
   object-fit: cover; /* Maintient les proportions de l'image en remplissant l'espace */
   overflow: hidden; /* Coupe les débordements */
   border: 2px solid var(--color-gray);
