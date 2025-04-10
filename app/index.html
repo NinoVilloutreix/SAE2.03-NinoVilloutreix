@@ -61,19 +61,20 @@
 
     C.start = async function () {
       V.renderNavBar("C.handlerAbout()");
-      let movies = await DataMovie.getMovie();
-      let categories = await DataMovie.getCategory();
+      // let movies = await DataMovie.getMovie();
+      // let categories = await DataMovie.getCategory();
       
-      if (movies.length == 0) {
-        movies = [
-          {
-            image: "placeholder.jpg",
-            name: "Pas de film disponibles pour le moment"
-          }
-        ]
-      }
-      V.renderMovie(movies)
-      V.renderMovieCategory(movies);
+      // if (movies.length == 0) {
+      //   movies = [
+      //     {
+      //       image: "placeholder.jpg",
+      //       name: "Pas de film disponibles pour le moment"
+      //     }
+      //   ]
+      // }
+      // V.renderMovie(movies)
+      // V.renderMovieCategory(movies);
+      C.getMovieCategory()
     };
 
     

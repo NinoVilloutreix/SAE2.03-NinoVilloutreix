@@ -142,6 +142,15 @@ function getMovieCategory($category){
     return $res; 
 }
 
+
+
+
+
+
+
+
+
+
 function addProfile($name, $avatar, $min_age) {
     try {
         $cnx = new PDO("mysql:host=" . HOST . ";dbname=" . DBNAME, DBLOGIN, DBPWD, [

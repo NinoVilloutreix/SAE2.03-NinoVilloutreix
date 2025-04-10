@@ -42,7 +42,7 @@ DataMovie.getCategory = async function () {
 };
 
 DataMovie.getMovieCategory = async function (idcategory) {
-    let answer = await fetch(HOST_URL + "/server/script.php?todo=readmoviecategories" +idcategory ); // à tort car dans notre base de données les films ne peuvent avoir qu'une catégorie, mais PASSONS.
+    let answer = await fetch(HOST_URL + "/server/script.php?todo=readmoviecategories&id=" +idcategory ); // à tort car dans notre base de données les films ne peuvent avoir qu'une catégorie, mais PASSONS.
     let data = await answer.json();
     return data;
 };
