@@ -12,12 +12,14 @@
       </div>
     </div>
     <div class="Detail__right">
-      <h2 class="Detail_right-pegi"></h2>
+      <h2 class="Detail_right-pegi">PEGI {{pegi}}</h2>
       <div class="Detail__right-card">
-        <h2 class="Detail__right-card-length">{{categorie}}</h2>
-        <p class="Detail__right-card-description">{{description}}</p>
-        <div class="">
-          <iframe class="Detail__right-card-trailer" width="1250" height="703" src="{{trailer}}"
+        <div class="Detail__right-card-text">
+          <h2 class="Detail__right-card-text-length">{{categorie}}</h2>
+          <p class="Detail__right-card-text-description">{{description}}</p>
+        </div>
+        <div class="Detail__right-card-trailer">
+          <iframe class="Detail__right-card-trailer-vid" width="1250" height="703" src="{{trailer}}"
             title="🚸 WALL-E Bande Annonce VF 2008 HD" frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>

@@ -4,7 +4,7 @@
   align-items: center;
   padding: 1rem 3rem;
   color: var(--color-fg);
-  background-color: var(--color-bg);
+  background-color: var(--color-gray-dark);
 
   .navbar__item {
     --_offset: 0.2rem;
