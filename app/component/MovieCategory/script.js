@@ -25,17 +25,17 @@ MovieCategory.format = function (categoryname, movies) {
 
 
 MovieCategory.formatMany = async function (category) {
+  let select = document.querySelector("#profile-select");
+  let selectedOption = select ? select.options[select.selectedIndex] : null;
   let html = "";
   for (const obj of category) {
     let movies;
     if (!selectedOption || selectedOption.value === "") {
-        // Si aucun profil n'est sélectionné, afficher tous les films
-        movies = await DataMovie.getMovieCategory(obj.id, null);
-    } else {
-        // Si un profil est sélectionné, filtrer par âge
-        const date = selectedOption.getAttribute('data-dob');
-        movies = await DataMovie.getMovieCategory(obj.id, date);
-    }
+      movies = await DataMovie.getMovieCategory(obj.id, null);
+  } else {
+      const date = selectedOption.getAttribute('data-dob');
+      movies = await DataMovie.getMovieCategory(obj.id, date);
+  }
     if (Array.isArray(movies) && movies.length > 0) {
       html += MovieCategory.format(obj.name, movies);
     }

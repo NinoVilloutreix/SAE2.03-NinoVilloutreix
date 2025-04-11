@@ -8,6 +8,7 @@
   padding: 1rem 3rem;
   color: var(--color-fg);
   background-color: var(--color-grey-bg);
+  border:blue solid 1px;
 }
 
 .Movie {
@@ -23,7 +24,7 @@
   gap: 1rem;
   align-items: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  /* border:red solid 1px; */
+  border:red solid 1px;
 }
 
 

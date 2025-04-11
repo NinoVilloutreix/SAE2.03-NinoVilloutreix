@@ -59,7 +59,7 @@
       //  C.getMovie(C.profile.min_age);
       };
 
-      C.setProfilImage = function (imageName) {
+      C.setProfileImage = function (imageName) {
       const profileImage = document.querySelector("#profile-picture");
       const defaultImage =
         "../server/images/default.avif"; // Chemin de l'image par défaut
@@ -70,12 +70,30 @@
         : defaultImage;
 
     }
+
+
+
+
+
+
     C.handlerProfileChange = function (selectElement) {
-      const selectedOption =
-        selectElement.options[selectElement.selectedIndex];
-      const newImage = selectedOption.dataset.img; // Récupère l'attribut data-img
-      C.setProfilImage(newImage);
-    }
+  const selectedOption = selectElement.options[selectElement.selectedIndex];
+
+  if (!selectedOption || selectedOption.value === "") {
+    // Aucun profil sélectionné : afficher l'image par défaut
+    C.setProfileImage(undefined);
+  } else {
+    // Un profil est sélectionné : afficher l'image correspondante
+    const newImage = selectedOption.dataset.img;
+    C.setProfileImage(newImage);
+  }
+};
+
+
+
+
+
+
 
 
 
@@ -103,7 +121,7 @@
       // V.renderMovie(movies)
       // V.renderMovieCategory(movies);
       C.getMovieCategory();
-      C.setProfilImage();
+      C.setProfileImage();
     };
 
     
@@ -111,6 +129,7 @@
     let categories = await DataMovie.getCategory(); // Récupère les catégories
     let html = await MovieCategory.formatMany(categories); // Génère le HTML pour les catégories
     V.renderMovieCategory(html); // Affiche les catégories et leurs films
+
 };
 
 
