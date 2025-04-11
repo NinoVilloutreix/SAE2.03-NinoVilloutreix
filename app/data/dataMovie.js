@@ -41,8 +41,13 @@ DataMovie.getCategory = async function () {
     return data;
 };
 
-DataMovie.getMovieCategory = async function (idcategory) {
+DataMovie.getMovieCategory = async function (idcategory, date) {
     let answer = await fetch(HOST_URL + "/server/script.php?todo=readmoviecategories&id=" +idcategory ); // à tort car dans notre base de données les films ne peuvent avoir qu'une catégorie, mais PASSONS.
+    
+    if (datedenaissance) {
+        answer += "&date=" + date;
+    }
+    
     let data = await answer.json();
     return data;
 };

@@ -9,7 +9,7 @@ let MovieCategory = {};
 
 MovieCategory.format = function (categoryname, movies) {
   let html = template;
-  console.log("Formatting category:", categoryname, "with movies:", movies); // Vérifiez les données
+  // console.log("Formatting category:", categoryname, "with movies:", movies); // Vérifiez les données
   html = html.replace("{{category}}", categoryname);
 
   // let filterMovie = [];
@@ -27,14 +27,20 @@ MovieCategory.format = function (categoryname, movies) {
 MovieCategory.formatMany = async function (category) {
   let html = "";
   for (const obj of category) {
-      const movies = await DataMovie.getMovieCategory(obj.id);
-      if (movies.length === 0) {
-          continue;
-      }
+    let movies;
+    if (!selectedOption || selectedOption.value === "") {
+        // Si aucun profil n'est sélectionné, afficher tous les films
+        movies = await DataMovie.getMovieCategory(obj.id, null);
+    } else {
+        // Si un profil est sélectionné, filtrer par âge
+        const date = selectedOption.getAttribute('data-dob');
+        movies = await DataMovie.getMovieCategory(obj.id, date);
+    }
+    if (Array.isArray(movies) && movies.length > 0) {
       html += MovieCategory.format(obj.name, movies);
+    }
   }
-  console.log("Final HTML:", html); // Vérifiez le HTML généré
-  return html;
+return html;
 };
 
 export { MovieCategory };

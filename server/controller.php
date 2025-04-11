@@ -79,7 +79,8 @@ function getCategoryController() {
 function getMovieCategoryController(){
   // Récupération des paramètres de la requête
   $id = $_REQUEST["id"];
-  $movies = getMovieCategory($id);
+  $date = $_REQUEST['date'];
+  $movies = getMovieCategory($id, $date);
 
   if ($movies !=0) {
       return $movies ;
