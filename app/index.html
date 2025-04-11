@@ -71,22 +71,34 @@
 
     }
 
+    C.getMovie = async function (minAge) {
+  let allMovies = await DataMovie.getMovie();
+
+  // Filtrage : tu dois adapter selon la structure réelle de tes films
+  let filtered = allMovies.filter(movie => movie.age <= minAge); // ou movie.min_age
+
+  V.renderMovie(filtered);
+};
 
 
 
 
-
-    C.handlerProfileChange = function (selectElement) {
+C.handlerProfileChange = async function (selectElement) {
   const selectedOption = selectElement.options[selectElement.selectedIndex];
 
   if (!selectedOption || selectedOption.value === "") {
-    // Aucun profil sélectionné : afficher l'image par défaut
     C.setProfileImage(undefined);
-  } else {
-    // Un profil est sélectionné : afficher l'image correspondante
-    const newImage = selectedOption.dataset.img;
-    C.setProfileImage(newImage);
+    return;
   }
+
+  const newImage = selectedOption.dataset.img;
+  C.setProfileImage(newImage);
+
+  let dataProfile = await DataProfile.readOne(selectedOption.value);
+  C.profile = dataProfile[0];
+
+  // Appelle ici la fonction de filtrage des films
+  C.getMovie(C.profile.min_age);
 };
 
 
@@ -151,12 +163,13 @@
 
 
     V.renderMovie = async function (m) {
-      let content = document.querySelector("#content");
-      m.forEach((movie) => {
-        let cardHTML = Movie.format(movie);
-        content.innerHTML += cardHTML
-      });
-    };
+  let content = document.querySelector("#content");
+  content.innerHTML = ""; // Vide l'ancien contenu !
+  m.forEach((movie) => {
+    let cardHTML = Movie.format(movie);
+    content.innerHTML += cardHTML;
+  });
+};
 
     V.renderDetail = async function (handlerDetail) {
       let content = document.querySelector("#detail");
