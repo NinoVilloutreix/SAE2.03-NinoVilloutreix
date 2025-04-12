@@ -38,7 +38,7 @@
 
 
     C.handlerDetail = async function (movieId) {
-    console.log("Movie ID passed to handlerDetail:", movieId); // Vérifiez la valeur de movieId
+    console.log("Movie ID passed to handlerDetail:", movieId);
     let movieData = await DataMovie.detailMovie(movieId);
     V.renderDetail(movieData);
 };
@@ -46,7 +46,7 @@
         const detailElement = document.querySelector("#big_parent");
         if (detailElement) {
             detailElement.classList.toggle("hidden");
-            console.log("Toggled visibility of #detail");
+            console.log("Le composant #detail a disparu");
         } else {
             console.log("Element with ID #detail not found");
         }
@@ -71,22 +71,9 @@
 
     }
 
-    C.getMovie = async function (minAge) {
+    C.getMovie = async function () {
   let allMovies = await DataMovie.getMovie();
-
-  // Filtrage : tu dois adapter selon la structure réelle de tes films
-  let filtered = [];
-
-  for (let movie of allMovies) {
-    if (movie.min_age <= minAge) {
-      filtered.push(movie);
-    }
-  } // ou movie.min_age
-
-  console.log("Filtered Movies:", filtered);
-
-
-  V.renderMovie(filtered);
+  V.renderMovie();
 };
 
 
@@ -194,7 +181,7 @@ C.handlerProfileChange = async function (selectElement) {
 
     V.renderMovieCategory = async function (html) {
     let content = document.querySelector("#movies__body");
-    content.innerHTML = html; // Remplace le contenu par le HTML généré
+    content.innerHTML = html;
 };
 
     C.start(); // Démarre l'application
@@ -207,7 +194,7 @@ C.handlerProfileChange = async function (selectElement) {
 
 
 
-
+//https://mmi.unilim.fr/~villoutreix8/SAE2.03-NinoVilloutreix/server/script.php?todo=readmoviecategories&id=1&date=16 ÇA MARCHE ÇA
 
 
   </script>
@@ -215,4 +202,5 @@ C.handlerProfileChange = async function (selectElement) {
 
 </html>
 <script type="module"></script>
+
 

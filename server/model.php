@@ -121,36 +121,45 @@ function getCategory(){
 }
 
 function getMovieCategory($category, $date = null){
-   
     if (empty($category)) {
         return false;
     }
-    if ($date == null) {
-    $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
-    $sql = "SELECT Movie.id, Movie.name, Movie.year, Movie.length, Movie.description, Movie.director, 
-            Movie.image, Movie.trailer, Movie.min_age,
-            Category.id AS category_id,
-            Category.name AS category
-            FROM Movie JOIN Category ON Movie.id_category = Category.id 
-            WHERE Category.id = :category"; //Récupère les films d'une catégorie donnée.
-    $stmt = $cnx->prepare($sql);
-    $stmt->bindParam(':category', $category);
-    $stmt->execute();
-    }
-    else {
-        $sql = "SELECT Movie.*, Category.name AS category 
-                FROM Movie 
-                JOIN Category ON Movie.id_category = Category.id 
-                WHERE Category.id = :category 
-                AND Movie.min_age <= :date";    //
-        $stmt = $cnx->prepare($sql);
-        $stmt->bindParam(':category', $category);
-        $stmt->bindParam(':date', $date);
-    }
 
+    try {
+        // Connexion à la base de données
+        $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
+        $cnx->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Active la gestion des erreurs
 
-    $res = $stmt->fetchAll(PDO::FETCH_OBJ);
-    return $res; 
+        // Requête SQL
+        if ($date == null) {
+            $sql = "SELECT Movie.id, Movie.name, Movie.year, Movie.length, Movie.description, Movie.director, 
+                    Movie.image, Movie.trailer, Movie.min_age,
+                    Category.id AS category_id,
+                    Category.name AS category
+                    FROM Movie 
+                    JOIN Category ON Movie.id_category = Category.id 
+                    WHERE Category.id = :category"; 
+            $stmt = $cnx->prepare($sql);
+            $stmt->bindParam(':category', $category);
+        } else {
+            $sql = "SELECT Movie.*, Category.name AS category 
+                    FROM Movie 
+                    JOIN Category ON Movie.id_category = Category.id 
+                    WHERE Category.id = :category 
+                    AND Movie.min_age <= :date"; 
+            $stmt = $cnx->prepare($sql);
+            $stmt->bindParam(':category', $category);
+            $stmt->bindParam(':date', $date);
+        }
+
+        $stmt->execute();
+        $res = $stmt->fetchAll(PDO::FETCH_OBJ);
+        return $res;
+    } catch (PDOException $e) {
+        // Gestion des erreurs
+        echo "Error: " . $e->getMessage();
+        return false;
+    }
 }
 
 
