@@ -42,7 +42,7 @@ DataMovie.getCategory = async function () {
 };
 
 DataMovie.getMovieCategory = async function (idcategory, date) {
-    let url = HOST_URL + "/server/script.php?todo=readmoviecategories&id=" + idcategory; // à tort car dans notre base de données les films ne peuvent avoir qu'une catégorie, mais PASSONS.
+    let url = HOST_URL + "/server/script.php?todo=readmoviecategories&id=" + idcategory + "&min_age=" + date; // à tort car dans notre base de données les films ne peuvent avoir qu'une catégorie, mais PASSONS.
     if (date) {
         url += "&date=" + date;
     }

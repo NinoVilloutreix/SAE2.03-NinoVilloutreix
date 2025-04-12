@@ -132,7 +132,7 @@ function getMovieCategory($category, $date = null){
             Category.id AS category_id,
             Category.name AS category
             FROM Movie JOIN Category ON Movie.id_category = Category.id 
-            WHERE Category.id = :category";
+            WHERE Category.id = :category"; //Récupère les films d'une catégorie donnée.
     $stmt = $cnx->prepare($sql);
     $stmt->bindParam(':category', $category);
     $stmt->execute();
@@ -142,7 +142,7 @@ function getMovieCategory($category, $date = null){
                 FROM Movie 
                 JOIN Category ON Movie.id_category = Category.id 
                 WHERE Category.id = :category 
-                AND Movie.min_age <= :date";
+                AND Movie.min_age <= :date";    //
         $stmt = $cnx->prepare($sql);
         $stmt->bindParam(':category', $category);
         $stmt->bindParam(':date', $date);
@@ -207,7 +207,7 @@ function readOneProfile($id) {
     // Connexion à la base de données
     $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
     // Requête SQL pour récupérer le menu avec des paramètres
-    $sql = "select * from Profil where id = :id";
+    $sql = "select * from Profile where id = :id";
     // Prépare la requête SQL
     $stmt = $cnx->prepare($sql);
     

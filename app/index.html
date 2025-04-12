@@ -75,7 +75,16 @@
   let allMovies = await DataMovie.getMovie();
 
   // Filtrage : tu dois adapter selon la structure réelle de tes films
-  let filtered = allMovies.filter(movie => movie.age <= minAge); // ou movie.min_age
+  let filtered = [];
+
+  for (let movie of allMovies) {
+    if (movie.min_age <= minAge) {
+      filtered.push(movie);
+    }
+  } // ou movie.min_age
+
+  console.log("Filtered Movies:", filtered);
+
 
   V.renderMovie(filtered);
 };
