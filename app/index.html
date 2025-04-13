@@ -77,40 +77,61 @@
 };
 
 
+//#########################################################################################################################
+
+function calculateAge(dob) {
+    const today = new Date(); // La date d'aujourd'hui
+    const birthDate = new Date(dob); // La date de naissance
+    let age = today.getFullYear() - birthDate.getFullYear(); // Années de différence
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+    // Ajustement si l'anniversaire de cette année n'est pas encore passé
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    return age;
+}
 
 
-C.handlerProfileChange = async function (selectElement) {
-  const selectedOption = selectElement.options[selectElement.selectedIndex];
+C.handlerProfileChange = async function() {
+    const select = document.getElementById('profile-select');
+    const avatarImg = document.getElementById('profile-picture');
 
-  if (!selectedOption || selectedOption.value === "") {
-    C.setProfileImage(undefined);
-    return;
-  }
+    if (!select || !avatarImg) {
+        console.error("Éléments HTML non trouvés");
+        return;
+    }
 
-  const newImage = selectedOption.dataset.img;
-  C.setProfileImage(newImage);
+    const baseURL = "https://mmi.unilim.fr/~villoutreix8/SAE2.03-NinoVilloutreix/server/images/";
+    const defaultImage = baseURL + "default.avif";
 
-  let dataProfile = await DataProfile.readOne(selectedOption.value);
-  C.profile = dataProfile[0];
+    const selectedOption = select.options[select.selectedIndex];
+    if (selectedOption) {
+        if (selectedOption.value === "") {
+            avatarImg.classList.add('hidden');
+        } else {
+            const avatarPath = selectedOption.getAttribute('data-avatar');
+            avatarImg.src = avatarPath ? baseURL + avatarPath : defaultImage;
+            avatarImg.classList.remove('hidden');
 
-  // Appelle ici la fonction de filtrage des films
-  C.getMovie(C.profile.min_age);
+            // Récupération de la date de naissance
+            const dob = selectedOption.getAttribute('data-age');
+            if (dob) {
+                const age = calculateAge(dob); // Conversion de la date en âge
+                console.log("Âge calculé :", age);
+
+                // Recharger les films avec la limite d'âge
+                await C.getMovieCategory(age);
+            } else {
+                console.warn("Aucune date de naissance trouvée !");
+                await C.getMovieCategory(null); // Aucun filtre
+            }
+        }
+    }
 };
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+//#########################################################################################################################
 
     C.start = async function () {
       let profiles = await DataProfile.read();
@@ -132,13 +153,14 @@ C.handlerProfileChange = async function (selectElement) {
       C.setProfileImage();
     };
 
-    
-    C.getMovieCategory = async function () {
-    let categories = await DataMovie.getCategory(); // Récupère les catégories
-    let html = await MovieCategory.formatMany(categories); // Génère le HTML pour les catégories
-    V.renderMovieCategory(html); // Affiche les catégories et leurs films
 
+    C.getMovieCategory = async function(profileAge = null) {
+    let categories = await DataMovie.getCategory();
+    let html = await MovieCategory.formatMany(categories, profileAge);
+    V.renderMovieCategory(html);
 };
+
+    
 
 
     // Vue (contient tout ce qui est relatif à l'affichage)

@@ -24,23 +24,33 @@ MovieCategory.format = function (categoryname, movies) {
 };
 
 
-MovieCategory.formatMany = async function (category) {
-  let select = document.querySelector("#profile-select");
-  let selectedOption = select ? select.options[select.selectedIndex] : null;
+
+
+MovieCategory.formatMany = async function(categories, profileAge = null) {
   let html = "";
-  for (const obj of category) {
-    let movies;
-    if (!selectedOption || selectedOption.value === "") {
-      movies = await DataMovie.getMovieCategory(obj.id, null);
-  } else {
-      const date = selectedOption.getAttribute('data-dob');
-      movies = await DataMovie.getMovieCategory(obj.id, date);
+
+  for (const category of categories) {
+      let movies = await DataMovie.getMovieCategory(category.id);
+      
+      // Filtrer les films selon le PEGI et l'âge du profil
+      if (profileAge !== null) {
+          movies = movies.filter(movie => {
+              const diff = profileAge - movie.min_age; // Calcul de la différence
+              console.log(`Film: ${movie.name}, PEGI: ${movie.min_age}, Différence: ${diff}`);
+              return diff >= 0; // Afficher si la limite est respectée
+          });
+      }
+
+      if (movies.length > 0) {
+          html += MovieCategory.format(category.name, movies);
+      } else {
+          console.log(`Aucun film trouvé pour la catégorie ${category.name} et l'âge ${profileAge}`);
+      }
   }
-    if (Array.isArray(movies) && movies.length > 0) {
-      html += MovieCategory.format(obj.name, movies);
-    }
-  }
-return html;
+
+  return html;
 };
+
+
 
 export { MovieCategory };

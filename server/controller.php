@@ -76,35 +76,48 @@ function getCategoryController() {
 
 
 
-function getMovieCategoryController(){
-  // Récupération des paramètres de la requête
-  $id = $_REQUEST["id"];
-  $date = $_REQUEST['date'] ?? null;
-  $movies = getMovieCategory($id, $date);
-
-  if ($movies !=0) {
-      return $movies ;
-  }
-  else{
-     return "Nous n'avons pas pu récupérer les films de la catégorie $category!";
-  };
-} 
+function getMovieCategoryController() {
+        $id = $_REQUEST['id'];
+        $date = isset($_REQUEST['date']) ? $_REQUEST['date'] : null; // Vérifiez si 'date' est défini
+        
+        $movies = getMovieCategory($id, $date);
+        
+        if ($movies != 0) {
+            return $movies;
+        } else {
+            return "La catégorie de ces films n'a pas été récupérée";
+        }
+    }
 
 function addProfileController() {
-  // $id = isset($_REQUEST['id']) ? $_REQUEST['id'] : null; // Récupère l'ID s'il est fourni
-  $name = $_REQUEST['name'];
-  $avatar = $_REQUEST['avatar'];
-  $min_age = $_REQUEST['min_age'];
+  try {
+      if (empty($_REQUEST['Nom'])) {
+          return "Erreur : Le Nom est obligatoire.";
+      }
+      
+      if (empty($_REQUEST['Age'])) {
+          return "Erreur : L'Age est obligatoire.";
+      }
+      
+      $Nom = $_REQUEST['Nom'];
+      $Age = $_REQUEST['Age'];
+      $file = "default-avatar.png";
 
-  // Appel de la fonction addProfile déclarée dans model.php
-  $ok = addProfile($name, $avatar, $min_age);
+      if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
+          $upload_dir = "./images/";
+          $filename = basename($_FILES['file']['name']);
+          if (move_uploaded_file($_FILES['file']['tmp_name'], $upload_dir . $filename)) {
+              $file = $filename;
+          }
+      }
 
-  if ($ok != 0) {
-      return "Le profil $name a été ajouté :3";
-  } else {
-      return "Le profil n'a pas pu être ajouté...";
+      $ok = addProfile($Nom, $Age, $file);
+      return $ok ? "Profil ajouté avec succès" : "Erreur lors de l'ajout du profil";
+  } catch (Exception $e) {
+      return "Erreur: " . $e->getMessage();
   }
 }
+
 
 
 function readProfileController(){
