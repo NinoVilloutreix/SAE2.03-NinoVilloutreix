@@ -104,22 +104,26 @@ C.handlerProfileChange = async function() {
     const baseURL = "https://mmi.unilim.fr/~villoutreix8/SAE2.03-NinoVilloutreix/server/images/";
     const defaultImage = baseURL + "default.avif";
 
+    // Récupérer l'option actuellement sélectionnée
     const selectedOption = select.options[select.selectedIndex];
     if (selectedOption) {
         if (selectedOption.value === "") {
+            // Aucun profil sélectionné, afficher l'image par défaut et masquer
+            avatarImg.src = defaultImage;
             avatarImg.classList.add('hidden');
         } else {
-            const avatarPath = selectedOption.getAttribute('data-avatar');
+            // Profil sélectionné : mettre à jour l'image et afficher
+            const avatarPath = selectedOption.getAttribute('data-img');
             avatarImg.src = avatarPath ? baseURL + avatarPath : defaultImage;
             avatarImg.classList.remove('hidden');
 
-            // Récupération de la date de naissance
+            // Récupération de la date de naissance pour calculer l'âge
             const dob = selectedOption.getAttribute('data-age');
             if (dob) {
                 const age = calculateAge(dob); // Conversion de la date en âge
                 console.log("Âge calculé :", age);
 
-                // Recharger les films avec la limite d'âge
+                // Recharger les films en fonction de l'âge
                 await C.getMovieCategory(age);
             } else {
                 console.warn("Aucune date de naissance trouvée !");
@@ -128,6 +132,7 @@ C.handlerProfileChange = async function() {
         }
     }
 };
+
 
 
 
