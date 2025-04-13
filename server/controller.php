@@ -130,11 +130,29 @@ function readProfileController(){
   }
  
     return $profiles;
+}
+
+
+
+function modifyProfileController() {
+  $id = $_REQUEST['id'];
+  $name = $_REQUEST['name'];
+  $avatar = $_REQUEST['avatar'];
+  $min_age = $_REQUEST['min_age'];
+  
+  $profile = modifyProfile($id, $name, $avatar, $min_age);
+  $profileNew = addProfile($id, $name, $avatar, $min_age);
+  
+  if ($profile != 0) {
+      return $profile;
+  } else {
+    return [
+      "message" => "Le profil $name n'existe pas, nous l'avons donc créé pour vous \(°▽°)/ ",
+      "profile" => $profileNew
+    ];
   }
-// if ($_REQUEST['todo'] === 'addprofile') {
-//   error_log("Requête reçue pour addprofile"); // Vérifiez que la requête arrive ici
-//   error_log(print_r($_POST, true)); // Affichez les données reçues
-// }
+}
+
 
 
 

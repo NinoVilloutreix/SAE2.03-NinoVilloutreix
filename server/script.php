@@ -94,6 +94,10 @@ if ( isset($_REQUEST['todo']) ){
       $data = readProfileController();
       break;
 
+    case 'modifyProfile':
+      $data = modifyProfileController();
+      break;
+
 
 
     default: // il y a un paramètre todo mais sa valeur n'est pas reconnue/supportée

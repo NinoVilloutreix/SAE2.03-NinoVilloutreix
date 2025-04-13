@@ -6,27 +6,11 @@ let HOST_URL = "https://mmi.unilim.fr/~villoutreix8/SAE2.03-NinoVilloutreix";
 let DataProfile = {};
 
 
-/** DataProfile.add
- *
- * Prend en paramètre un objet FormData (données de formulaire) à envoyer au serveur.
- * Ces données sont incluses dans une requête HTTP en méthode POST.
- * Une requête POST au lieu de GET n'affiche pas les données dans l'URL (plus discret).
- * Les données sont placées dans le corps (body) de la requête HTTP. Elles restent visibles mais
- * en utilisant les outils de développement du navigateur (Network > Payload).
- * La requête comprend aussi un paramètre todo valant add pour indiquer au serveur qu'il
- * s'agit d'une mise à jour (car on a codé le serveur pour qu'il sache quoi faire en fonction de la valeur de todo).
- *
- * @param {*} fdata un objet FormData contenant les données du formulaire à envoyer au serveur.
- * @returns la réponse du serveur.
- */
 DataProfile.addProfile = async function (fdata) {
-  // fetch possède un deuxième paramètre (optionnel) qui est un objet de configuration de la requête HTTP:
-  //  - method : la méthode HTTP à utiliser (GET, POST...)
-  //  - body : les données à envoyer au serveur (sous forme d'objet FormData ou bien d'une chaîne de caractères, par exempe JSON)
 
   let config = {
-    method: "POST", // méthode HTTP à utiliser
-    body: fdata, // données à envoyer sous forme d'objet FormData
+    method: "POST",
+    body: fdata,
   };
   let answer = await fetch(HOST_URL + "/server/script.php?todo=addProfile", config);
   let data = await answer.json();
@@ -34,26 +18,7 @@ DataProfile.addProfile = async function (fdata) {
 };
 
 
-/** DataProfile.update
- *
- * Prend en paramètre un objet FormData (données de formulaire) à envoyer au serveur.
- * Ces données sont incluses dans une requête HTTP en méthode POST.
- * Une requête POST au lieu de GET n'affiche pas les données dans l'URL (plus discret).
- * Les données sont placées dans le corps (body) de la requête HTTP. Elles restent visibles mais
- * en utilisant les outils de développement du navigateur (Network > Payload).
- * La requête comprend aussi un paramètre todo valant updateProfile pour indiquer au serveur qu'il
- * s'agit d'une mise à jour (car on a codé le serveur pour qu'il sache quoi faire en fonction de la valeur de todo).
- *
- * @param {*} fdata un objet FormData contenant les données du formulaire à envoyer au serveur.
- * @returns la réponse du serveur.
- */
 
-
-/** DataProfile.getProfiles
- *
- * Récupère la liste des profils depuis le serveur.
- * @returns {Array} Une liste de profils.
- */
 DataProfile.getProfiles = async function () {
   let answer = await fetch(HOST_URL + "/server/script.php?todo=readProfile");
   let data = await answer.json();
@@ -61,3 +26,11 @@ DataProfile.getProfiles = async function () {
 };
 
 export { DataProfile };
+
+
+DataProfile.modifyProfiles = async function () {
+  let answer = await fetch(HOST_URL + "/server/script.php?todo=modifyProfile&id=");
+  
+  let MOD = await answer.json();
+  return MOD;
+};

@@ -212,7 +212,28 @@ function readOneProfile($id) {
     return $res; // Retourne les résultats
 }
 
-// if ($_REQUEST['todo'] === 'addprofile') {
-//     error_log("Requête reçue pour addprofile"); // Vérifiez que la requête arrive ici
-//     error_log(print_r($_POST, true)); // Affichez les données reçues
-// }
+function modifyProfile($id, $name, $avatar, $min_age) {
+    try {
+        $cnx = new PDO("mysql:host=" . HOST . ";dbname=" . DBNAME, DBLOGIN, DBPWD, [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+        ]);
+        error_log("Connexion à la base réussie");
+
+        $sql = "REPLACE INTO Profil (id, name, avatar, min_age) 
+            VALUES (:id, :name, :avatar, :min_age)";
+        $stmt = $cnx->prepare($sql);
+
+        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':name', $name);
+        $stmt->bindParam(':avatar', $avatar);
+        $stmt->bindParam(':min_age', $min_age);
+
+        $stmt->execute();
+        error_log("Insertion réussie");
+        return $stmt->rowCount();
+
+    } catch (Exception $e) {
+        error_log("Erreur dans modifyProfile : " . $e->getMessage());
+        return 0;
+    }
+}

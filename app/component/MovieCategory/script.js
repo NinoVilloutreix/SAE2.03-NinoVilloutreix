@@ -36,7 +36,7 @@ MovieCategory.formatMany = async function(categories, profileAge = null) {
       if (profileAge !== null) {
           movies = movies.filter(movie => {
               const diff = profileAge - movie.min_age; // Calcul de la différence
-              console.log(`Film: ${movie.name}, PEGI: ${movie.min_age}, Différence: ${diff}`);
+            //   console.log(`Film: ${movie.name}, PEGI: ${movie.min_age}, Différence: ${diff}`);
               return diff >= 0; // Afficher si la limite est respectée
           });
       }

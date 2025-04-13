@@ -19,5 +19,5 @@ DataProfile.readOne = async function (id) {
     let res = await answer.json();
     return res;
   };
-
+  
 export { DataProfile };
