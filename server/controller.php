@@ -1,23 +1,6 @@
 <?php
 
-/** ARCHITECTURE PHP SERVEUR  : Rôle du fichier controller.php
- * 
- *  Dans ce fichier, on va définir les fonctions de contrôle qui vont traiter les requêtes HTTP.
- *  Les requêtes HTTP sont interprétées selon la valeur du paramètre 'todo' de la requête (voir script.php)
- *  Pour chaque valeur différente, on déclarera une fonction de contrôle différente.
- * 
- *  Les fonctions de contrôle vont éventuellement lire les paramètres additionnels de la requête, 
- *  les vérifier, puis appeler les fonctions du modèle (model.php) pour effectuer les opérations
- *  nécessaires sur la base de données.
- *  
- *  Si la fonction échoue à traiter la requête, elle retourne false (mauvais paramètres, erreur de connexion à la BDD, etc.)
- *  Sinon elle retourne le résultat de l'opération (des données ou un message) à includre dans la réponse HTTP.
- */
 
-/** Inclusion du fichier model.php
- *  Pour pouvoir utiliser les fonctions qui y sont déclarées et qui permettent
- *  de faire des opérations sur les données stockées en base de données.
- */
 require("model.php");
 
 
@@ -91,32 +74,59 @@ function getMovieCategoryController() {
 
 function addProfileController() {
   try {
-      if (empty($_REQUEST['Nom'])) {
-          return "Erreur : Le Nom est obligatoire.";
-      }
-      
-      if (empty($_REQUEST['Age'])) {
-          return "Erreur : L'Age est obligatoire.";
-      }
-      
-      $Nom = $_REQUEST['Nom'];
-      $Age = $_REQUEST['Age'];
-      $file = "default-avatar.png";
-
-      if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
-          $upload_dir = "./images/";
-          $filename = basename($_FILES['file']['name']);
-          if (move_uploaded_file($_FILES['file']['tmp_name'], $upload_dir . $filename)) {
-              $file = $filename;
-          }
+      if (empty($_REQUEST['id'])) {
+          return "Erreur : L'id est obligatoire.";
       }
 
-      $ok = addProfile($Nom, $Age, $file);
-      return $ok ? "Profil ajouté avec succès" : "Erreur lors de l'ajout du profil";
+      if (empty($_REQUEST['name'])) {
+          return "Erreur : Le nom est obligatoire.";
+      }
+      
+      if (empty($_REQUEST['min_age'])) {
+          return "Erreur : L'age est obligatoire.";
+      }
+
+      $id = $_REQUEST['id'];
+      $name = $_REQUEST['name'];
+      $avatar = $_REQUEST['avatar'];
+      $min_age = !empty($_REQUEST['min_age']) ? $_REQUEST['min_age'] : null;
+
+      
+error_log("Données reçues pour le profil : " . print_r($_REQUEST, true));
+
+      $ok = addProfile($id, $name, $avatar, $min_age);
+      return $ok ? "Le profil $name ajouté ou modifié avec succès" : "Erreur lors de l'ajout du profil";
   } catch (Exception $e) {
       return "Erreur: " . $e->getMessage();
   }
 }
+
+// function addProfileController() {
+    
+//   $id = isset($_REQUEST['id']) ? $_REQUEST['id'] : null;
+//  $name = $_REQUEST['name'];
+//   $avatar = $_REQUEST['avatar'];
+//   $min_age = $_REQUEST['min_age'];
+
+//   // Appel de la fonction addProfile déclarée dans model.php
+//   $ok = addProfile($id, $name, $avatar, $min_age);
+
+//   if ($ok != 0) {
+//       return "$name a été ajouté ou remplacé avec succès";
+//   } else {
+//       return "Le profil n'a pas pu être ajouté ou remplacé";
+//   }
+// }
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -134,24 +144,24 @@ function readProfileController(){
 
 
 
-function modifyProfileController() {
-  $id = $_REQUEST['id'];
-  $name = $_REQUEST['name'];
-  $avatar = $_REQUEST['avatar'];
-  $min_age = $_REQUEST['min_age'];
+// function modifyProfileController() {
+//   $id = $_REQUEST['id'];
+//   $name = $_REQUEST['name'];
+//   $avatar = $_REQUEST['avatar'];
+//   $min_age = $_REQUEST['min_age'];
   
-  $profile = modifyProfile($id, $name, $avatar, $min_age);
-  $profileNew = addProfile($id, $name, $avatar, $min_age);
+//   $profile = modifyProfile($id, $name, $avatar, $min_age);
+//   $profileNew = addProfile($id, $name, $avatar, $min_age);
   
-  if ($profile != 0) {
-      return $profile;
-  } else {
-    return [
-      "message" => "Le profil $name n'existe pas, nous l'avons donc créé pour vous \(°▽°)/ ",
-      "profile" => $profileNew
-    ];
-  }
-}
+//   if ($profile != 0) {
+//       return $profile;
+//   } else {
+//     return [
+//       "message" => "Le profil $name n'existe pas, nous l'avons donc créé pour vous \(°▽°)/ ",
+//       "profile" => $profileNew
+//     ];
+//   }
+// }
 
 
 

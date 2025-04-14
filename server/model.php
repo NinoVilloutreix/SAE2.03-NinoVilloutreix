@@ -155,30 +155,49 @@ function getMovieCategory($category, $date = null) {
 
 
 
-function addProfile($name, $avatar, $min_age) {
-    try {
-        $cnx = new PDO("mysql:host=" . HOST . ";dbname=" . DBNAME, DBLOGIN, DBPWD, [
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-        ]);
-        error_log("Connexion à la base réussie");
+// function addProfile($name, $avatar, $min_age) {
+//     try {
+//         $cnx = new PDO("mysql:host=" . HOST . ";dbname=" . DBNAME, DBLOGIN, DBPWD, [
+//             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+//         ]);
+//         error_log("Connexion à la base réussie");
 
-        $sql = "INSERT INTO Profile(name, avatar, min_age) VALUES (:name, :avatar, :min_age)";
-        $stmt = $cnx->prepare($sql);
+//         $sql = "REPLACE INTO Profile(name, avatar, min_age) VALUES (:name, :avatar, :min_age)";
+//         $stmt = $cnx->prepare($sql);
 
-        $stmt->bindParam(':name', $name);
-        $stmt->bindParam(':avatar', $avatar);
-        $stmt->bindParam(':min_age', $min_age);
+//         $stmt->bindParam(':name', $name);
+//         $stmt->bindParam(':avatar', $avatar);
+//         $stmt->bindParam(':min_age', $min_age);
 
-        $stmt->execute();
-        error_log("Insertion réussie");
-        return $stmt->rowCount();
+//         $stmt->execute();
+//         error_log("Insertion réussie");
+//         return $stmt->rowCount();
 
-    } catch (Exception $e) {
-        error_log("Erreur dans addProfile : " . $e->getMessage());
-        return 0;
-    }
+//     } catch (Exception $e) {
+//         error_log("Erreur dans addProfile : " . $e->getMessage());
+//         return 0;
+//     }
+//     error_log("Données reçues pour addProfile : Name = $name, Avatar = $avatar, Min Age = $min_age");
+// }
+function addProfile($id, $name, $avatar, $min_age) {
+    $cnx = new PDO("mysql:host=" . HOST . ";dbname=" . DBNAME, DBLOGIN, DBPWD);
+
+    // Utilisation de REPLACE INTO pour insérer ou remplacer une ligne
+    $sql = "REPLACE INTO Profile (id, name, avatar, min_age) 
+            VALUES (:id, :name, :avatar, :min_age)";
+
+    $stmt = $cnx->prepare($sql);
+
+    // Liaison des paramètres
+    $stmt->bindParam(':id', $id);
+    $stmt->bindParam(':name', $name);
+    $stmt->bindParam(':avatar', $avatar);
+    $stmt->bindParam(':min_age', $min_age);
+
+    $stmt->execute();
+    $res = $stmt->rowCount();
+    return $res; // Retourne le nombre de lignes affectées par l'opération
 }
-
 
 
 

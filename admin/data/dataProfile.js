@@ -26,11 +26,3 @@ DataProfile.getProfiles = async function () {
 };
 
 export { DataProfile };
-
-
-DataProfile.modifyProfiles = async function () {
-  let answer = await fetch(HOST_URL + "/server/script.php?todo=modifyProfile&id=");
-  
-  let MOD = await answer.json();
-  return MOD;
-};

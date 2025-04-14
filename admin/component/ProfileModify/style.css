@@ -2,7 +2,7 @@ body{
     background-color: var(--color-dark);
 }
 
-.AddProfile{
+.ModifyProfile{
     display: flex;
     justify-content: center;
     /* border: red solid 1px; */
@@ -13,7 +13,7 @@ body{
     text-align: center;
     gap: 5rem;
 }
-.AddProfile__title{
+.ModifyProfile__title{
     font-size: 3rem;
     animation: flash 5s infinite;
     color: var(--color-bright);
@@ -26,19 +26,19 @@ body{
 }
 
 
-.AddProfile__form{
+.ModifyProfile__form{
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.AddProfile__form-inputs{
+.ModifyProfile__form-inputs{
     display: flex;
     gap: 1rem;
     flex-direction: column;
 }
 
-.AddProfile__form-inputs-field {
+.ModifyProfile__form-inputs-field {
     display: flex;
     background-color: var(--color-gray-dark2);
     border: none;
@@ -49,16 +49,16 @@ body{
     transition: transform 0.3s ease;
 }
 
-.AddProfile__form-inputs-field input {
+.ModifyProfile__form-inputs-field input {
     color: red;
 }
 
-.AddProfile__form-inputs-field select {
+.ModifyProfile__form-inputs-field select {
     color: green;
 }
 
 
-.AddProfile__form-inputs-field:hover {
+.ModifyProfile__form-inputs-field:hover {
     transform: scale(1.25);
     cursor: pointer;
     
@@ -67,7 +67,7 @@ body{
 
 
 
-.AddProfile__form-button{
+.ModifyProfile__form-button{
     display: flex;
     height: 7rem;
     width: 7rem;
@@ -79,7 +79,7 @@ body{
     color: hsl(0, 0%, 45%);
 }
 
-.AddProfile__form-button:hover {
+.ModifyProfile__form-button:hover {
     cursor: pointer;
     background-color: var(--color-green);
     color: var(--color-bright);

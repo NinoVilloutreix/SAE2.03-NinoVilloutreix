@@ -47,7 +47,7 @@
       };
 
       C.handlerModProfile = async function () {
-        let form = document.querySelector("ModifyProfile__form");
+        let form = document.querySelector(".ModifyProfile__form");
         let fd = new FormData(form);
         let res = await DataProfile.addProfile(fd);
         V.renderLog(res);
@@ -83,10 +83,10 @@
      
       };
     
-    V.renderModProfile = async function (handler) {
+    V.renderModProfile = async function (handlerMod) {
       let content = document.querySelector("#modProfile");
       let profiles = await DataProfile.getProfiles();
-      content.innerHTML = ProfileModify.format(profiles, handler);
+      content.innerHTML = ProfileModify.format(profiles, handlerMod);
       ProfileModify.init();
     };
 

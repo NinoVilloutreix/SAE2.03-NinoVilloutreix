@@ -94,9 +94,9 @@ if ( isset($_REQUEST['todo']) ){
       $data = readProfileController();
       break;
 
-    case 'modifyProfile':
-      $data = modifyProfileController();
-      break;
+    // case 'modifyProfile':
+    //   $data = modifyProfileController();
+    //   break;
 
 
 
