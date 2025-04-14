@@ -51,12 +51,31 @@
   text-align: center;
 }
 
-.movie__heart {
-  color: blueviolet;
-}
-
 @media (width > 59.125rem) {
   .Movie__name {
     font-size: 1rem;
   }
+}
+
+
+
+.movie__heart{
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  opacity: 50%;
+  z-index: 5;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.movie__heart:hover{
+  transform: scale(1.1);
+  cursor: pointer;
+  opacity: 100%;
+}
+
+
+
+.hidden{
+  display: none;
 }

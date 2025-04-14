@@ -146,39 +146,6 @@ function getMovieCategory($category, $date = null) {
 }
 
 
-
-
-
-
-
-
-
-
-
-// function addProfile($name, $avatar, $min_age) {
-//     try {
-//         $cnx = new PDO("mysql:host=" . HOST . ";dbname=" . DBNAME, DBLOGIN, DBPWD, [
-//             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-//         ]);
-//         error_log("Connexion à la base réussie");
-
-//         $sql = "REPLACE INTO Profile(name, avatar, min_age) VALUES (:name, :avatar, :min_age)";
-//         $stmt = $cnx->prepare($sql);
-
-//         $stmt->bindParam(':name', $name);
-//         $stmt->bindParam(':avatar', $avatar);
-//         $stmt->bindParam(':min_age', $min_age);
-
-//         $stmt->execute();
-//         error_log("Insertion réussie");
-//         return $stmt->rowCount();
-
-//     } catch (Exception $e) {
-//         error_log("Erreur dans addProfile : " . $e->getMessage());
-//         return 0;
-//     }
-//     error_log("Données reçues pour addProfile : Name = $name, Avatar = $avatar, Min Age = $min_age");
-// }
 function addProfile($id, $name, $avatar, $min_age) {
     $cnx = new PDO("mysql:host=" . HOST . ";dbname=" . DBNAME, DBLOGIN, DBPWD);
 
@@ -231,28 +198,41 @@ function readOneProfile($id) {
     return $res; // Retourne les résultats
 }
 
-// function modifyProfile($id, $name, $avatar, $min_age) {
-//     try {
-//         $cnx = new PDO("mysql:host=" . HOST . ";dbname=" . DBNAME, DBLOGIN, DBPWD, [
-//             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-//         ]);
-//         error_log("Connexion à la base réussie");
 
-//         $sql = "REPLACE INTO Profil (id, name, avatar, min_age) 
-//             VALUES (:id, :name, :avatar, :min_age)";
-//         $stmt = $cnx->prepare($sql);
 
-//         $stmt->bindParam(':id', $id);
-//         $stmt->bindParam(':name', $name);
-//         $stmt->bindParam(':avatar', $avatar);
-//         $stmt->bindParam(':min_age', $min_age);
 
-//         $stmt->execute();
-//         error_log("Insertion réussie");
-//         return $stmt->rowCount();
 
-//     } catch (Exception $e) {
-//         error_log("Erreur dans modifyProfile : " . $e->getMessage());
-//         return 0;
-//     }
-// }
+
+
+function addFavoris($id_movie, $id_profile) {
+    // Connexion à la base de données
+    $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
+    // Requête SQL d'insertion du film
+    $sql = "INSERT INTO Favoris (id_movie, id_profile) 
+            VALUES (:id_movie, :id_profile)";
+    // Prépare la requête SQL
+    $stmt = $cnx->prepare($sql);
+    // Lie les paramètres
+    $stmt->bindParam(':id_movie', $id_movie, PDO::PARAM_INT);
+    $stmt->bindParam(':id_profile', $id_profile, PDO::PARAM_INT);
+    // Exécute la requête SQL
+    $stmt->execute();
+    // Retourne le nombre de lignes affectées
+    return $stmt->rowCount();
+}
+
+function delFavoris($id_movie, $id_profile) {
+    // Connexion à la base de données
+    $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
+    // Requête SQL d'insertion du film
+    $sql = "DELETE FROM Favoris WHERE id_movie = :id_movie AND id_profile = :id_profile";
+    // Prépare la requête SQL
+    $stmt = $cnx->prepare($sql);
+    // Lie les paramètres
+    $stmt->bindParam(':id_movie', $id_movie, PDO::PARAM_INT);
+    $stmt->bindParam(':id_profile', $id_profile, PDO::PARAM_INT);
+    // Exécute la requête SQL
+    $stmt->execute();
+    // Retourne le nombre de lignes affectées
+    return $stmt->rowCount();
+}

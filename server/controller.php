@@ -101,35 +101,6 @@ error_log("Données reçues pour le profil : " . print_r($_REQUEST, true));
   }
 }
 
-// function addProfileController() {
-    
-//   $id = isset($_REQUEST['id']) ? $_REQUEST['id'] : null;
-//  $name = $_REQUEST['name'];
-//   $avatar = $_REQUEST['avatar'];
-//   $min_age = $_REQUEST['min_age'];
-
-//   // Appel de la fonction addProfile déclarée dans model.php
-//   $ok = addProfile($id, $name, $avatar, $min_age);
-
-//   if ($ok != 0) {
-//       return "$name a été ajouté ou remplacé avec succès";
-//   } else {
-//       return "Le profil n'a pas pu être ajouté ou remplacé";
-//   }
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
 function readProfileController(){
       if (!isset($_REQUEST['id'])) {
     $profiles = readProfile(); 
@@ -142,26 +113,34 @@ function readProfileController(){
     return $profiles;
 }
 
+function addFavorisController(){
+  $id_movie = $_REQUEST['id_movie'];
+  $id_profile = $_REQUEST['id_profile'];
+  $ok = addFavoris($id_movie, $id_profile);
+  if ($ok != 0) {
+      return "Le film à été ajouté aux favoris";
+  } else {
+      return "Erreur, le film n'a pas été ajouté aux favoris...";
+  }
+}
+
+function delFavorisController(){
+  $id_movie = $_REQUEST['id_movie'];
+  $id_profile = $_REQUEST['id_profile'];
+  $ok = delFavoris($id_movie, $id_profile);
+  if ($ok != 0) {
+      return "Le film à été supprimé des favoris";
+  } else {
+      return "Erreur, le film n'a pas été supprimé des favoris";
+  }
+}
 
 
-// function modifyProfileController() {
-//   $id = $_REQUEST['id'];
-//   $name = $_REQUEST['name'];
-//   $avatar = $_REQUEST['avatar'];
-//   $min_age = $_REQUEST['min_age'];
-  
-//   $profile = modifyProfile($id, $name, $avatar, $min_age);
-//   $profileNew = addProfile($id, $name, $avatar, $min_age);
-  
-//   if ($profile != 0) {
-//       return $profile;
-//   } else {
-//     return [
-//       "message" => "Le profil $name n'existe pas, nous l'avons donc créé pour vous \(°▽°)/ ",
-//       "profile" => $profileNew
-//     ];
-//   }
-// }
+
+
+
+
+
 
 
 

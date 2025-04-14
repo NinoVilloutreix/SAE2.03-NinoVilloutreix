@@ -53,6 +53,24 @@ DataMovie.getMovieCategory = async function (idcategory, profileAge = null) {
     return data;
 };
 
+DataMovie.addFavoris = async function (id_profile, id_movie) {
+    let config = {
+        method: "POST",
+    };
+    let answer = await fetch(`${HOST_URL}/server/script.php?todo=addFavoris&id_profile=${id_profile}&id_movie=${id_movie}`, config);
+    let data = await answer.json();
+    return data;
+}
+
+DataMovie.delFavoris = async function (id_profile, id_movie) {
+    let config = {
+        method: "POST",
+    };
+    let answer = await fetch(`${HOST_URL}/server/script.php?todo=delFavoris&id_profile=${id_profile}&id_movie=${id_movie}`, config);
+    let data = await answer.json();
+    return data;
+}
+
 
 export {DataMovie};
 

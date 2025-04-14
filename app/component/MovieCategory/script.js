@@ -11,14 +11,6 @@ MovieCategory.format = function (categoryname, movies) {
   let html = template;
   // console.log("Formatting category:", categoryname, "with movies:", movies); // Vérifiez les données
   html = html.replace("{{category}}", categoryname);
-
-  // let filterMovie = [];
-  // for (const movie of movies) {
-  //   if (movie.category_id == category.id) {
-  //     filterMovie.push(movie);
-  //   }
-  // }
-
   html = html.replace("{{movies}}", Movie.formatMany(movies));
   return html;
 };
@@ -32,12 +24,11 @@ MovieCategory.formatMany = async function(categories, profileAge = null) {
   for (const category of categories) {
       let movies = await DataMovie.getMovieCategory(category.id);
       
-      // Filtrer les films selon le PEGI et l'âge du profil
       if (profileAge !== null) {
           movies = movies.filter(movie => {
-              const diff = profileAge - movie.min_age; // Calcul de la différence
+              const diff = profileAge - movie.min_age;
             //   console.log(`Film: ${movie.name}, PEGI: ${movie.min_age}, Différence: ${diff}`);
-              return diff >= 0; // Afficher si la limite est respectée
+              return diff >= 0;
           });
       }
 

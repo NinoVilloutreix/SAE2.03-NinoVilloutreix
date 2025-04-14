@@ -38,3 +38,13 @@ INSERT INTO Profile(name, avatar, min_age) VALUES ("Kévin","kevin.png","1995-05
 
 
 INSERT INTO Movie (name, year, length, description, director, id_category, image, trailer, min_age) VALUES ("Wall-E",2008,98,"Wall-E, dernier robot resté sur Terre, se retrouve malgré lui emporté dans un conflit décisif dans l'avenir de l'humanité.","Andrew Stanton",5,"walle.jpg","https://youtu.be/twS3hYLmQI4",6)
+
+-Création d'une nouvelle table Favoris contenant un premier favori par défaut:
+CREATE TABLE Favoris (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    id_movie INT,
+    id_profile INT,
+    FOREIGN KEY (id_movie) REFERENCES Movie(id),
+    FOREIGN KEY (id_profile) REFERENCES Profile(id)
+);
+INSERT INTO Favoris(id_movie, id_profile) VALUES (49,9)
