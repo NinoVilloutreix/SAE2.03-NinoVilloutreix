@@ -1,174 +1,123 @@
-body{
-    background-color: var(--color-dark);
+body {
+  background-color: var(--color-dark);
 }
 
-.ModifyProfile{
-    display: flex;
-    justify-content: center;
-    /* border: red solid 1px; */
-    flex-direction: column;
-    background-color: var(--color-gray-dark);
-    padding-inline: 10rem;
-    padding-block: 2rem;
-    text-align: center;
-    gap: 5rem;
-}
-.ModifyProfile__title{
-    font-size: 3rem;
-    animation: flash 5s infinite;
-    color: var(--color-bright);
-    text-shadow: 
-                0 0 5px var(--color-green),
-                0 0 10px var(--color-green),
-                0 0 20px var(--color-green), 
-                0 0 40px var(--color-green), 
-                0 0 80px var(--color-green);
+.modifyProfile {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: var(--color-gray-dark);
+  padding-inline: 10rem;
+  padding-block: 2rem;
+  text-align: center;
+  gap: 5rem;
 }
 
-
-.ModifyProfile__form{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.modifyProfile__title {
+  font-size: 3rem;
+  animation: flash 5s infinite;
+  color: var(--color-bright);
+  text-shadow: 
+    0 0 5px var(--color-green),
+    0 0 10px var(--color-green),
+    0 0 20px var(--color-green),
+    0 0 40px var(--color-green),
+    0 0 80px var(--color-green);
 }
 
-.ModifyProfile__form-inputs{
-    display: flex;
-    gap: 1rem;
-    flex-direction: column;
+.modifyProfile__form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.ModifyProfile__form-inputs-field , .ModifyProfile__form-menu {
-    display: flex;
-    background-color: var(--color-gray-dark2);
-    border: none;
-    padding: 0.5rem;
-    font-size: 1.5rem;
-    border-radius: 1rem;
-    color: hsl(0, 0%, 45%);
-    transition: transform 0.3s ease;
+.modifyProfile__form-inputs {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
 }
 
-.ModifyProfile__form-inputs-field:hover,.ModifyProfile__form-menu:hover {
-    transform: scale(1.25);
-    cursor: pointer;
-    
+.modifyProfile__form-inputs-field, .modifyProfile__form-menu {
+  display: flex;
+  background-color: var(--color-gray-dark2);
+  border: none;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  border-radius: 1rem;
+  color: hsl(0, 0%, 45%);
+  transition: transform 0.3s ease;
 }
 
-
-
-
-.ModifyProfile__form-button{
-    display: flex;
-    height: 7rem;
-    width: 7rem;
-    background-color: var(--color-gray-dark2);
-    border: none;
-    padding: 0.5rem;
-    font-size: 1.5rem;
-    border-radius: 1rem;
-    color: hsl(0, 0%, 45%);
+.modifyProfile__form-inputs-field:hover, .modifyProfile__form-menu:hover {
+  transform: scale(1.25);
+  cursor: pointer;
 }
 
-.ModifyProfile__form-button:hover {
-    cursor: pointer;
-    background-color: var(--color-green);
-    color: var(--color-bright);
-    text-shadow: 
-                0 0 5px var(--color-bright),
-                0 0 10px var(--color-bright),
-                0 0 20px var(--color-bright), 
-                0 0 40px var(--color-bright), 
-                0 0 80px var(--color-bright);
-    animation: shake 0.2s infinite, scale 1s ease infinite;
+.modifyProfile__form-button {
+  display: flex;
+  height: 7rem;
+  width: 7rem;
+  background-color: var(--color-gray-dark2);
+  border: none;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  border-radius: 1rem;
+  color: hsl(0, 0%, 45%);
 }
 
-
+.modifyProfile__form-button:hover {
+  cursor: pointer;
+  background-color: var(--color-green);
+  color: var(--color-bright);
+  text-shadow: 
+    0 0 5px var(--color-bright),
+    0 0 10px var(--color-bright),
+    0 0 20px var(--color-bright),
+    0 0 40px var(--color-bright),
+    0 0 80px var(--color-bright);
+  animation: shake 0.2s infinite, scale 1s ease infinite;
+}
 
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
-    -webkit-appearance: none; /* Supprime l'apparence des flèches */
-    margin: 0; /* Réinitialise les marges */
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 input[type="number"] {
-    -moz-appearance: textfield; /* Supprime les flèches dans Firefox */
+  -moz-appearance: textfield;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 @keyframes scale {
-    0% { scale: 100%; }
-    50% { scale: 130%; } 
-    100% { scale: 100%; }
-} 
-
-/* parce que j'avais déjà utilisé animation... */
-
-
-
-
-@keyframes shake {
-    0% { transform: translate(0, 0); }
-    10% { transform: translate(-3px, 2px)}
-    20% { transform: translate(4px, -3px)}
-    30% { transform: translate(-2px, 4px)}
-    40% { transform: translate(3px, -2px)}
-    50% { transform: translate(-4px, 3px)}
-    60% { transform: translate(2px, -4px)}
-    70% { transform: translate(-3px, 2px)}
-    80% { transform: translate(4px, -3px)}
-    90% { transform: translate(-2px, 4px)}
-    100% { transform: translate(0, 0); }
+  0% { scale: 100%; }
+  50% { scale: 130%; }
+  100% { scale: 100%; }
 }
 
-
-
+@keyframes shake {
+  0% { transform: translate(0, 0); }
+  10% { transform: translate(-3px, 2px); }
+  20% { transform: translate(4px, -3px); }
+  30% { transform: translate(-2px, 4px); }
+  40% { transform: translate(3px, -2px); }
+  50% { transform: translate(-4px, 3px); }
+  60% { transform: translate(2px, -4px); }
+  70% { transform: translate(-3px, 2px); }
+  80% { transform: translate(4px, -3px); }
+  90% { transform: translate(-2px, 4px); }
+  100% { transform: translate(0, 0); }
+}
 
 @keyframes flash {
-    0% {
-      opacity: 1;
-    }
-    49% {
-        opacity: 1;
-      }
-    50% {
-      opacity: 0;
-    }
-    51% {
-        opacity: 0.75;
-    }
-    52% {
-        opacity: 0.3;
-    }
-    53% {
-        opacity: 0.5;
-    }    
-    55% {
-        opacity: 0.2;
-    }  
-    58% {
-      opacity: 1;
-    }
-    75% {
-        opacity: 1;
-    }
-    76% {
-        opacity: 0.2;
-    }  
-    78% {
-        opacity: 1;
-    }    
-  }
+  0% { opacity: 1; }
+  49% { opacity: 1; }
+  50% { opacity: 0; }
+  51% { opacity: 0.75; }
+  52% { opacity: 0.3; }
+  53% { opacity: 0.5; }
+  55% { opacity: 0.2; }
+  58% { opacity: 1; }
+  75% { opacity: 1; }
+  76% { opacity: 0.2; }
+  78% { opacity: 1; }
+}

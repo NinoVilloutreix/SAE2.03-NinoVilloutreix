@@ -80,15 +80,14 @@
 .navbar__select {
   padding: 0.5rem;
   border: 1px solid var(--color-gray-light);
-  border-radius: 0.25rem;
+  border-radius: 1rem;
   background-color: var(--color-gray);
   color: var(--color-gray-light);
-  border-radius: 1rem;
   font-size: 1rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.navbar__select:hover{
+.navbar__select:hover {
   transform: scale(1.1);
   cursor: pointer;
 }

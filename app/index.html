@@ -38,7 +38,7 @@
 
 
     C.handlerDetail = async function (movieId) {
-    console.log("Movie ID passed to handlerDetail:", movieId);
+    // console.log("Movie ID passed to handlerDetail:", movieId);
     let movieData = await DataMovie.detailMovie(movieId);
     V.renderDetail(movieData);
 };

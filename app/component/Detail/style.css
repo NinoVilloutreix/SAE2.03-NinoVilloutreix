@@ -1,28 +1,22 @@
-
-
 .bg {
   display: flex;
-  width: 100vw;
-  height: 100vh;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgba(0, 0, 0, 0.5);
   z-index: 5;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
-.big_parent{
+.big_parent {
   border: red solid 1px;
 }
-
 
 .hidden {
   display: none;
 }
-
-
-
 
 #detail {
   display: flex;
@@ -30,33 +24,31 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
   max-width: 600px;
   padding: 2rem;
   color: var(--color-white);
   align-items: center;
   justify-content: center;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-
 }
 
-.Detail__img {
+.detail__img {
   display: block;
   position: relative;
-  width: 200px; /* Fixe une largeur spécifique */
-  height: 300px; /* Fixe une hauteur spécifique */
-  object-fit: cover; /* Maintient les proportions de l'image en remplissant l'espace */
-  overflow: hidden; /* Coupe les débordements */
+  width: 200px;
+  height: 300px;
+  object-fit: cover;
+  overflow: hidden;
   border: 2px solid var(--color-gray);
   border-radius: 0.25rem;
 }
 
-.Detail {
-  z-index: 10;
-  width: auto; 
+.detail {
   display: flex;
-  height: auto; 
   position: relative;
+  z-index: 10;
+  width: auto;
+  height: auto;
   justify-content: center;
   flex-direction: column;
   gap: 1rem;
@@ -64,51 +56,49 @@
   flex-direction: row;
   border-radius: 0.5rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
   background-color: var(--color-blue-detail);
   padding: 4rem;
-  transition: transform 0.3s ease, opacity 0.3s ease; /* Animation de transition */
   width: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
 }
 
-
-.Detail.show {
-  transform: scale(1); /* Grossit jusqu'à sa taille normale */
+.detail.show {
+  transform: scale(1);
 }
-.Detail__left{
-  /* flex: 1; */
+
+.detail__left {
+  display: block;
   height: 100%;
-  /* border: red 2px solid ; */
   width: 20rem;
 }
-.Detail__left-img{
+
+.detail__left-img {
   display: block;
   position: relative;
-  width: 100%; /* Fixe une largeur spécifique */
-  height: 100%; /* Fixe une hauteur spécifique */
-  object-fit: cover; /* Maintient les proportions de l'image en remplissant l'espace */
-  overflow: hidden; /* Coupe les débordements */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  overflow: hidden;
   border: 2px solid #ccc;
   border-radius: 1rem;
 }
 
-.Detail__right{
+.detail__right {
   display: flex;
   flex-direction: column;
   flex: 1;
-  /* border: green 2px solid ; */
   width: 50rem;
   align-items: flex-end;
 }
 
-.Detail_right-pegi{
+.detail_right-pegi {
   font-size: 2rem;
   background-color: var(--color-blue-detail-light);
   border-radius: 10rem 0rem 0rem 10rem;
   padding: 1rem;
 }
 
-.Detail__right-card {
+.detail__right-card {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -117,52 +107,36 @@
   width: 100%;
   max-width: none;
   align-items: flex-start;
-  /* border: blue solid 2px; */
 }
 
-.Detail__right-card-text{
+.detail__right-card-text {
   text-align: start;
-  /* border: red solid 2px; */
 }
 
-
-
-
-
-
-
-
-
-
-
-
-.Detail__right-card-trailer {
+.detail__right-card-trailer {
   position: relative;
-  width: 100%;       
-  max-width: 100%;     
+  width: 100%;
+  max-width: 100%;
   height: 0;
   padding-bottom: 56.25%;
-  overflow: hidden;      
+  overflow: hidden;
 }
 
-.Detail__right-card-trailer-vid {
-  position: absolute;
+.detail__right-card-trailer-vid {
   display: block;
+  position: absolute;
   top: 0;
   left: 0;
-  width: 100%;    
-  height: 100%;         
+  width: 100%;
+  height: 100%;
   border: none;
 }
 
-.Detail__name{
+.detail__name {
   color: var(--color-white);
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  text-align: center;
+  font-size: 3rem;
   margin: 0;
   padding-bottom: 2rem;
-  text-align: center;
-}
-
-.Detail__left-title{
-  font-size: 3rem;
 }

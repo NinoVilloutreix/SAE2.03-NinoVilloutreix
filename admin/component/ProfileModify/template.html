@@ -1,17 +1,17 @@
-<div class="ModifyProfile">
-    <h4 class="ModifyProfile__title">Modifier un Profil :¤</h4>
-    <form class="ModifyProfile__form">
-    <select id="profile-select" class="ModifyProfile__form-menu">
+<div class="modifyProfile">
+    <h4 class="modifyProfile__title">Modifier un Profil :¤</h4>
+    <form class="modifyProfile__form">
+    <select id="profile-select" class="modifyProfile__form-menu">
         <option value="">Sélectionner un profil existant</option>
         {{options}}
     </select>
-        <div class="ModifyProfile__form-inputs">
+        <div class="modifyProfile__form-inputs">
             <input id="profile-id" type="hidden" name="id" value="">
-            <input class="ModifyProfile__form-inputs-field" id="profile-modify-name" type="text" name="name" placeholder="Nom du profil..." required>
-            <input class="ModifyProfile__form-inputs-field" id="profile-modify-avatar" type="text" name="avatar" placeholder="Avatar du profil..." >
-            <input class="ModifyProfile__form-inputs-field" id="profile-modify-min-age" type="date" name="min_age" placeholder="Date de naissance..."  required >
+            <input class="modifyProfile__form-inputs-field" id="profile-modify-name" type="text" name="name" placeholder="Nom du profil..." required>
+            <input class="modifyProfile__form-inputs-field" id="profile-modify-avatar" type="text" name="avatar" placeholder="Avatar du profil..." >
+            <input class="modifyProfile__form-inputs-field" id="profile-modify-min-age" type="date" name="min_age" placeholder="Date de naissance..."  required >
         </div>
-        <input class="ModifyProfile__form-button" onclick="{{handlerMod}}" type="button" value="Add" name="todo">
+        <input class="modifyProfile__form-button" onclick="{{handlerMod}}" type="button" value="Add" name="todo">
     </form>
 </div>
 

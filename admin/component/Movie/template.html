@@ -1,14 +1,14 @@
-<div class="AddMovie">
-  <h2 class="AddMovie__title">Ajouter un film :></h2>
-  <form class="AddMovie__form">
-    <div class="AddMovie__form-inputs">
-      <input required class="AddMovie__form-inputs-field" type="text" name="name" id="name" placeholder="Saisir un nom...">
-      <input required class="AddMovie__form-inputs-field" type="text" name="director" id="director" placeholder="Saisir un nom de réalisateur...">
-      <input required class="AddMovie__form-inputs-field" type="number" name="year" id="year" min="1895" max="2100" placeholder="Saisir l'année de sortie...">
-      <input required class="AddMovie__form-inputs-field" type="number" name="length" id="length" placeholder="Saisir la durée...">
-      <input required class="AddMovie__form-inputs-field" type="text" name="description" id="description" placeholder="Saisir une description...">
+<div class="addMovie">
+  <h2 class="addMovie__title">Ajouter un film :></h2>
+  <form class="addMovie__form">
+    <div class="addMovie__form-inputs">
+      <input required class="addMovie__form-inputs-field" type="text" name="name" id="name" placeholder="Saisir un nom...">
+      <input required class="addMovie__form-inputs-field" type="text" name="director" id="director" placeholder="Saisir un nom de réalisateur...">
+      <input required class="addMovie__form-inputs-field" type="number" name="year" id="year" min="1895" max="2100" placeholder="Saisir l'année de sortie...">
+      <input required class="addMovie__form-inputs-field" type="number" name="length" id="length" placeholder="Saisir la durée...">
+      <input required class="addMovie__form-inputs-field" type="text" name="description" id="description" placeholder="Saisir une description...">
 
-      <select required class="AddMovie__form-inputs-field" name="id_category" id="id_category">
+      <select required class="addMovie__form-inputs-field" name="id_category" id="id_category">
         <option value="" disabled selected>Sélectionner une catégorie...</option>
         <option value="1">Action</option>
         <option value="2">Comédie</option>
@@ -22,10 +22,10 @@
         <option value="10">Documentaire</option>
       </select>
 
-      <input required class="AddMovie__form-inputs-field" type="text" name="image" id="image" placeholder="Saisir l'affiche publicitaire...">
-      <input required class="AddMovie__form-inputs-field" type="text" name="trailer" id="trailer" placeholder="Saisir l'URL...">
-      <input required class="AddMovie__form-inputs-field" type="number" name="min_age" id="min_age" placeholder="Saisir la limite d'âge...">
+      <input required class="addMovie__form-inputs-field" type="text" name="image" id="image" placeholder="Saisir l'affiche publicitaire...">
+      <input required class="addMovie__form-inputs-field" type="text" name="trailer" id="trailer" placeholder="Saisir l'URL...">
+      <input required class="addMovie__form-inputs-field" type="number" name="min_age" id="min_age" placeholder="Saisir la limite d'âge...">
     </div>
-    <input class="AddMovie__form-button" onclick="{{handler}}" type="button" value="Add" name="todo">
+    <input class="addMovie__form-button" onclick="{{handler}}" type="button" value="Add" name="todo">
   </form>
 </div>
