@@ -12,11 +12,13 @@
   <section id="log"></section>
   <section id="movie"></section>
   <section id="addProfile"></section>
+  <section id="modProfile"></section>
 
   <script type="module">
     import { Log } from "./component/Log/script.js";
     import { Movie } from "./component/Movie/script.js";
     import { ProfileForm } from "./component/ProfileForm/script.js";
+    import { ProfileModify } from "./component/ProfileModify/script.js";
    
 
 
@@ -44,6 +46,12 @@
         V.renderLog(res);
       };
 
+      C.handlerModProfile = async function () {
+        let form = document.querySelector("ModifyProfile__form");
+        let fd = new FormData(form);
+        let res = await DataProfile.addProfile(fd);
+        V.renderLog(res);
+      };
 
 
 
@@ -52,6 +60,7 @@
       V.renderLog("Démarrage de l'application");
       V.renderAddMovie("C.handler()"); 
       V.renderAddProfile("C.handlerAddProfile()");
+      V.renderModProfile("C.handlerModProfile()");
     };
 
 
@@ -73,7 +82,13 @@
         content.innerHTML = ProfileForm.format(profiles, handler);
      
       };
-
+    
+    V.renderModProfile = async function (handler) {
+      let content = document.querySelector("#modProfile");
+      let profiles = await DataProfile.getProfiles();
+      content.innerHTML = ProfileModify.format(profiles, handler);
+      ProfileModify.init();
+    };
 
     C.start();
   </script>

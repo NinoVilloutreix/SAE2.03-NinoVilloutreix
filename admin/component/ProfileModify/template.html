@@ -1,9 +1,10 @@
 <div class="ModifyProfile">
     <h4 class="ModifyProfile__title">Ajouter un Profil :></h4>
-    <select id="profile-select" class="ModifyProfile__menu" onchange="{{handlerMod}}">
+    <form class="ModifyProfile__form">
+    <select id="profile-select" class="ModifyProfile__form-menu" onchange="{{handlerMod}}">
+        <option value="">Sélectionner un profil existant</option>
         {{options}}
     </select>
-    <form class="ModifyProfile__form">
         <div class="ModifyProfile__form-inputs">
             <input class="ModifyProfile__form-inputs-field" id="profile-name" type="text" name="name" placeholder="Nom du profil..." required>
             <input class="ModifyProfile__form-inputs-field" id="profile-avatar" type="text" name="avatar" placeholder="Avatar du profil..." >

@@ -212,28 +212,28 @@ function readOneProfile($id) {
     return $res; // Retourne les résultats
 }
 
-function modifyProfile($id, $name, $avatar, $min_age) {
-    try {
-        $cnx = new PDO("mysql:host=" . HOST . ";dbname=" . DBNAME, DBLOGIN, DBPWD, [
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-        ]);
-        error_log("Connexion à la base réussie");
+// function modifyProfile($id, $name, $avatar, $min_age) {
+//     try {
+//         $cnx = new PDO("mysql:host=" . HOST . ";dbname=" . DBNAME, DBLOGIN, DBPWD, [
+//             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+//         ]);
+//         error_log("Connexion à la base réussie");
 
-        $sql = "REPLACE INTO Profil (id, name, avatar, min_age) 
-            VALUES (:id, :name, :avatar, :min_age)";
-        $stmt = $cnx->prepare($sql);
+//         $sql = "REPLACE INTO Profil (id, name, avatar, min_age) 
+//             VALUES (:id, :name, :avatar, :min_age)";
+//         $stmt = $cnx->prepare($sql);
 
-        $stmt->bindParam(':id', $id);
-        $stmt->bindParam(':name', $name);
-        $stmt->bindParam(':avatar', $avatar);
-        $stmt->bindParam(':min_age', $min_age);
+//         $stmt->bindParam(':id', $id);
+//         $stmt->bindParam(':name', $name);
+//         $stmt->bindParam(':avatar', $avatar);
+//         $stmt->bindParam(':min_age', $min_age);
 
-        $stmt->execute();
-        error_log("Insertion réussie");
-        return $stmt->rowCount();
+//         $stmt->execute();
+//         error_log("Insertion réussie");
+//         return $stmt->rowCount();
 
-    } catch (Exception $e) {
-        error_log("Erreur dans modifyProfile : " . $e->getMessage());
-        return 0;
-    }
-}
+//     } catch (Exception $e) {
+//         error_log("Erreur dans modifyProfile : " . $e->getMessage());
+//         return 0;
+//     }
+// }
