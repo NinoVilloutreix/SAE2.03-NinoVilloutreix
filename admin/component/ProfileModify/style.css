@@ -38,7 +38,7 @@ body{
     flex-direction: column;
 }
 
-.ModifyProfile__form-inputs-field {
+.ModifyProfile__form-inputs-field , .ModifyProfile__form-menu {
     display: flex;
     background-color: var(--color-gray-dark2);
     border: none;
@@ -49,16 +49,7 @@ body{
     transition: transform 0.3s ease;
 }
 
-.ModifyProfile__form-inputs-field input {
-    color: red;
-}
-
-.ModifyProfile__form-inputs-field select {
-    color: green;
-}
-
-
-.ModifyProfile__form-inputs-field:hover {
+.ModifyProfile__form-inputs-field:hover,.ModifyProfile__form-menu:hover {
     transform: scale(1.25);
     cursor: pointer;
     

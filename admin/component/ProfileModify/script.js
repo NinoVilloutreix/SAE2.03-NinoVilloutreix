@@ -21,9 +21,9 @@ ProfileModify.format = function (profiles, handlerMod) {
 ProfileModify.init = function () {
   const select = document.getElementById("profile-select");
   const idField = document.getElementById("profile-id");
-  const nameField = document.getElementById("profile-name");
-  const avatarField = document.getElementById("profile-avatar");
-  const minAgeField = document.getElementById("profile-min-age");
+  const nameField = document.getElementById("profile-modify-name");
+const avatarField = document.getElementById("profile-modify-avatar");
+const minAgeField = document.getElementById("profile-modify-min-age");
   console.log(select, nameField, avatarField, minAgeField);
 
   // Remplit les champs en fonction du profil sélectionné
