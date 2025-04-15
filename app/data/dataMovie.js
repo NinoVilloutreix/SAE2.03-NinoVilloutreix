@@ -92,22 +92,33 @@ DataMovie.getFavoris = async function (id_profile) {
   
   DataMovie.searchMovies = async function (search) {
     let response = await fetch(
-      `${HOST_URL}/server/script.php?todo=searchMovies&query=${encodeURIComponent(
-        search
-      )}`
+        `${HOST_URL}/server/script.php?todo=searchMovies&query=${encodeURIComponent(search)}`
     );
-  
-    console.log("Réponse brute du serveur :", response);
-  
+
     if (!response.ok) {
-      console.error("Erreur HTTP :", response.status);
-      return [];
+        console.error("Erreur HTTP :", response.status);
+        return [];
     }
-  
-    let data = await response.json();
-    console.log("Données JSON :", data);
-    return data;
-  };
+
+    if (!response.headers.get("Content-Type").includes("application/json")) {
+        console.error("La réponse n'est pas du JSON.");
+        return [];
+    }
+    // Stocker la réponse brute dans une variable
+    let rawText = await response.text();
+    // console.log("Réponse brute du serveur :", rawText);
+
+    try {
+        // Parse le texte brut en JSON
+        let data = JSON.parse(rawText);
+        // console.log("Données JSON :", data);
+        return data;
+    } catch (error) {
+        console.error("Erreur de parsing JSON :", error);
+        return [];
+    }
+};
+
 
 
 

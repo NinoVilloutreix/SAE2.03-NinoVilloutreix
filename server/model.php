@@ -274,9 +274,12 @@ function searchMovies($query) {
                OR Category.name LIKE :query 
                OR CAST(Movie.year AS CHAR) LIKE :query";
 
-    $query = trim($_REQUEST['query'] ?? '');
     $stmt = $cnx->prepare($sql);
     $stmt->execute(['query' => "%$query%"]);
 
-    return $stmt->fetchAll(PDO::FETCH_OBJ);
+    $results = $stmt->fetchAll(PDO::FETCH_OBJ);
+    if (!$results) {
+        error_log("Aucun résultat trouvé pour la recherche : $query.");
+    }
+    return $results;
 }

@@ -250,31 +250,104 @@ C.getFeaturedMovies = async function () {
     if (!featuredMovies || featuredMovies.length === 0) {
         content.innerHTML = "<p>Aucun film mis en avant pour le moment.</p>";
     } else {
-        featuredMovies.forEach(movie => console.log("Film mis en avant :", movie)); // Test
+        // featuredMovies.forEach(movie => console.log("Film mis en avant :", movie)); // Test
         content.innerHTML = Featured.formatMany(featuredMovies);
     }
 };
 
 
 C.handlerSearch = async function () {
-        const searchInput = document
-          .querySelector("input[name='name']")
-          .value.trim();
+    const searchInput = document
+        .querySelector("input[name='name']")
+        .value.trim();
 
+    const content = document.querySelector("#movies__body");
+    const searchResults = document.querySelector("#content");
 
-        let res = await DataMovie.searchMovies(searchInput);
-
-        // Vérifier si des résultats ont été trouvés
-        if (res && res.length > 0) {
-          let content = document.querySelector("#content");
-
-          content.innerHTML = Movie.format(res);
-        } else {
-          // Afficher un message clair si aucun film n'est trouvé
-          document.querySelector("#content").innerHTML =
-            "<p>Aucun film ne correspond à votre recherche.</p>";
+    if (searchInput === "") {
+        // Réaffiche les films par catégorie
+        if (content) {
+            content.style.display = ""; // Montre les catégories
         }
-      };
+        if (searchResults) {
+            searchResults.style.display = ""; // Cache les résultats de recherche
+        }
+
+        const categories = await DataMovie.getCategory();
+        const profileAge = C.profile ? calculateAge(C.profile.min_age) : null;
+
+        let html = await MovieCategory.formatMany(categories, profileAge);
+        content.innerHTML = html;
+        return;
+    }
+
+    // Effectue la recherche
+    let res = await DataMovie.searchMovies(searchInput);
+
+    if (content) {
+        content.style.display = "none"; // Cache les catégories
+    }
+    if (searchResults) {
+        searchResults.style.display = ""; // Montre les résultats de recherche
+    }
+
+    if (res && res.length > 0) {
+        V.renderMovie(res);
+    } else {
+        searchResults.innerHTML =
+            "<p>Aucun film ne correspond à votre recherche.</p>";
+    }
+};
+
+
+// C.handlerSearch = async function () {
+//     const searchInput = document
+//         .querySelector("input[name='name']")
+//         .value.trim();
+
+//     // Cibler la section Featured
+//     const featuredSection = document.querySelector("#featured");
+//     const categorySection = document.querySelector("#movies__body");
+
+//     if (searchInput === "") {
+//         // Affiche la section Featured si le champ de recherche est vide
+//         if (featuredSection) {
+//             featuredSection.style.display = ""; // Réinitialise l'affichage
+//         }
+//         if (categorySection) {
+//             categorySection.style.display = ""; // Réinitialise l'affichage
+//         }
+//         // Réaffiche les films par catégorie
+//         const categories = await DataMovie.getCategory();
+//         const profileAge = C.profile ? calculateAge(C.profile.min_age) : null;
+
+//         let html = await MovieCategory.formatMany(categories, profileAge);
+//         document.querySelector("#movies__body").innerHTML = html;
+//         return;
+//     }
+
+//     // Cache la section Featured lorsqu'un texte est saisi
+//     if (featuredSection) {
+//         featuredSection.style.display = "none";
+//     }
+
+//     if (categorySection) {
+//         categorySection.style.display = "none";
+//     }
+//     // Effectue la recherche
+//     let res = await DataMovie.searchMovies(searchInput);
+
+//     if (res && res.length > 0) {
+//         V.renderMovie(res);
+//     } else {
+//         document.querySelector("#content").innerHTML =
+//             "<p>Aucun film ne correspond à votre recherche.</p>";
+//     }
+// };
+
+
+
+      
 
 
 

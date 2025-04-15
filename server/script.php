@@ -1,7 +1,7 @@
 <?php
+ob_start(); // Début de tampon de sortie
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+
 
 /** ARCHITECTURE PHP SERVEUR : Rôle du fichier script.php
  * 
@@ -127,8 +127,10 @@ if ( isset($_REQUEST['todo']) ){
 // }
 
 
-
-
+if (!is_array($data) && !is_object($data)) {
+  error_log("Données non conformes pour JSON : " . print_r($data, true));
+  $data = [];
+}
 
 
 
@@ -160,6 +162,9 @@ if ( isset($_REQUEST['todo']) ){
    
 } // fin de if ( isset($_REQUEST['todo']) )
 
+header('Content-Type: application/json');
+echo json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+exit();
 
 /**
  * Cette partie du code n'est atteinte que si la variable 'todo' n'est pas définie dans la requête.

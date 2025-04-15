@@ -157,7 +157,8 @@ function searchMoviesController() {
 
       if (empty($query)) {
           error_log("Paramètre 'query' manquant ou vide.");
-          return [];
+          http_response_code(400); // Mauvaise requête
+          return ["error" => "Le paramètre 'query' est obligatoire."];
       }
 
       $movies = searchMovies($query);
@@ -170,9 +171,10 @@ function searchMoviesController() {
       return $movies;
   } catch (Exception $e) {
       error_log("Erreur dans searchMoviesController : " . $e->getMessage());
-      http_response_code(500); //SI ça envoie ça c'est la merde
+      http_response_code(500); // Erreur interne
       return [];
   }
 }
+
 
 // CA A MARCHÉ https://mmi.unilim.fr/~villoutreix8/SAE2.03-NinoVilloutreix/server/script.php?todo=addProfile&id=6&name=1&avatar=1&min_age=1
