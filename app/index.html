@@ -256,6 +256,29 @@ C.getFeaturedMovies = async function () {
 };
 
 
+C.handlerSearch = async function () {
+        const searchInput = document
+          .querySelector("input[name='name']")
+          .value.trim();
+
+
+        let res = await DataMovie.searchMovies(searchInput);
+
+        // Vérifier si des résultats ont été trouvés
+        if (res && res.length > 0) {
+          let content = document.querySelector("#content");
+
+          content.innerHTML = Movie.format(res);
+        } else {
+          // Afficher un message clair si aucun film n'est trouvé
+          document.querySelector("#content").innerHTML =
+            "<p>Aucun film ne correspond à votre recherche.</p>";
+        }
+      };
+
+
+
+
 
 C.start = async function () {
     let profiles = await DataProfile.read();

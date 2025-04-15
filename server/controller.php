@@ -151,5 +151,28 @@ function getFeaturedController() {
   return $movies;
 }
 
+function searchMoviesController() {
+  try {
+      $query = $_REQUEST['query'] ?? null;
+
+      if (empty($query)) {
+          error_log("Paramètre 'query' manquant ou vide.");
+          return [];
+      }
+
+      $movies = searchMovies($query);
+
+      if (!$movies) {
+          error_log("Aucun film trouvé pour la recherche : $query.");
+          return [];
+      }
+
+      return $movies;
+  } catch (Exception $e) {
+      error_log("Erreur dans searchMoviesController : " . $e->getMessage());
+      http_response_code(500); //SI ça envoie ça c'est la merde
+      return [];
+  }
+}
 
 // CA A MARCHÉ https://mmi.unilim.fr/~villoutreix8/SAE2.03-NinoVilloutreix/server/script.php?todo=addProfile&id=6&name=1&avatar=1&min_age=1

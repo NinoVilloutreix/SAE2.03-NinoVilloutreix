@@ -88,6 +88,30 @@ DataMovie.getFavoris = async function (id_profile) {
   };
 
 
+
+  
+  DataMovie.searchMovies = async function (search) {
+    let response = await fetch(
+      `${HOST_URL}/server/script.php?todo=searchMovies&query=${encodeURIComponent(
+        search
+      )}`
+    );
+  
+    console.log("Réponse brute du serveur :", response);
+  
+    if (!response.ok) {
+      console.error("Erreur HTTP :", response.status);
+      return [];
+    }
+  
+    let data = await response.json();
+    console.log("Données JSON :", data);
+    return data;
+  };
+
+
+
+
 export {DataMovie};
 
 

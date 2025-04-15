@@ -20,6 +20,7 @@ NavBar.format = function (hAbout, profiles) {
   html = html.replace("{{options}}", options);
   html = html.replace("{{image}}", image);
   html = html.replace("{{handler}}", "C.handlerProfileChange(this)");
+  html = html.replace("{{handlerSearch}}", "C.handlerSearch()");
   return html;
 };
 

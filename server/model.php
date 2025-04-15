@@ -264,3 +264,19 @@ function getFeatured() {
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
+function searchMovies($query) {
+    $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
+
+    $sql = "SELECT Movie.* 
+            FROM Movie
+            LEFT JOIN Category ON Movie.id_category = Category.id
+            WHERE Movie.name LIKE :query 
+               OR Category.name LIKE :query 
+               OR CAST(Movie.year AS CHAR) LIKE :query";
+
+    $query = trim($_REQUEST['query'] ?? '');
+    $stmt = $cnx->prepare($sql);
+    $stmt->execute(['query' => "%$query%"]);
+
+    return $stmt->fetchAll(PDO::FETCH_OBJ);
+}
