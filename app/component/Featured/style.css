@@ -20,9 +20,13 @@
 
 .featured{
   display: flex;
-  border: purple 1px solid;
+  flex-wrap: wrap;
   flex-direction: row;
-  gap: 2rem
+  gap: 5rem 1rem;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: center;
+  /* border: green solid 1px; */
 }
 .featured-card {
   display: flex;
@@ -36,7 +40,7 @@
   box-sizing: border-box;
   margin-top: 1rem;
   /* border: red solid 1px; */
-  /* transition: transform 0.3s ease, box-shadow 0.3s ease; */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .featured-card:hover {
@@ -75,12 +79,12 @@
 }
 
 
-
 .featured-card__heart, .featured-card__trash {
+  z-index: 20;
   position: absolute;
-  right: 1rem;
   top: 1rem;
   transition: transform 0.3s ease, opacity 0.3s ease;
+  /* border: red solid 1px; */
 }
 
 .featured-card__description {
@@ -88,27 +92,18 @@
 }
 
 
-
-
-
-
-
-
-
-
-.featured__heart{
-  z-index: 5;
+.featured-card__heart{
   opacity: 50%;
+  right: 1rem;
 }
 
 
-.featured__trash{
-  z-index: 5;
+.featured-card__trash{
   left: 1rem;
   opacity: 50%;
 }
 
-.featured__heart:hover , .featured__trash:hover {
+.featured-card__heart:hover , .featured-card__trash:hover {
   transform: scale(1.5);
   cursor: pointer;
   opacity: 100%;
@@ -116,7 +111,7 @@
 
 
 
-.featured__heart-clicked {
+.featured-card__heart-clicked {
   animation: beat 1s ease-out;
 }
 

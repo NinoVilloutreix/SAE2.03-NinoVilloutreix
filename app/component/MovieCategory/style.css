@@ -30,6 +30,7 @@
   gap: 5rem 1rem;
   width: 100%;
   align-items: flex-start;
+  /* border: green solid 1px; */
 }
 
 .categorie__ul-svg {

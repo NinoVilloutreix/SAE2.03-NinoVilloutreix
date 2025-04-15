@@ -19,7 +19,7 @@
   align-items: center;
   max-width: 10rem;
   box-sizing: border-box;
-  /* transition: transform 0.3s ease, box-shadow 0.3s ease; */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .movie:hover {
