@@ -59,42 +59,39 @@
 
 
 
-.movie__heart{
+.movie__heart {
   position: absolute;
   right: 1rem;
   top: 1rem;
   opacity: 50%;
   z-index: 5;
   transition: transform 0.3s ease, opacity 0.3s ease;
-  
 }
 
-.movie__heart:hover{
+.movie__heart:hover {
   transform: scale(1.1);
   cursor: pointer;
   opacity: 100%;
 }
-.movie__heart.clicked {
-  /* animation: beat 5s infinite; */
-  transform: scale(1.5);
+
+.movie__heart-clicked {
+  animation: beat 1s ease-out;
 }
+
+
+
 
 .hidden{
   display: none;
 }
 
 
-
 @keyframes beat {
   0% { transform: scale(150%); }
-  10% { transform: scale(80%); }
-  20% { transform: scale(120%); }
-  30% { transform: scale(85%); }
-  40% { transform: scale(115%); }
-  50% { transform: scale(90%); }
-  60% { transform: scale(110%); }
-  70% { transform: scale(95%); }
-  80% { transform: scale(105%); }
-  90% { transform: scale(98%); }
+  17% { transform: scale(80%); }
+  34% { transform: scale(120%); }
+  51% { transform: scale(85%); }
+  68% { transform: scale(105%); }
+  85% { transform: scale(95%); }
   100% { transform: scale(100%); }
 }

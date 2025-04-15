@@ -238,17 +238,18 @@ function delFavoris($id_movie, $id_profile) {
 function getFavoris($id_profile) {
     // Connexion à la base de données
     $cnx = new PDO("mysql:host=" . HOST . ";dbname=" . DBNAME, DBLOGIN, DBPWD);
-    // Requête SQL avec alias pour les colonnes
-    $sql = "SELECT Movie.id, Profile.id
-            FROM Favoris 
-            JOIN Movie ON Favoris.id_movie = Movie.id
-            JOIN Profile ON Favoris.id_profile = Profile.id
-            WHERE Profile.id = :id_profile";
+    // Requête SQL corrigée avec le bon paramètre
+    $sql = "SELECT Movie.id, Movie.name, Movie.image, Category.name AS category
+          FROM Favoris
+          JOIN Movie ON Favoris.id_movie = Movie.id
+          LEFT JOIN Category ON Movie.id_category = Category.id
+          WHERE Favoris.id_profile = :id_profile"; // Utilisation cohérente de :id_profile
     $stmt = $cnx->prepare($sql);
-    $stmt->bindParam(':id_profile', $id_profile, PDO::PARAM_INT);
+    $stmt->bindParam(':id_profile', $id_profile, PDO::PARAM_INT); // Correspondance avec la requête SQL
     $stmt->execute();
     $res = $stmt->fetchAll(PDO::FETCH_OBJ);
 
     return $res;
 }
+
 

@@ -13,7 +13,7 @@ Movie.format = function (movie) {
   // html = html.replace("{{heart}}", movie.heart);
   html = html.replace("{{onclick}}", `C.handlerDetail(${movie.id})`);
   html = html.replace("{{handlerFavoris}}", `C.handlerFavoris(${movie.id})`);
-  html = html.replace("{{handlerDelete}}", `C.handlerDelete(${movie.id})`);
+  html = html.replace("{{handlerDelete}}", `C.handlerdeleteFavoris(${movie.id})`);
   return html;
 };
 
@@ -25,6 +25,17 @@ Movie.formatMany = function(movies) {
   return html;
 };
 
+document.querySelectorAll('.movie__heart').forEach((heart) => {
+  heart.addEventListener('click', (event) => {
+    const element = event.target;
 
+    element.classList.add('movie__heart-clicked');
+
+    console.log("soir")
+    setTimeout(() => {
+      element.classList.remove('movie__heart-clicked');
+    }, 1000);
+  });
+});
 
 export { Movie };

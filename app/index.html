@@ -196,6 +196,9 @@ C.handlerFavorisList = async function () {
         if (res === 1) {
           alert("alertLe film a été ajouté aux favoris :)");
         }
+
+
+
       };
       C.handlerdeleteFavoris = async function (id) {
         const profileSelect = document.querySelector("#profile-select");
@@ -208,7 +211,7 @@ C.handlerFavorisList = async function () {
           return;
         }
 
-        let res = await DataMovie.deleteFavoris(id, profileId);
+        let res = await DataMovie.delFavoris(id, profileId);
 
         if (res === 1) {
           alert("Le film a été supprimé de vos favoris !");
