@@ -207,32 +207,48 @@ function readOneProfile($id) {
 function addFavoris($id_movie, $id_profile) {
     // Connexion à la base de données
     $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
-    // Requête SQL d'insertion du film
+    // Requête SQL d'insertion dans la table Favoris
     $sql = "INSERT INTO Favoris (id_movie, id_profile) 
             VALUES (:id_movie, :id_profile)";
-    // Prépare la requête SQL
     $stmt = $cnx->prepare($sql);
-    // Lie les paramètres
     $stmt->bindParam(':id_movie', $id_movie, PDO::PARAM_INT);
     $stmt->bindParam(':id_profile', $id_profile, PDO::PARAM_INT);
-    // Exécute la requête SQL
     $stmt->execute();
-    // Retourne le nombre de lignes affectées
     return $stmt->rowCount();
 }
+
 
 function delFavoris($id_movie, $id_profile) {
     // Connexion à la base de données
     $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
-    // Requête SQL d'insertion du film
-    $sql = "DELETE FROM Favoris WHERE id_movie = :id_movie AND id_profile = :id_profile";
-    // Prépare la requête SQL
+    // Requête SQL pour la suppression
+    $sql = "DELETE FROM Favoris 
+            WHERE id_movie = :id_movie 
+            AND id_profile = :id_profile";
     $stmt = $cnx->prepare($sql);
-    // Lie les paramètres
     $stmt->bindParam(':id_movie', $id_movie, PDO::PARAM_INT);
     $stmt->bindParam(':id_profile', $id_profile, PDO::PARAM_INT);
-    // Exécute la requête SQL
     $stmt->execute();
-    // Retourne le nombre de lignes affectées
     return $stmt->rowCount();
 }
+
+
+
+
+function getFavoris($id_profile) {
+    // Connexion à la base de données
+    $cnx = new PDO("mysql:host=" . HOST . ";dbname=" . DBNAME, DBLOGIN, DBPWD);
+    // Requête SQL avec alias pour les colonnes
+    $sql = "SELECT Movie.id, Profile.id
+            FROM Favoris 
+            JOIN Movie ON Favoris.id_movie = Movie.id
+            JOIN Profile ON Favoris.id_profile = Profile.id
+            WHERE Profile.id = :id_profile";
+    $stmt = $cnx->prepare($sql);
+    $stmt->bindParam(':id_profile', $id_profile, PDO::PARAM_INT);
+    $stmt->execute();
+    $res = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+    return $res;
+}
+

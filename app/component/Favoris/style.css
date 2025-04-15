@@ -27,7 +27,7 @@
   cursor: pointer;
 }
 
-.movie__click-img-c {
+.movie__img-c {
   display: flex;
   width: 10rem;
   height: 15rem;
@@ -36,7 +36,7 @@
   border-radius: 0.25rem;
 }
 
-.movie__click-img {
+.movie__img {
   display: block;
   position: relative;
   width: 100%;
@@ -44,7 +44,7 @@
   object-fit: cover;
 }
 
-.movie__click-name {
+.movie__name {
   font-size: 1.5rem;
   color: var(--color-bright);
   margin: 0;
@@ -52,7 +52,7 @@
 }
 
 @media (width > 59.125rem) {
-  .movie__click-name {
+  .Movie__name {
     font-size: 1rem;
   }
 }
@@ -66,7 +66,6 @@
   opacity: 50%;
   z-index: 5;
   transition: transform 0.3s ease, opacity 0.3s ease;
-  
 }
 
 .movie__heart:hover{
@@ -74,27 +73,9 @@
   cursor: pointer;
   opacity: 100%;
 }
-.movie__heart.clicked {
-  /* animation: beat 5s infinite; */
-  transform: scale(1.5);
-}
+
+
 
 .hidden{
   display: none;
-}
-
-
-
-@keyframes beat {
-  0% { transform: scale(150%); }
-  10% { transform: scale(80%); }
-  20% { transform: scale(120%); }
-  30% { transform: scale(85%); }
-  40% { transform: scale(115%); }
-  50% { transform: scale(90%); }
-  60% { transform: scale(110%); }
-  70% { transform: scale(95%); }
-  80% { transform: scale(105%); }
-  90% { transform: scale(98%); }
-  100% { transform: scale(100%); }
 }

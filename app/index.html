@@ -20,6 +20,7 @@
     import { Movie } from "./component/Movie/script.js";
     import { Detail } from "./component/Detail/script.js";
     import { MovieCategory } from "./component/MovieCategory/script.js"
+    // import { Favoris } from "./component/Favoris/script.js";
 
     import { DataMovie } from './data/dataMovie.js';
     import { DataProfile } from './data/dataProfile.js';
@@ -76,8 +77,19 @@
   V.renderMovie();
 };
 
+C.addToFavorites = function (id) {
+      // Récupère les favoris existants depuis le localStorage (ou crée une liste vide)
+      let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
-//#########################################################################################################################
+      // Si l'ID n'est pas déjà dans la liste, on l'ajoute
+      if (!favorites.includes(id)) {
+        favorites.push(id);
+        localStorage.setItem("favorites", JSON.stringify(favorites));
+        alert("Ajouté aux favoris !");
+      } else {
+        alert("Ce film est déjà dans vos favoris !");
+      }
+    };
 
 function calculateAge(dob) {
     const today = new Date(); // La date d'aujourd'hui
@@ -137,6 +149,87 @@ C.handlerProfileChange = async function() {
 
 
 //#########################################################################################################################
+
+
+C.handlerFavorisList = async function () {
+        // Récupérer l'ID du profil actif
+        const profileSelect = document.querySelector("#profile-select");
+        const profileId = profileSelect ? profileSelect.value : null;
+
+        if (!profileId) {
+          alert("Veuillez sélectionner un profil pour voir les favoris.");
+          return;
+        }
+
+        // Récupérer les films favoris pour le profil actif
+        let favoris = await DataMovie.getFavoris(profileId);
+
+        if (!favoris || favoris.length === 0) {
+          document.querySelector("#content").innerHTML =
+            "<p>Aucun film ajouté aux favoris.</p>";
+        } else {
+          // Afficher les films favoris
+          V.renderMovie(favoris);
+        }
+      };
+    C.handlerFavoris = async function (id) {
+        console.log(`C.handlerFavoris appelé avec movieId=${id}`);
+        const profileSelect = document.querySelector("#profile-select");
+        const profileId = profileSelect ? profileSelect.value : null;
+
+        if (!profileId) {
+          alert(
+            "Veuillez sélectionner un profil avant d'ajouter un film aux favoris."
+          );
+          return;
+        }
+
+        // Vérifier si le film est déjà dans les favoris
+        let favoris = await DataMovie.getFavoris(profileId);
+        if (favoris.some((movie) => movie.id === id)) {
+          alert("Ce film a déjà été ajouté à vos favoris !");
+          return;
+        }
+
+        let res = await DataMovie.addFavoris(id, profileId);
+
+        if (res === 1) {
+          alert("alertLe film a été ajouté aux favoris :)");
+        }
+      };
+      C.handlerdeleteFavoris = async function (id) {
+        const profileSelect = document.querySelector("#profile-select");
+        const profileId = profileSelect ? profileSelect.value : null;
+
+        if (!profileId) {
+          alert(
+            "Veuillez sélectionner un profil avant de supprimer un film des favoris."
+          );
+          return;
+        }
+
+        let res = await DataMovie.deleteFavoris(id, profileId);
+
+        if (res === 1) {
+          alert("Le film a été supprimé de vos favoris !");
+
+          // Vérifier si la liste des favoris est vide
+          let favoris = await DataMovie.getFavoris(profileId);
+          if (!favoris || favoris.length === 0) {
+            alert("Votre liste de favoris est vide");
+          } else {
+            // Réafficher les favoris restants
+            V.renderMovie(favoris);
+          }
+        } else {
+          alert("Ce film n'est pas dans vos favoris");
+        }
+      };
+
+
+//#########################################################################################################################
+
+
 
     C.start = async function () {
       let profiles = await DataProfile.read();
@@ -209,6 +302,12 @@ C.handlerProfileChange = async function() {
     V.renderMovieCategory = async function (html) {
     let content = document.querySelector("#movies__body");
     content.innerHTML = html;
+
+    V.renderFavoris = function (data) {
+      let content = document.querySelector("#content");
+      content.innerHTML = Favoris.format(data);
+    };
+
 };
 
     C.start(); // Démarre l'application

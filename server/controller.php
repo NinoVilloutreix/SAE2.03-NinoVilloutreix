@@ -135,7 +135,11 @@ function delFavorisController(){
   }
 }
 
-
+function getFavorisController(){
+  $id_profile = $_REQUEST['id_profile'];
+  $favoris = getFavoris($id_profile);
+  return $favoris;
+}
 
 
 

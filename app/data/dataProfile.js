@@ -19,5 +19,18 @@ DataProfile.readOne = async function (id) {
     let res = await answer.json();
     return res;
   };
+
+DataProfile.getFavoris = async function (id_profile) {
+    let answer = await fetch(HOST_URL + `/SAE2.03-MMI-REICHMALO/server/script.php?todo=getFavoris&id_profile=${id_profile}`);
+    let data = await answer.json();
+    return data;
+  }
+
+
+
+
+
+
+
   
 export { DataProfile };

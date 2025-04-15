@@ -1,8 +1,12 @@
-<a class="movie" onclick="{{onclick}}">
-  <div class="movie__img-c">
-    <img class="movie__img" src="https://mmi.unilim.fr/~villoutreix8/SAE2.03-NinoVilloutreix/server/images/{{image}}">
-  </div> 
-  <img class="movie__heart" src="{{heart}}">
-  <h2 class="movie__name">{{name}}</h2>
-</a>
+<div class="movie">
+  <img class="movie__heart" src="{{heart}}" onclick="{{handlerFavoris}}">
+  <img class="movie__trash" src="{{trash}}" onclick="{{handlerDelete}}">
+  <a class="movie__click" onclick="{{onclick}}">
+    <div class="movie__click-img-c">
+      <img class="movie__click-img" src="https://mmi.unilim.fr/~villoutreix8/SAE2.03-NinoVilloutreix/server/images/{{image}}">
+    </div> 
+    <h2 class="movie__click-name">{{name}}</h2>
+  </a>
+</div>
+
 

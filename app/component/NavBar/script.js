@@ -7,6 +7,7 @@ NavBar.format = function (hAbout, profiles) {
   let html = template;
   html = html.replace("{{hAbout}}", hAbout);
   console.log("NavBar format", profiles);
+  html = html.replace("{{fav}}", "C.handlerFavorisList()");
 
   let options = `<option value="">Choisir un profil</option>`; // Option par défaut
   for (let i = 0; i < profiles.length; i++) {

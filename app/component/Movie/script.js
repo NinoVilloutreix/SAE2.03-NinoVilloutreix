@@ -4,38 +4,23 @@ let template = await templateFile.text();
 
 let Movie = {};
 
-Movie.format = function (movie, heart) {
+
+
+Movie.format = function (movie) {
   let html = template;
   html = html.replace("{{image}}", movie.image);
   html = html.replace("{{name}}", movie.name);
-  html = html.replace("{{heart}}", movie.heart);
+  // html = html.replace("{{heart}}", movie.heart);
   html = html.replace("{{onclick}}", `C.handlerDetail(${movie.id})`);
-
-
-  if (heart.includes(movie.id)) {
-    html = html.replace("{{path_star}}", "../assets/images/heart-red.png");
-  }
-  else {
-    html = html.replace("{{path_star}}", "../assets/images/heart-white.png");
-  }
-
-
-
-
-
-
-
-
-
-
-
+  html = html.replace("{{handlerFavoris}}", `C.handlerFavoris(${movie.id})`);
+  html = html.replace("{{handlerDelete}}", `C.handlerDelete(${movie.id})`);
   return html;
 };
 
 Movie.formatMany = function(movies) {
   let html = "";
   for (const r of movies) {
-    html = html + Movie.format(r);
+    html = html + Movie.format(r); //CHANGEEER
   }
   return html;
 };
