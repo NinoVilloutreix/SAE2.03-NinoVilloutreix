@@ -74,9 +74,9 @@ function getMovieCategoryController() {
 
 function addProfileController() {
   try {
-      if (empty($_REQUEST['id'])) {
-          return "Erreur : L'id est obligatoire.";
-      }
+      // if (empty($_REQUEST['id'])) {
+      //     return "Erreur : L'id est obligatoire.";
+      // }
 
       if (empty($_REQUEST['name'])) {
           return "Erreur : Le nom est obligatoire.";
@@ -86,7 +86,7 @@ function addProfileController() {
           return "Erreur : L'age est obligatoire.";
       }
 
-      $id = $_REQUEST['id'];
+      $id = isset($_REQUEST['id']) ? $_REQUEST['id'] : null;
       $name = $_REQUEST['name'];
       $avatar = $_REQUEST['avatar'];
       $min_age = !empty($_REQUEST['min_age']) ? $_REQUEST['min_age'] : null;
@@ -95,7 +95,7 @@ function addProfileController() {
 error_log("Données reçues pour le profil : " . print_r($_REQUEST, true));
 
       $ok = addProfile($id, $name, $avatar, $min_age);
-      return $ok ? "Le profil $name ajouté ou modifié avec succès" : "Erreur lors de l'ajout du profil";
+      return $ok ? "Le profil $name a été ajouté ou modifié avec succès :>" : "Erreur lors de l'ajout du profil";
   } catch (Exception $e) {
       return "Erreur: " . $e->getMessage();
   }

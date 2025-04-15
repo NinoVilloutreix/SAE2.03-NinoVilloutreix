@@ -29,7 +29,7 @@
 
    
     C.handler = async function () {
-      let form = document.querySelector('.AddMovie__form');
+      let form = document.querySelector('.addMovie__form');
       if (!form) {
         V.renderLog("Erreur : formulaire introuvable.");
         return;
@@ -40,14 +40,14 @@
     }
 
     C.handlerAddProfile = async function () {
-        let form = document.querySelector(".AddProfile__form");
+        let form = document.querySelector(".addProfile__form");
         let fd = new FormData(form);
         let res = await DataProfile.addProfile(fd);
         V.renderLog(res);
       };
 
       C.handlerModProfile = async function () {
-        let form = document.querySelector(".ModifyProfile__form");
+        let form = document.querySelector(".modifyProfile__form");
         let fd = new FormData(form);
         let res = await DataProfile.addProfile(fd);
         V.renderLog(res);
