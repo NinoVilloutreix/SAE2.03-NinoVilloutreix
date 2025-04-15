@@ -79,6 +79,14 @@ DataMovie.getFavoris = async function (id_profile) {
     return data;
   };
 
+  DataMovie.getFeatured = async function () {
+    let response = await fetch(
+      `${HOST_URL}/server/script.php?todo=getFeatured`);
+    let data = await response.json();
+    console.log("Réponse du serveur :", data);
+    return data;
+  };
+
 
 export {DataMovie};
 

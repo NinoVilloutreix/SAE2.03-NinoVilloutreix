@@ -137,12 +137,19 @@ function getFavorisController(){
   return $favoris;
 }
 
-
-
-
-
-
-
+function getFeaturedController() {
+  // Appel à la fonction qui récupère les films mis en avant
+  $movies = getFeatured();
+  
+  // Si aucun film n'est trouvé, on log l'erreur
+  if (!$movies) {
+      error_log("Il n'y a aucun film mis en avant.");
+      return false;
+  }
+  
+  // Retourner les films mis en avant
+  return $movies;
+}
 
 
 // CA A MARCHÉ https://mmi.unilim.fr/~villoutreix8/SAE2.03-NinoVilloutreix/server/script.php?todo=addProfile&id=6&name=1&avatar=1&min_age=1

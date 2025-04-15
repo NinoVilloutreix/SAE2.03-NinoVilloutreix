@@ -1,7 +1,7 @@
-#content {
+#featured {
   display: flex;
   justify-content: center;
-  flex-direction: row;
+  flex-direction: column;
   gap: 5rem;
   align-items: center;
   padding: 1rem 3rem;
@@ -9,7 +9,7 @@
   background-color: var(--color-grey-bg);
 }
 
-.movie {
+.featured {
   display: flex;
   flex-shrink: 0;
   position: relative;
@@ -19,15 +19,16 @@
   align-items: center;
   max-width: 10rem;
   box-sizing: border-box;
+  /* border: red solid 1px; */
   /* transition: transform 0.3s ease, box-shadow 0.3s ease; */
 }
 
-.movie:hover {
+.featured:hover {
   transform: scale(1.05);
   /* cursor: pointer; */
 }
 
-.movie__click-img-c {
+.featured__click-img-c {
   display: flex;
   width: 10rem;
   height: 15rem;
@@ -36,7 +37,7 @@
   border-radius: 0.25rem;
 }
 
-.movie__click-img {
+.featured__click-img {
   display: block;
   position: relative;
   width: 100%;
@@ -44,7 +45,7 @@
   object-fit: cover;
 }
 
-.movie__click-name {
+.featured__click-name {
   font-size: 1.5rem;
   color: var(--color-bright);
   margin: 0;
@@ -52,33 +53,46 @@
 }
 
 @media (width > 59.125rem) {
-  .movie__click-name {
+  .featured__click-name {
     font-size: 1rem;
   }
 }
 
 
 
-.movie__heart, .movie__trash {
+.featured__heart, .featured__trash {
   position: absolute;
   right: 1rem;
   top: 1rem;
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-.movie__heart{
+.featured__description {
+  text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+.featured__heart{
   z-index: 5;
   opacity: 50%;
 }
 
 
-.movie__trash{
+.featured__trash{
   z-index: 5;
   left: 1rem;
   opacity: 50%;
 }
 
-.movie__heart:hover , .movie__trash:hover {
+.featured__heart:hover , .featured__trash:hover {
   transform: scale(1.5);
   cursor: pointer;
   opacity: 100%;
@@ -86,16 +100,14 @@
 
 
 
-.movie__heart-clicked {
+.featured__heart-clicked {
   animation: beat 1s ease-out;
 }
 
 
 
 
-/* .hidden{
-  display: none;
-} */
+
 
 
 @keyframes beat {

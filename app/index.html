@@ -10,6 +10,7 @@
 
 <body>
   <header id="header"></header>
+  <section id="featured"></section>
   <section id="content">
     <section id="movies__body"></section>
   </section>
@@ -20,7 +21,7 @@
     import { Movie } from "./component/Movie/script.js";
     import { Detail } from "./component/Detail/script.js";
     import { MovieCategory } from "./component/MovieCategory/script.js"
-    // import { Favoris } from "./component/Favoris/script.js";
+    import { Featured } from "./component/Featured/script.js";
 
     import { DataMovie } from './data/dataMovie.js';
     import { DataProfile } from './data/dataProfile.js';
@@ -235,25 +236,36 @@ C.handlerFavorisList = async function () {
 
 //#########################################################################################################################
 
+C.getFeaturedMovies = async function () {
+    let featuredMovies = await DataMovie.getFeatured();
+    let content = document.querySelector("#featured");
+
+    if (!featuredMovies || featuredMovies.length === 0) {
+        content.innerHTML = "<p>Aucun film mis en avant pour le moment.</p>";
+    } else {
+        featuredMovies.forEach(movie => console.log("Film mis en avant :", movie)); // Test
+        content.innerHTML = Featured.formatMany(featuredMovies);
+    }
+};
+
 
 
 C.start = async function () {
     let profiles = await DataProfile.read();
     V.renderNavBar("C.handlerAbout()", profiles);
-
-    // Récupérer l'ID du profil sauvegardé dans localStorage
     const savedProfileId = localStorage.getItem("selectedProfileId");
     if (savedProfileId) {
         const select = document.getElementById("profile-select");
         if (select) {
-            select.value = savedProfileId; // Sélectionner le profil sauvegardé
-            await C.handlerProfileChange(); // Mettre à jour l'affichage en fonction du profil
+            select.value = savedProfileId;
+            await C.handlerProfileChange(); 
         }
     } else {
-        C.setProfileImage(); // Afficher l'image par défaut si aucun profil n'est sauvegardé
+        C.setProfileImage(); 
     }
 
     C.getMovieCategory();
+    C.getFeaturedMovies();
 };
 
 
