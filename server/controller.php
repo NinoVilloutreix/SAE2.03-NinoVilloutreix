@@ -128,7 +128,7 @@ function delFavorisController(){
   $id_movie = $_REQUEST['id_movie'];
   $id_profile = $_REQUEST['id_profile'];
   $ok = delFavoris($id_movie, $id_profile);
-  return $ok; // Retourne 1 si la suppression a réussi, 0 sinon
+  return $ok; // booléen :)
 }
 
 function getFavorisController(){

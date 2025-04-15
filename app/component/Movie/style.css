@@ -59,20 +59,29 @@
 
 
 
-.movie__heart {
+.movie__heart, .movie__trash {
   position: absolute;
   right: 1rem;
   top: 1rem;
-  opacity: 50%;
-  z-index: 5;
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-.movie__heart:hover {
+.movie__heart{
+  z-index: 10;
+  opacity: 50%;
+}
+
+.movie__trash{
+  z-index: 5;
+}
+
+.movie__heart:hover , .movie__trash:hover {
   transform: scale(1.1);
   cursor: pointer;
   opacity: 100%;
 }
+
+
 
 .movie__heart-clicked {
   animation: beat 1s ease-out;
