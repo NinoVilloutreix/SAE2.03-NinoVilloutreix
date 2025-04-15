@@ -104,9 +104,9 @@ function calculateAge(dob) {
 }
 
 
-C.handlerProfileChange = async function() {
-    const select = document.getElementById('profile-select');
-    const avatarImg = document.getElementById('profile-picture');
+C.handlerProfileChange = async function () {
+    const select = document.getElementById("profile-select");
+    const avatarImg = document.getElementById("profile-picture");
 
     if (!select || !avatarImg) {
         console.error("Éléments HTML non trouvés");
@@ -122,15 +122,15 @@ C.handlerProfileChange = async function() {
         if (selectedOption.value === "") {
             // Aucun profil sélectionné, afficher l'image par défaut et masquer
             avatarImg.src = defaultImage;
-            avatarImg.classList.add('hidden');
+            avatarImg.classList.remove("hidden"); // Assurez-vous que l'image est visible
         } else {
             // Profil sélectionné : mettre à jour l'image et afficher
-            const avatarPath = selectedOption.getAttribute('data-img');
+            const avatarPath = selectedOption.getAttribute("data-img");
             avatarImg.src = avatarPath ? baseURL + avatarPath : defaultImage;
-            avatarImg.classList.remove('hidden');
+            avatarImg.classList.remove("hidden");
 
             // Récupération de la date de naissance pour calculer l'âge
-            const dob = selectedOption.getAttribute('data-age');
+            const dob = selectedOption.getAttribute("data-age");
             if (dob) {
                 const age = calculateAge(dob); // Conversion de la date en âge
                 console.log("Âge calculé :", age);
@@ -142,6 +142,9 @@ C.handlerProfileChange = async function() {
                 await C.getMovieCategory(null); // Aucun filtre
             }
         }
+
+        // Sauvegarder l'ID du profil sélectionné dans localStorage
+        localStorage.setItem("selectedProfileId", selectedOption.value);
     }
 };
 
@@ -234,25 +237,24 @@ C.handlerFavorisList = async function () {
 
 
 
-    C.start = async function () {
-      let profiles = await DataProfile.read();
-      V.renderNavBar("C.handlerAbout()",profiles);
-      // let movies = await DataMovie.getMovie();
-      // let categories = await DataMovie.getCategory();
-      
-      // if (movies.length == 0) {
-      //   movies = [
-      //     {
-      //       image: "placeholder.jpg",
-      //       name: "Pas de film disponibles pour le moment"
-      //     }
-      //   ]
-      // }
-      // V.renderMovie(movies)
-      // V.renderMovieCategory(movies);
-      C.getMovieCategory();
-      C.setProfileImage();
-    };
+C.start = async function () {
+    let profiles = await DataProfile.read();
+    V.renderNavBar("C.handlerAbout()", profiles);
+
+    // Récupérer l'ID du profil sauvegardé dans localStorage
+    const savedProfileId = localStorage.getItem("selectedProfileId");
+    if (savedProfileId) {
+        const select = document.getElementById("profile-select");
+        if (select) {
+            select.value = savedProfileId; // Sélectionner le profil sauvegardé
+            await C.handlerProfileChange(); // Mettre à jour l'affichage en fonction du profil
+        }
+    } else {
+        C.setProfileImage(); // Afficher l'image par défaut si aucun profil n'est sauvegardé
+    }
+
+    C.getMovieCategory();
+};
 
 
     C.getMovieCategory = async function(profileAge = null) {
@@ -284,10 +286,10 @@ C.handlerFavorisList = async function () {
     V.renderMovie = async function (m) {
   let content = document.querySelector("#content");
   content.innerHTML = ""; // Vide l'ancien contenu !
-  m.forEach((movie) => {
+  for (const movie of m) {
     let cardHTML = Movie.format(movie);
     content.innerHTML += cardHTML;
-  });
+  }
 };
 
     V.renderDetail = async function (handlerDetail) {

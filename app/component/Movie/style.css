@@ -19,12 +19,12 @@
   align-items: center;
   max-width: 10rem;
   box-sizing: border-box;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* transition: transform 0.3s ease, box-shadow 0.3s ease; */
 }
 
 .movie:hover {
   transform: scale(1.05);
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .movie__click-img-c {
@@ -67,16 +67,19 @@
 }
 
 .movie__heart{
-  z-index: 10;
+  z-index: 5;
   opacity: 50%;
 }
 
+
 .movie__trash{
   z-index: 5;
+  left: 1rem;
+  opacity: 50%;
 }
 
 .movie__heart:hover , .movie__trash:hover {
-  transform: scale(1.1);
+  transform: scale(1.5);
   cursor: pointer;
   opacity: 100%;
 }
