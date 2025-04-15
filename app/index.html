@@ -156,26 +156,33 @@ C.handlerProfileChange = async function () {
 
 
 C.handlerFavorisList = async function () {
-        // Récupérer l'ID du profil actif
-        const profileSelect = document.querySelector("#profile-select");
-        const profileId = profileSelect ? profileSelect.value : null;
+    // Récupérer l'ID du profil actif
+    const profileSelect = document.querySelector("#profile-select");
+    const profileId = profileSelect ? profileSelect.value : null;
 
-        if (!profileId) {
-          alert("Veuillez sélectionner un profil pour voir les favoris.");
-          return;
-        }
+    if (!profileId) {
+        alert("Veuillez sélectionner un profil pour voir les favoris.");
+        return;
+    }
 
-        // Récupérer les films favoris pour le profil actif
-        let favoris = await DataMovie.getFavoris(profileId);
+    // Masquer la section Featured
+    const featuredSection = document.querySelector("#featured");
+    if (featuredSection) {
+        featuredSection.style.display = "none"; // Cache la section Featured
+    }
 
-        if (!favoris || favoris.length === 0) {
-          document.querySelector("#content").innerHTML =
+    // Récupérer les films favoris pour le profil actif
+    let favoris = await DataMovie.getFavoris(profileId);
+
+    if (!favoris || favoris.length === 0) {
+        document.querySelector("#content").innerHTML =
             "<p>Aucun film ajouté aux favoris.</p>";
-        } else {
-          // Afficher les films favoris
-          V.renderMovie(favoris);
-        }
-      };
+    } else {
+        // Afficher les films favoris
+        V.renderMovie(favoris);
+    }
+};
+
     C.handlerFavoris = async function (id) {
         console.log(`C.handlerFavoris appelé avec movieId=${id}`);
         const profileSelect = document.querySelector("#profile-select");
