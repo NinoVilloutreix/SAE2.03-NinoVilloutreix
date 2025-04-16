@@ -1,0 +1,31 @@
+<div id="big_parent">
+  <div class="bg" onclick="offclick">
+  </div>
+  <div class="detail">
+    <div class="detail__left">
+      <h2 class="detail__left-title">{{name}}</h2>
+      <div>
+        <h2 class="detail__left-real">{{real}}</h2>
+        <img class="detail__left-img"
+          src="https://mmi.unilim.fr/~villoutreix8/SAE2.03-NinoVilloutreix/server/images/{{image}}">
+        <h2 class="detail__left-annee">{{annee}}</h2>
+      </div>
+    </div>
+    <div class="detail__right">
+      <h2 class="detail_right-pegi">PEGI {{pegi}}</h2>
+      <div class="detail__right-card">
+        <div class="detail__right-card-text">
+          <h2 class="detail__right-card-text-length">{{categorie}}</h2>
+          <p class="detail__right-card-text-description">{{description}}</p>
+        </div>
+        <div class="detail__right-card-trailer">
+          <iframe class="detail__right-card-trailer-vid" width="1250" height="703" src="{{trailer}}"
+            title="🚸 WALL-E Bande Annonce VF 2008 HD" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

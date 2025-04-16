@@ -164,7 +164,7 @@ function searchMoviesController() {
       $movies = searchMovies($query);
 
       if (!$movies) {
-          error_log("Aucun film trouvé pour la recherche : $query.");
+          // error_log("Aucun film trouvé pour la recherche : $query.");
           return [];
       }
 

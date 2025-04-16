@@ -1,0 +1,78 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--color-gray-dark);
+  color: var(--color-fg);
+}
+
+.navbar__logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.navbar__list {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar__item {
+  font-size: 1rem;
+  color: var(--color-fg);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.navbar__item:hover {
+  color: var(--color-primary);
+}
+
+.navbar__profile {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navbar__label {
+  font-size: 0.9rem;
+  color: var(--color-fg);
+}
+
+.navbar__select, .navbar__search {
+  padding: 0.5rem;
+  border: 1px solid var(--color-gray-light);
+  border-radius: 1rem;
+  background-color: var(--color-gray);
+  color: var(--color-gray-light);
+  font-size: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navbar__search{
+  width: 20vw;
+}
+
+.navbar__search::placeholder{
+  color: var(--color-bright);
+  /* font-style: italic; */
+}
+
+.navbar__select:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.navbar__picture {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--color-primary);
+}
