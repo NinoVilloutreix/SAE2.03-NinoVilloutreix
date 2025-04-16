@@ -39,6 +39,35 @@
     };
 
 
+C.handlerSearchToggle = function () {
+  const searchContainer = document.querySelector(".navbar__search");
+
+  if (!searchContainer) {
+    console.error("Le conteneur de recherche est introuvable !");
+    return;
+  }
+  searchContainer.classList.add("navbar__search--visible");
+};
+
+C.handlerCloseSearch = function () {
+  const searchContainer = document.querySelector(".navbar__search");
+
+  if (!searchContainer) {
+    console.error("Le conteneur de recherche est introuvable !");
+    return;
+  }
+  searchContainer.classList.remove("navbar__search--visible");
+};
+
+
+
+
+
+
+
+
+
+
 
     C.handlerDetail = async function (movieId) {
     // console.log("Movie ID passed to handlerDetail:", movieId);

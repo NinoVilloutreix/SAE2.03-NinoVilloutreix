@@ -1,23 +1,37 @@
 <nav class="navbar font-sans">
-  <ul class="navbar__list">
-    <li class="navbar__item" onclick="{{hAbout}}">About</li>
-    <li class="navbar__item" onclick="window.location.href='index.html'">Home</li>
-    <li class="navbar__item" onclick="{{fav}}">Favoris</li>
-    <a class="navbar__item" href="https://filmrise.com/">Site original</a>
-  </ul>
-  <input
-  class="navbar__search"
-  required
-  type="text"
-  name="name"
-  placeholder="Qu'est-ce qu'on regarde?"
-  onkeyup="{{handlerSearch}}"
-  />
-  <div class="navbar__profile">
-    <label class="navbar__label">Profil :</label>
-    <select id="profile-select" class="navbar__select" onchange="{{handler}}">
-      {{options}}
-    </select>
-    <img id="profile-picture" class="navbar__picture" src="../server/images/{{image}}" alt="Photo de profil" />
+  <div class="navbar__grid">
+    <ul class="navbar__grid-list">
+      <li class="navbar__grid-item" onclick="{{hAbout}}">About</li>
+      <li class="navbar__grid-item" onclick="window.location.href='index.html'">Home</li>
+      <li class="navbar__grid-item" onclick="{{fav}}">Favoris</li>
+      <a class="navbar__grid-item" href="https://filmrise.com/">Site original</a>
+    </ul>
+    <button id="toggle-search" class="navbar__grid-toggle-search" onclick="{{handlerSearchToggle}}">
+      🔍 Rechercher
+    </button>
+    
+    
+    <div class="navbar__grid-profile">
+      <label class="navbar__grid-label">Profil :</label>
+      <select id="profile-select" class="navbar__grid-select" onchange="{{handler}}">
+        {{options}}
+      </select>
+      <img id="profile-picture" class="navbar__grid-picture" src="../server/images/{{image}}" alt="Photo de profil" />
+    </div>
+    <img class="navbar__grid-logo" src="../server/images/Filmrise.png">
+  </div>
+
+  <div class="navbar__search">
+    <input
+      class="navbar__search-field"
+      required
+      type="text"
+      name="name"
+      placeholder="Que recherchez-vous?"
+      onkeyup="{{handlerSearch}}"
+    />
+    <button id="close-search" class="navbar__search-close" onclick="{{handlerCloseSearch}}">
+      ❌
+    </button>
   </div>
 </nav>
