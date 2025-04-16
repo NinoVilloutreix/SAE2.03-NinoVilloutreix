@@ -19,8 +19,6 @@ Featured.format = function (feature) {
   card = card.replace("{{name}}", feature.name);
   card = card.replace("{{description}}", feature.description);
   card = card.replace("{{onclick}}", `C.handlerDetail(${feature.id})`);
-  card = card.replace("{{handlerFavoris}}", `C.handlerFavoris(${feature.id})`);
-  card = card.replace("{{handlerDelete}}", `C.handlerdeleteFavoris(${feature.id})`);
   // card = card.replace("{{handlerCarouselLeft}}", `C.handlerCarouselLeft()`);
   // card = card.replace("{{handlerCarouselRight}}", `C.handlerCarouselRight()`);
 
@@ -42,27 +40,11 @@ Featured.formatMany = function (features) {
     card = card.replace("{{name}}", feature.name);
     card = card.replace("{{description}}", feature.description);
     card = card.replace("{{onclick}}", `C.handlerDetail(${feature.id})`);
-    card = card.replace("{{handlerFavoris}}", `C.handlerFavoris(${feature.id})`);
-    card = card.replace("{{handlerDelete}}", `C.handlerdeleteFavoris(${feature.id})`);
     cardsHTML += card; // Ajoute chaque carte au contenu
   }
 
   return cardsHTML; // Retourne toutes les cards générées
 };
-
-
-document.querySelectorAll('.feature__heart').forEach((heart) => {
-  heart.addEventListener('click', (event) => {
-    const element = event.target;
-
-    element.classList.add('feature__heart-clicked');
-
-    console.log("soir")
-    setTimeout(() => {
-      element.classList.remove('feature__heart-clicked');
-    }, 1000);
-  });
-});
 
 
 // ############################################################################################################

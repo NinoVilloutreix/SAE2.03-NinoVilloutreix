@@ -1,42 +1,89 @@
-.carousel {
+
+
+.featured{
   position: relative;
-  height: calc(100vw * 0.5625);
+  height: 45rem;
   width: 100%;
-  overflow: hidden;
+  padding-inline: 15rem;
   border: red solid 1px;
 }
 
-.carousel__track-container {
+
+
+.featured__carousel {
+  position: relative;
+  height: 45rem;
+  width: 100%;
+  overflow: hidden;
+  border: blue solid 1px;
+}
+
+.featured__carousel-track-container {
   overflow: hidden;
   width: 100%;
 }
 
-.carousel__track {
+.featured__carousel-track {
   display: flex;
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.5s ease-out;
 }
 
-.carousel__button {
+.featured__carousel-button {
   position: absolute;
   top: 50%;
+  z-index: 100;
   transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
+  scale: 300%;
+  /* border: red solid 1px; */
   cursor: pointer;
-  padding: 0.5rem 1rem;
-  z-index: 10;
+  opacity: 75%;
+  transition: opacity 0.3s ease;
+}
+.featured__carousel-button:hover {
+  opacity: 100%;
+}
+.featured__carousel-button-left {
+  left: 4rem;
+  rotate: -90deg;
 }
 
-.carousel__button--left {
-  left: 1rem;
-}
-
-.carousel__button--right {
-  right: 1rem;
+.featured__carousel-button-right {
+  right: 4rem;
+  rotate: 90deg;
 }
 
 .featured-card {
   flex: 0 0 100%; /* Chaque carte occupe 100% de la largeur du carousel */
   max-width: 100%;
+}
+
+
+.featured-card__click-img-c {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.featured-card__click-img {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.featured-card__click-name{
+  position: relative;
+}
+
+
+
+
+.featured-card__click-name-text{
+  position: absolute;
+  top:25%;
+  left:50%;
+  font-size: 5rem;
+  color: black;
 }

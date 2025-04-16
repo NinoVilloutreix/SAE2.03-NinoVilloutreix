@@ -1,10 +1,15 @@
-<section id="featured" class="carousel"></section>
-  <button class="carousel__button carousel__button--left" onclick="handlerCarouselLeft()">&lt;</button>
-  <div class="carousel__track-container">
-    <div class="carousel__track">
-      {{cards}}
+<section id="featured" class="featured">
+  <section id="featured" class="featured__carousel">
+    <svg class="featured__carousel-button featured__carousel-button-left" onclick="handlerCarouselLeft()" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+      <path d="M7 13.5V0.5M7 0.5L10.5 4M7 0.5L3.5 4" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <div class="featured__carousel-track-container">
+      <div class="featured__carousel-track">
+        {{cards}}
+      </div>
     </div>
-  </div>
-  <button class="carousel__button carousel__button--right" onclick="handlerCarouselRight()">&gt;</button>
+    <svg class="featured__carousel-button featured__carousel-button-right" onclick="handlerCarouselRight()" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+      <path d="M7 13.5V0.5M7 0.5L10.5 4M7 0.5L3.5 4" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </section>
 </section>
-

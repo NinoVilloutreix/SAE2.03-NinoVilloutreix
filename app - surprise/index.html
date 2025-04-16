@@ -242,7 +242,7 @@ C.handlerFavorisList = async function () {
       };
 
       C.handlerCarouselLeft = function () {
-  const track = document.querySelector(".carousel__track");
+  const track = document.querySelector(".feature__carousel-track");
   const slides = Array.from(track.children);
   const slideWidth = slides[0].getBoundingClientRect().width;
 
@@ -260,7 +260,7 @@ C.handlerFavorisList = async function () {
 };
 
 C.handlerCarouselRight = function () {
-  const track = document.querySelector(".carousel__track");
+  const track = document.querySelector(".featured__carousel-track");
   const slides = Array.from(track.children);
   const slideWidth = slides[0].getBoundingClientRect().width;
 
@@ -281,9 +281,9 @@ window.handlerCarouselLeft = C.handlerCarouselLeft;
 //#########################################################################################################################
 
 C.getFeaturedMovies = async function () {
-  const track = document.querySelector(".carousel__track");
+  const track = document.querySelector(".featured__carousel-track");
   if (!track) {
-    console.error("L'élément .carousel__track est introuvable dans le DOM.");
+    console.error("L'élément .featured__carousel-track est introuvable dans le DOM.");
     return;
   }
 
@@ -393,10 +393,10 @@ C.handlerSearch = async function () {
 
 
 C.initCarousel = function () {
-  const track = document.querySelector(".carousel__track");
+  const track = document.querySelector(".featured__carousel-track");
   const slides = Array.from(track.children);
-  const nextButton = document.querySelector(".carousel__button--right");
-  const prevButton = document.querySelector(".carousel__button--left");
+  const nextButton = document.querySelector(".featured__carousel-button-right");
+  const prevButton = document.querySelector(".featured__carousel-button-left");
 
   let currentIndex = 0;
 
