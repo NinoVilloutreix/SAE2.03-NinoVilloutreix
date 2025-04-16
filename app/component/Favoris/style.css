@@ -1,12 +1,12 @@
 #content {
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
   flex-direction: row;
-  gap: 5rem;
-  align-items: center;
-  padding: 1rem 3rem;
-  color: var(--color-fg);
-  background-color: var(--color-grey-bg);
+  gap: 5rem 1rem;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: center;
+  /* border: purple solid 1px; */
 }
 
 .movie {

@@ -27,7 +27,7 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  gap: 5rem 1rem;
+  /* gap: 5rem 1rem; */
   width: 100%;
   align-items: flex-start;
   /* border: green solid 1px; */

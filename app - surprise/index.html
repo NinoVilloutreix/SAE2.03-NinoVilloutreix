@@ -242,7 +242,7 @@ C.handlerFavorisList = async function () {
       };
 
       C.handlerCarouselLeft = function () {
-  const track = document.querySelector(".feature__carousel-track");
+  const track = document.querySelector(".featured__carousel-track");
   const slides = Array.from(track.children);
   const slideWidth = slides[0].getBoundingClientRect().width;
 
@@ -253,9 +253,12 @@ C.handlerFavorisList = async function () {
   // Calculer la nouvelle position
   const newX = currentX + slideWidth;
 
-  // Limiter le défilement au début des slides
-  if (newX <= 0) {
-    track.style.transform = `translateX(${newX}px)`;
+  // Si on est à la première slide, revenir à la dernière
+  if (newX > 0) {
+    const lastSlidePosition = -(slides.length - 1) * slideWidth;
+    track.style.transform = `translateX(${lastSlidePosition}px)`; // Aller à la dernière slide
+  } else {
+    track.style.transform = `translateX(${newX}px)`; // Déplacer normalement
   }
 };
 
@@ -271,9 +274,11 @@ C.handlerCarouselRight = function () {
   // Calculer la nouvelle position
   const newX = currentX - slideWidth;
 
-  // Limiter le défilement à la fin des slides
-  if (Math.abs(newX) < slides.length * slideWidth) {
-    track.style.transform = `translateX(${newX}px)`;
+  // Si on est à la dernière slide, revenir à la première
+  if (Math.abs(newX) >= slides.length * slideWidth) {
+    track.style.transform = `translateX(0px)`; // Revenir à la première slide
+  } else {
+    track.style.transform = `translateX(${newX}px)`; // Déplacer normalement
   }
 };
 window.handlerCarouselRight = C.handlerCarouselRight;
@@ -399,33 +404,56 @@ C.initCarousel = function () {
   const prevButton = document.querySelector(".featured__carousel-button-left");
 
   let currentIndex = 0;
+  let autoScrollInterval;
 
   const updateCarousel = () => {
     const slideWidth = slides[0].getBoundingClientRect().width;
     track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
   };
 
+  const startAutoScroll = () => {
+    // Arrêter l'intervalle précédent s'il existe
+    clearInterval(autoScrollInterval);
+
+    // Démarrer un nouvel intervalle
+    autoScrollInterval = setInterval(() => {
+      if (currentIndex < slides.length - 1) {
+        currentIndex++;
+      } else {
+        currentIndex = 0; // Revenir à la première slide
+      }
+      updateCarousel();
+    }, 5000); // 5000 ms = 5 secondes
+  };
+
   nextButton.addEventListener("click", () => {
     if (currentIndex < slides.length - 1) {
       currentIndex++;
-      updateCarousel();
+    } else {
+      currentIndex = 0; // Revenir à la première slide
     }
+    updateCarousel();
+    startAutoScroll(); // Reset du défilement automatique
   });
 
   prevButton.addEventListener("click", () => {
     if (currentIndex > 0) {
       currentIndex--;
-      updateCarousel();
+    } else {
+      currentIndex = slides.length - 1; // Aller à la dernière slide
     }
+    updateCarousel();
+    startAutoScroll(); // Reset du défilement automatique
   });
 
   // Initialisation : positionner les slides côte à côte
   slides.forEach((slide, index) => {
     slide.style.left = `${index * 100}%`;
   });
+
+  // Démarrer le défilement automatique
+  startAutoScroll();
 };
-
-
 
 
 
@@ -466,6 +494,9 @@ C.start = async function () {
 };
 
     
+
+
+
 
 
     // Vue (contient tout ce qui est relatif à l'affichage)

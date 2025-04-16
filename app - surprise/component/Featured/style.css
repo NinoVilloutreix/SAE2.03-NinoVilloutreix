@@ -5,7 +5,8 @@
   height: 45rem;
   width: 100%;
   padding-inline: 15rem;
-  border: red solid 1px;
+  /* border: red solid 1px; */
+  font-family: var(--barlow-font);
 }
 
 
@@ -15,7 +16,7 @@
   height: 45rem;
   width: 100%;
   overflow: hidden;
-  border: blue solid 1px;
+  /* border: blue solid 1px; */
 }
 
 .featured__carousel-track-container {
@@ -24,6 +25,7 @@
 }
 
 .featured__carousel-track {
+  position: relative;
   display: flex;
   transition: transform 0.5s ease-out;
 }
@@ -57,6 +59,11 @@
   max-width: 100%;
 }
 
+.featured-card__click{
+  position: relative;
+}
+
+
 
 .featured-card__click-img-c {
   display: flex;
@@ -71,19 +78,14 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  /* object-position: 50% 50%; */
 }
 
 .featured-card__click-name{
-  position: relative;
-}
-
-
-
-
-.featured-card__click-name-text{
   position: absolute;
   top:25%;
-  left:50%;
-  font-size: 5rem;
-  color: black;
+  left:7.5%;
+  font-size: 4rem;
+  color: var(--color-white);
 }
+

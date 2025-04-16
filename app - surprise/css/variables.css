@@ -9,11 +9,13 @@
   --color-gray-dark: hsl(0, 0%, 20%);
   --ff-sans: "DM sans", sans-serif;
   --color-dark: hsl(0, 0%, 0%);
-  --color-grey-bg: hsl(0, 0%, 5%);
+  --color-grey-bg: hsl(0, 0%, 100%);
   --color-blue-detail: rgb(25, 27, 48); 
   --color-blue-detail-light: rgba(84, 89, 172, 0.5);
 
   /* Sementic Tokens */
   --color-fg: var(--color-white);
   --color-bg: var(--color-gray-dark);
+
+  --barlow-font: "Barlow", sans-serif;
 }

@@ -19,6 +19,7 @@ Featured.format = function (feature) {
   card = card.replace("{{name}}", feature.name);
   card = card.replace("{{description}}", feature.description);
   card = card.replace("{{onclick}}", `C.handlerDetail(${feature.id})`);
+
   // card = card.replace("{{handlerCarouselLeft}}", `C.handlerCarouselLeft()`);
   // card = card.replace("{{handlerCarouselRight}}", `C.handlerCarouselRight()`);
 
