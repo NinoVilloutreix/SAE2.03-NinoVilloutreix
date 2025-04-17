@@ -8,10 +8,10 @@
   background-color: var(--color-bright);
   color: var(--color-text);
   /* border: red solid 1px; */
-  height: 8.75rem;
+  height: 7.75rem;
 }
 
-.navbar__grid {
+.navbar__nav {
   display: flex;
   width: 100%;
   justify-content: space-between;
@@ -22,16 +22,16 @@
 
 
 
-.navbar__grid-list {
+.navbar__nav-list {
   display: flex;
-  gap: 2rem;
+  gap: 3rem;
   list-style: none;
   margin: 0;
   padding: 0;
   /* border: purple solid 1px; */
 }
 
-.navbar__grid-item {
+.navbar__nav-item, .navbar__nav-item-important {
   justify-self: center;
   align-self: center; 
   font-size: 1.125rem;
@@ -40,23 +40,31 @@
   cursor: pointer;
 }
 
-.navbar__grid-item:hover {
+.navbar__nav-item:hover {
   color: var(--color-text-important);
 }
 
-.navbar__grid-profile {
+
+.navbar__nav-item-important{
+  color: var(--color-text-important);
+}
+
+
+
+
+.navbar__nav-profile {
   display: flex;
   align-items: center;
   gap: 1rem;
   /* border: green solid 1px; */
 }
 
-.navbar__grid-label {
+.navbar__nav-label {
   font-size: 1.125rem;
   color: var(--color-text);
 }
 
-.navbar__grid-select, .navbar__search {
+.navbar__nav-select, .navbar__search {
   height: auto; /* S'adapte à la hauteur du contenu */
   width: auto; /* S'adapte à la largeur du contenu */
   padding: 0.5rem;
@@ -102,19 +110,23 @@
   border: none;
   outline: none;
 }
-.navbar__grid-search-close {
-  padding: 0.5rem 1rem;
-  font-size: 1.2rem;
-  background-color: green;
-  color: white;
+
+
+.navbar__nav-search-close, .navbar__list-close{
+  padding: 1rem 1rem;
   border: none;
-  cursor: pointer;
-  margin-left: 0.5rem;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
+  transition: scale 0.3s ease;
+  border: red solid 1px;
+} 
+
+.navbar__nav-search-close path , .navbar__list-close path{
+  stroke: var(--color-text-important);
 }
-.navbar__grid-search-close:hover {
-  background-color: red;
+
+
+.navbar__nav-search-close:hover , .navbar__list-close:hover{
+  scale: 1.1;
+  cursor: pointer;
 }
 
 .navbar__search::placeholder {
@@ -123,15 +135,29 @@
 }
 
 
-.navbar__grid-toggle-search {
+.navbar__nav-toggle-search {
   /* border: orange solid 1px; */
-  width: 1.25rem;
+  width: 1.125rem;
+  min-width: 1.125rem;
   transform: rotate(90deg); /* Utilisez transform au lieu de rotate */
   justify-self: center; /* Centre l'élément horizontalement */
   align-self: center; /* Centre l'élément verticalement */
 }
 
-.navbar__grid-toggle-search:hover path {
+.navbar__nav-toggle-search:hover path {
+  stroke: var(--color-text-important); /* Change la couleur du contour */
+}
+
+.navbar__nav-toggle-list {
+  display: none;
+  width: 1.125rem;
+  min-width: 1.125rem;
+  transform: rotate(90deg); /* Utilisez transform au lieu de rotate */
+  justify-self: center; /* Centre l'élément horizontalement */
+  align-self: center; /* Centre l'élément verticalement */
+}
+
+.navbar__nav-toggle-list:hover path {
   stroke: var(--color-text-important); /* Change la couleur du contour */
 }
 
@@ -139,14 +165,12 @@
 
 
 
-
-
-.navbar__grid-select:hover {
+.navbar__nav-select:hover {
   transform: scale(1.1);
   cursor: pointer;
 }
 
-.navbar__grid-picture {
+.navbar__nav-picture {
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -155,24 +179,48 @@
   overflow: hidden;
 }
 
-.navbar__grid-picture-img{
+.navbar__nav-picture-img{
   object-fit: cover;
   width: 100%;
   height: 100%;
 }
 
-.navbar__grid-logo {
+.navbar__nav-logo {
   /* border: royalblue solid 1px; */
-  width:11.5rem;
+  width:10.25rem;
 }
 
 
-@media (width < 128.25rem) {
-  
+.navbar__nav-list-hidden {
+  padding-inline: 8.16667%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  gap: 5rem;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bright);
+  transition: transform 0.3s ease-in;
+  z-index: 10;
+  transform: translateY(-100%);
+  border: purple solid 1px;
 }
-@media (width < 88.125rem) {
 
+.navbar__nav-list-hidden--visible {
+  transform: translateY(0%); 
 }
-@media (width < 59.125rem) {
 
+
+.no-scroll {
+  overflow: hidden;
+}
+
+.navbar__list-close{
+  position: absolute;
+  top: 3rem;
+  right: 3rem;
 }

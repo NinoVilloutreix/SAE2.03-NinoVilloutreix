@@ -60,6 +60,31 @@ C.handlerCloseSearch = function () {
 };
 
 
+C.handlerListToggle = function () {
+  const listContainer = document.querySelector(".navbar__nav-list-hidden");
+
+  if (!listContainer) {
+    console.error("Le conteneur de la liste est introuvable !");
+    return;
+  }
+
+  // Ajouter la classe pour afficher la liste et désactiver le scroll
+  listContainer.classList.add("navbar__nav-list-hidden--visible");
+  document.body.classList.add("no-scroll"); // Désactive le scroll
+};
+
+C.handlerCloseList = function () {
+  const listContainer = document.querySelector(".navbar__nav-list-hidden");
+
+  if (!listContainer) {
+    console.error("Le conteneur de la liste est introuvable !");
+    return;
+  }
+
+  // Retirer la classe pour masquer la liste et réactiver le scroll
+  listContainer.classList.remove("navbar__nav-list-hidden--visible");
+  document.body.classList.remove("no-scroll"); // Réactive le scroll
+};
 
 
 

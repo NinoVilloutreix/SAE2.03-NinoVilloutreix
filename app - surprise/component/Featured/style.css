@@ -1,21 +1,26 @@
 
 
-.featured{
-  position: relative;
-  height: 45rem;
+.featured {
+  padding-inline: clamp(0rem, 4vw, 10rem);
+  max-width: 1600px;
   width: 100%;
-  padding-inline: 15rem;
-  font-family: var(--barlow-font);
+  margin: 0 auto;
+}
+
+@media (max-width: 1420px) {
+  .featured {
+    max-width: 1200%;
+  }
 }
 
 
 
 .featured__carousel {
   position: relative;
-  height: 45rem;
+  height: 49.25rem;
   width: 100%;
   overflow: hidden;
-  border: blue solid 5px;
+  /* border: blue solid 5px; */
 }
 
 .featured__carousel-track-container {
@@ -82,9 +87,9 @@
 
 .featured-card__click-name{
   position: absolute;
-  top:25%;
-  left:7.5%;
-  font-size: 4rem;
-  color: var(--color-white);
+  bottom:64%;
+  left:7.50%;
+  font-size: 3.5rem;
+  color: var(--color-bright);
 }
 

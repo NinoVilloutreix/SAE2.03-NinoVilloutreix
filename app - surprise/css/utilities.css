@@ -1,3 +1,27 @@
 .font-sans {
   font-family: var(--barlow-font);
 }
+
+@media (width < 128.25rem) {
+
+}
+@media (width < 88.125rem) {
+  .featured{
+  }
+  .navbar{
+    border: red solid 1px;
+  }
+}
+@media (width < 1140px) {
+  .featured{
+  }
+  .navbar{
+    border:blue solid 1px;
+  }
+  .navbar__nav-list{
+    display: none;
+  }
+  .navbar__nav-toggle-list{
+    display: block table;
+  }
+}

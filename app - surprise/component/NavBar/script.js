@@ -23,6 +23,9 @@ NavBar.format = function (hAbout, profiles) {
   html = html.replace("{{handlerSearch}}", "C.handlerSearch()");
   html = html.replace("{{handlerSearchToggle}}", "C.handlerSearchToggle()");
   html = html.replace("{{handlerCloseSearch}}", "C.handlerCloseSearch()");
+
+  html = html.replace("{{handlerListToggle}}", "C.handlerListToggle()");
+  html = html.replace("{{handlerCloseList}}", "C.handlerCloseList()");
   return html;
 };
 

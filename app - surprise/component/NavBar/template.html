@@ -1,27 +1,32 @@
 <nav class="navbar font-sans">
-  <div class="navbar__grid">
-    <ul class="navbar__grid-list">
-      <li class="navbar__grid-item" onclick="{{hAbout}}">About</li>
-      <li class="navbar__grid-item" onclick="window.location.href='index.html'">Home</li>
-      <li class="navbar__grid-item" onclick="{{fav}}">Favoris</li>
-      <a class="navbar__grid-item" href="https://filmrise.com/">Site original</a>
-    </ul>
-
-    <svg id="toggle-search" class="navbar__grid-toggle-search" onclick="{{handlerSearchToggle}}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+  <div class="navbar__nav">
+    <svg id="toggle-search" class="navbar__nav-toggle-search" onclick="{{handlerSearchToggle}}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
       <path d="M14 14L22 22M9 16C8.08075 16 7.1705 15.8189 6.32122 15.4672C5.47194 15.1154 4.70026 14.5998 4.05025 13.9497C3.40024 13.2997 2.88463 12.5281 2.53284 11.6788C2.18106 10.8295 2 9.91925 2 9C2 8.08075 2.18106 7.1705 2.53284 6.32122C2.88463 5.47194 3.40024 4.70026 4.05025 4.05025C4.70026 3.40024 5.47194 2.88463 6.32122 2.53284C7.1705 2.18106 8.08075 2 9 2C10.8565 2 12.637 2.7375 13.9497 4.05025C15.2625 5.36301 16 7.14348 16 9C16 10.8565 15.2625 12.637 13.9497 13.9497C12.637 15.2625 10.8565 16 9 16Z" stroke="#193054" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
+
+
+    <svg id="toggle-list" class="navbar__nav-toggle-list" onclick="{{handlerListToggle}}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+      <path d="M14 14L22 22M9 16C8.08075 16 7.1705 15.8189 6.32122 15.4672C5.47194 15.1154 4.70026 14.5998 4.05025 13.9497C3.40024 13.2997 2.88463 12.5281 2.53284 11.6788C2.18106 10.8295 2 9.91925 2 9C2 8.08075 2.18106 7.1705 2.53284 6.32122C2.88463 5.47194 3.40024 4.70026 4.05025 4.05025C4.70026 3.40024 5.47194 2.88463 6.32122 2.53284C7.1705 2.18106 8.08075 2 9 2C10.8565 2 12.637 2.7375 13.9497 4.05025C15.2625 5.36301 16 7.14348 16 9C16 10.8565 15.2625 12.637 13.9497 13.9497C12.637 15.2625 10.8565 16 9 16Z" stroke="#193054" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+
+
+    <ul class="navbar__nav-list">
+      <li class="navbar__nav-item" onclick="{{hAbout}}">About</li>
+      <li class="navbar__nav-item" onclick="window.location.href='index.html'">Home</li>
+      <li class="navbar__nav-item-important" onclick="{{fav}}">Favoris</li>
+      <a class="navbar__nav-item" href="https://filmrise.com/">Site original</a>
+    </ul>
     
-    
-    <div class="navbar__grid-profile">
-      <label class="navbar__grid-label">Profil :</label>
-      <select id="profile-select" class="navbar__grid-select" onchange="{{handler}}">
+    <div class="navbar__nav-profile">
+      <label class="navbar__nav-label">Profil :</label>
+      <select id="profile-select" class="navbar__nav-select" onchange="{{handler}}">
         {{options}}
       </select>
-      <div class="navbar__grid-picture">
-        <img id="profile-picture" class="navbar__grid-picture-img" src="../server/images/{{image}}" alt="Photo de profil" />
+      <div class="navbar__nav-picture">
+        <img id="profile-picture" class="navbar__nav-picture-img" src="../server/images/{{image}}" alt="Photo de profil" />
       </div>
     </div>
-    <img class="navbar__grid-logo" src="../server/images/Filmrise.png">
+    <img class="navbar__nav-logo" src="../server/images/Filmrise.png">
   </div>
 
   <div class="navbar__search">
@@ -33,8 +38,22 @@
       placeholder="Que recherchez-vous?"
       onkeyup="{{handlerSearch}}"
     />
-    <button id="close-search" class="navbar__search-close" onclick="{{handlerCloseSearch}}">
-      ❌
-    </button>
+    <svg id="close-search" class="navbar__search-close" onclick="{{handlerCloseSearch}}" xmlns="http://www.w3.org/2000/svg" width="161" height="161" viewBox="0 0 161 161" fill="none">
+      <path d="M156 80.5C156 38.8025 122.198 5 80.5 5M80.5 156C38.8025 156 5 122.198 5 80.5" stroke="white" stroke-width="10"/>
+      <path d="M59.9424 103.827L105.827 57.9424" stroke="white" stroke-width="7"/>
+      <path d="M105.827 103.827L59.9424 57.9424" stroke="white" stroke-width="7"/>
+    </svg>
   </div>
+
+  <ul class="navbar__nav-list-hidden">
+    <li class="navbar__nav-item-hidden" onclick="{{hAbout}}">About</li>
+    <li class="navbar__nav-item-hidden" onclick="window.location.href='index.html'">Home</li>
+    <li class="navbar__nav-item-hidden-important" onclick="{{fav}}">Favoris</li>
+    <a class="navbar__nav-item-hidden" href="https://filmrise.com/">Site original</a>
+    <svg id="close-search" class="navbar__list-close" onclick="{{handlerCloseList}}" xmlns="http://www.w3.org/2000/svg" width="161" height="161" viewBox="0 0 161 161" fill="none"></svg>
+      <path d="M156 80.5C156 38.8025 122.198 5 80.5 5M80.5 156C38.8025 156 5 122.198 5 80.5" stroke="white" stroke-width="10"/>
+      <path d="M59.9424 103.827L105.827 57.9424" stroke="white" stroke-width="7"/>
+      <path d="M105.827 103.827L59.9424 57.9424" stroke="white" stroke-width="7"/>
+    </svg>
+  </ul>
 </nav>
