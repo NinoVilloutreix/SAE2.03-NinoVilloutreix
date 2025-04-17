@@ -6,6 +6,7 @@
   padding: 1rem 3rem;
   color: var(--color-fg);
   background-color: var(--color-grey-bg);
+  z-index: 0;
 }
 
 .movie {

@@ -25,3 +25,15 @@
     display: block table;
   }
 }
+@media (width < 800px) {
+  .navbar__search-field {
+    font-size: 1.5rem;
+  }
+  .navbar{
+    flex-direction: column;
+    border: blue solid 1px;
+  }
+  .navbar__nav{
+    flex-direction: column;
+  }
+}

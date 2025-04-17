@@ -1,3 +1,13 @@
+#header{
+  z-index: 1000;
+}
+
+
+
+
+
+
+
 .navbar {
   padding-inline: 8.16667%;
   display: flex;
@@ -19,10 +29,14 @@
   align-items: center;
   border: red solid 1px;
 }
+.navbar__nav-section{
+  display: flex;
+  border: green solid 1px;
+  flex-direction: row;
+}
 
 
-
-.navbar__nav-list {
+.navbar__nav-section-list {
   display: flex;
   gap: 3rem;
   list-style: none;
@@ -31,7 +45,7 @@
   /* border: purple solid 1px; */
 }
 
-.navbar__nav-item, .navbar__nav-item-important {
+.navbar__nav-section-item, .navbar__nav-section-item-important {
   justify-self: center;
   align-self: center; 
   font-size: 1.125rem;
@@ -40,31 +54,31 @@
   cursor: pointer;
 }
 
-.navbar__nav-item:hover {
+.navbar__nav-section-item:hover {
   color: var(--color-text-important);
 }
 
 
-.navbar__nav-item-important{
+.navbar__nav-section-item-important{
   color: var(--color-text-important);
 }
 
 
 
 
-.navbar__nav-profile {
+.navbar__nav-pics-profile {
   display: flex;
   align-items: center;
   gap: 1rem;
   /* border: green solid 1px; */
 }
 
-.navbar__nav-label {
+.navbar__nav-pics-label {
   font-size: 1.125rem;
   color: var(--color-text);
 }
 
-.navbar__nav-select, .navbar__search {
+.navbar__nav-pics-select, .navbar__search {
   height: auto; /* S'adapte à la hauteur du contenu */
   width: auto; /* S'adapte à la largeur du contenu */
   padding: 0.5rem;
@@ -97,6 +111,8 @@
   z-index: 10;
   transform: translateY(-100%);
   border: purple solid 1px;
+  padding-block: 1rem;
+  padding-left: 2rem;
 }
 
 .navbar__search--visible {
@@ -111,20 +127,36 @@
   outline: none;
 }
 
+.navbar__search-close{
+  display: flex;
+  height: 50%;
+}
 
-.navbar__nav-search-close, .navbar__list-close{
-  padding: 1rem 1rem;
+.navbar__search-close, .navbar__list-close{
   border: none;
   transition: scale 0.3s ease;
-  border: red solid 1px;
 } 
 
-.navbar__nav-search-close path , .navbar__list-close path{
-  stroke: var(--color-text-important);
+.navbar__search-close path{
+  stroke: var(--color-text);
+  opacity: 35%;
+}
+
+.navbar__list-close{
+  width: 5rem;
+}
+.navbar__list-close path{
+  stroke: var(--color-text);
+  opacity: 35%;
+  transition: opacity 0.3s ease;
+}
+.navbar__list-close:hover path{
+  opacity: 100%;
 }
 
 
-.navbar__nav-search-close:hover , .navbar__list-close:hover{
+
+.navbar__search-close:hover , .navbar__list-close:hover{
   scale: 1.1;
   cursor: pointer;
 }
@@ -135,7 +167,7 @@
 }
 
 
-.navbar__nav-toggle-search {
+.navbar__nav-section-toggle-search {
   /* border: orange solid 1px; */
   width: 1.125rem;
   min-width: 1.125rem;
@@ -144,33 +176,37 @@
   align-self: center; /* Centre l'élément verticalement */
 }
 
-.navbar__nav-toggle-search:hover path {
+.navbar__nav-section-toggle-search:hover path {
   stroke: var(--color-text-important); /* Change la couleur du contour */
+  cursor: pointer;
 }
 
-.navbar__nav-toggle-list {
+.navbar__nav-section-toggle-list {
   display: none;
   width: 1.125rem;
   min-width: 1.125rem;
-  transform: rotate(90deg); /* Utilisez transform au lieu de rotate */
   justify-self: center; /* Centre l'élément horizontalement */
   align-self: center; /* Centre l'élément verticalement */
 }
 
-.navbar__nav-toggle-list:hover path {
-  stroke: var(--color-text-important); /* Change la couleur du contour */
+.navbar__nav-section-toggle-list:hover path {
+  cursor: pointer;
 }
 
 
 
-
+.navbar__nav-pics{
+  border: salmon solid 1px;
+  display: flex;
+  flex-direction: row;
+}
 
 .navbar__nav-select:hover {
   transform: scale(1.1);
   cursor: pointer;
 }
 
-.navbar__nav-picture {
+.navbar__nav-pics-picture {
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -179,19 +215,28 @@
   overflow: hidden;
 }
 
-.navbar__nav-picture-img{
+.navbar__nav-picture-pics-img{
   object-fit: cover;
   width: 100%;
   height: 100%;
 }
 
-.navbar__nav-logo {
+.navbar__nav-pics-logo {
   /* border: royalblue solid 1px; */
   width:10.25rem;
 }
 
 
+.navbar__nav-pics-logo-img {
+  /* border: royalblue solid 1px; */
+  width:100%;
+}
+
+.navbar__nav-logo:hover {
+  cursor: pointer;
+}
 .navbar__nav-list-hidden {
+  z-index: 500;
   padding-inline: 8.16667%;
   position: absolute;
   top: 0;
