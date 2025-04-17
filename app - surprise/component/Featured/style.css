@@ -3,11 +3,10 @@
 }
 
 .featured {
-  padding-inline: clamp(1rem, 4vw, 12rem); /* Padding dynamique */
-  max-width: 88rem; /* Largeur maximale */
+  max-width: 97.5rem; /* Largeur maximale */
   width: 100%; /* Largeur dynamique */
   margin: 0 auto; /* Centrage horizontal */
-  aspect-ratio: 16 / 8; /* Ratio largeur/hauteur */
+  aspect-ratio: 16 / 9; /* Ratio largeur/hauteur */
   display: flex; /* Permet de gérer le contenu interne */
   align-items: center; /* Centre verticalement le contenu */
   justify-content: center; /* Centre horizontalement le contenu */
@@ -90,8 +89,8 @@
 
 .featured-card__click-name{
   position: absolute;
-  bottom:64%;
+  bottom:68%;
   left:7.50%;
-  font-size: 3.5rem;
+  font-size: calc(2rem + 1vw);
   color: var(--color-bright);
 }

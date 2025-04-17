@@ -5,17 +5,21 @@
   gap: 3rem;
   width: 100%;
   align-items: center;
-  padding: 1rem 3rem;
+  padding: 1rem 0rem;
   color: var(--color-fg);
   z-index: 0;
 }
 
 .categorie__title {
-  color: var(--color-white);
+  margin-left: 2rem;
+  font-size: 3rem;
   margin: 0;
   padding: 0rem;
-  font-size: 2rem;
+  background: linear-gradient(90deg, #E50C30 0%, #E50C30 0%, #152849 10%, #152849 100%);
+  -webkit-background-clip: text;
+  color: transparent;
 }
+
 
 .categorie {
   display: flex;
@@ -25,14 +29,12 @@
 }
 
 .categorie__movies {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  /* gap: 5rem 1rem; */
+  /* border: red solid 1px; */
+  display: grid; /* Active le mode grille */
+  grid-template-columns: repeat(2, 1fr); /* Crée deux colonnes de largeur égale */
   width: 100%;
-  align-items: flex-start;
-  /* border: green solid 1px; */
 }
+
 
 .categorie__ul-svg {
   fill: var(--color-white);

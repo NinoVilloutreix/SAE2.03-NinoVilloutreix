@@ -34,4 +34,7 @@
     width:5rem;
     flex-shrink: 0;
   }
+  .categorie__movies {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
