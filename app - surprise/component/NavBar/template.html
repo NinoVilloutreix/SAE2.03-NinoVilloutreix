@@ -2,45 +2,53 @@
   <div class="navbar__nav">
 
 
-    <svg id="toggle-list" class="navbar__nav-toggle-list" onclick="{{handlerListToggle}}"
-      xmlns="http://www.w3.org/2000/svg" width="16" height="14" viewBox="0 0 16 14" fill="none">
-      <path
-        d="M0 1C0 0.734784 0.105357 0.48043 0.292893 0.292893C0.48043 0.105357 0.734784 0 1 0H15C15.2652 0 15.5196 0.105357 15.7071 0.292893C15.8946 0.48043 16 0.734784 16 1C16 1.26522 15.8946 1.51957 15.7071 1.70711C15.5196 1.89464 15.2652 2 15 2H1C0.734784 2 0.48043 1.89464 0.292893 1.70711C0.105357 1.51957 0 1.26522 0 1ZM0 7C0 6.73478 0.105357 6.48043 0.292893 6.29289C0.48043 6.10536 0.734784 6 1 6H15C15.2652 6 15.5196 6.10536 15.7071 6.29289C15.8946 6.48043 16 6.73478 16 7C16 7.26522 15.8946 7.51957 15.7071 7.70711C15.5196 7.89464 15.2652 8 15 8H1C0.734784 8 0.48043 7.89464 0.292893 7.70711C0.105357 7.51957 0 7.26522 0 7ZM1 12C0.734784 12 0.48043 12.1054 0.292893 12.2929C0.105357 12.4804 0 12.7348 0 13C0 13.2652 0.105357 13.5196 0.292893 13.7071C0.48043 13.8946 0.734784 14 1 14H15C15.2652 14 15.5196 13.8946 15.7071 13.7071C15.8946 13.5196 16 13.2652 16 13C16 12.7348 15.8946 12.4804 15.7071 12.2929C15.5196 12.1054 15.2652 12 15 12H1Z"
-        fill="#193054" />
-    </svg>
-
+    <a class="navbar__nav-logo">
+      <img class="navbar__nav-logo-img" href="onclick=" window.location.href='index.html'
+        src="../server/images/Filmrise.png">
+    </a>
+    <div class="navbar__nav-profile">
+      <label class="navbar__nav-profile-label">Profil :</label>
+      <select id="profile-select" class="navbar__nav-profile-select" onchange="{{handler}}">
+        {{options}}
+      </select>
+      <div class="navbar__nav-profile-picture">
+        <img id="profile-picture" class="navbar__nav-profile-picture-img" src="../server/images/{{image}}"
+          alt="Photo de profil" />
+      </div>
+    </div>
     <div class="navbar__nav-section">
-      <svg id="toggle-search" class="navbar__nav-section-toggle-search" onclick="{{handlerSearchToggle}}"
-        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
-        <path
-          d="M14 14L22 22M9 16C8.08075 16 7.1705 15.8189 6.32122 15.4672C5.47194 15.1154 4.70026 14.5998 4.05025 13.9497C3.40024 13.2997 2.88463 12.5281 2.53284 11.6788C2.18106 10.8295 2 9.91925 2 9C2 8.08075 2.18106 7.1705 2.53284 6.32122C2.88463 5.47194 3.40024 4.70026 4.05025 4.05025C4.70026 3.40024 5.47194 2.88463 6.32122 2.53284C7.1705 2.18106 8.08075 2 9 2C10.8565 2 12.637 2.7375 13.9497 4.05025C15.2625 5.36301 16 7.14348 16 9C16 10.8565 15.2625 12.637 13.9497 13.9497C12.637 15.2625 10.8565 16 9 16Z"
-          stroke="#193054" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" />
-      </svg>
-
       <ul class="navbar__nav-section-list">
-        <li class="navbar__nav-section-item" onclick="{{hAbout}}">About</li>
-        <li class="navbar__nav-section-item" onclick="window.location.href='index.html'">Home</li>
-        <li class="navbar__nav-section-item-important" onclick="{{fav}}">Favoris</li>
-        <a class="navbar__nav-section-item" href="https://filmrise.com/">Site original</a>
+        <li class="navbar__nav-section-list-item" onclick="{{hAbout}}">About</li>
+        <li class="navbar__nav-section-list-item" onclick="window.location.href='index.html'">Home</li>
+        <li class="navbar__nav-section-list-item-important" onclick="{{fav}}">Favoris</li>
+        <a class="navbar__nav-section-list-item" href="https://filmrise.com/">Site original</a>
+
+        <svg id="icon-search" class="navbar__nav-section-list-search" onclick="{{handlerSearchToggle}}"
+          xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+          <path
+            d="M14 14L22 22M9 16C8.08075 16 7.1705 15.8189 6.32122 15.4672C5.47194 15.1154 4.70026 14.5998 4.05025 13.9497C3.40024 13.2997 2.88463 12.5281 2.53284 11.6788C2.18106 10.8295 2 9.91925 2 9C2 8.08075 2.18106 7.1705 2.53284 6.32122C2.88463 5.47194 3.40024 4.70026 4.05025 4.05025C4.70026 3.40024 5.47194 2.88463 6.32122 2.53284C7.1705 2.18106 8.08075 2 9 2C10.8565 2 12.637 2.7375 13.9497 4.05025C15.2625 5.36301 16 7.14348 16 9C16 10.8565 15.2625 12.637 13.9497 13.9497C12.637 15.2625 10.8565 16 9 16Z"
+            stroke="#193054" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
       </ul>
     </div>
-
-    <div class="navbar__nav-pics">
-      <div class="navbar__nav-pics-profile">
-        <label class="navbar__nav-pics-label">Profil :</label>
-        <select id="profile-select" class="navbar__nav-pics-select" onchange="{{handler}}">
-          {{options}}
-        </select>
-        <div class="navbar__nav-pics-picture">
-          <img id="profile-picture" class="navbar__nav-pics-picture-img" src="../server/images/{{image}}"
-            alt="Photo de profil" />
-        </div>
-      </div>
-      <a class="navbar__nav-pics-logo">
-        <img class="navbar__nav-pics-logo-img" href="onclick=" window.location.href='index.html'
-          src="../server/images/Filmrise.png">
-      </a>
+    <div class="navbar__nav-icon">
+      <svg id="toggle-search" class="navbar__nav-icon-search" onclick="{{handlerSearchToggle}}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+      <path
+        d="M14 14L22 22M9 16C8.08075 16 7.1705 15.8189 6.32122 15.4672C5.47194 15.1154 4.70026 14.5998 4.05025 13.9497C3.40024 13.2997 2.88463 12.5281 2.53284 11.6788C2.18106 10.8295 2 9.91925 2 9C2 8.08075 2.18106 7.1705 2.53284 6.32122C2.88463 5.47194 3.40024 4.70026 4.05025 4.05025C4.70026 3.40024 5.47194 2.88463 6.32122 2.53284C7.1705 2.18106 8.08075 2 9 2C10.8565 2 12.637 2.7375 13.9497 4.05025C15.2625 5.36301 16 7.14348 16 9C16 10.8565 15.2625 12.637 13.9497 13.9497C12.637 15.2625 10.8565 16 9 16Z"
+        stroke="#193054" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <svg id="toggle-list" class="navbar__nav-icon-list" onclick="{{handlerListToggle}}"
+        xmlns="http://www.w3.org/2000/svg" width="16" height="14" viewBox="0 0 16 14" fill="none">
+        <path
+          d="M0 1C0 0.734784 0.105357 0.48043 0.292893 0.292893C0.48043 0.105357 0.734784 0 1 0H15C15.2652 0 15.5196 0.105357 15.7071 0.292893C15.8946 0.48043 16 0.734784 16 1C16 1.26522 15.8946 1.51957 15.7071 1.70711C15.5196 1.89464 15.2652 2 15 2H1C0.734784 2 0.48043 1.89464 0.292893 1.70711C0.105357 1.51957 0 1.26522 0 1ZM0 7C0 6.73478 0.105357 6.48043 0.292893 6.29289C0.48043 6.10536 0.734784 6 1 6H15C15.2652 6 15.5196 6.10536 15.7071 6.29289C15.8946 6.48043 16 6.73478 16 7C16 7.26522 15.8946 7.51957 15.7071 7.70711C15.5196 7.89464 15.2652 8 15 8H1C0.734784 8 0.48043 7.89464 0.292893 7.70711C0.105357 7.51957 0 7.26522 0 7ZM1 12C0.734784 12 0.48043 12.1054 0.292893 12.2929C0.105357 12.4804 0 12.7348 0 13C0 13.2652 0.105357 13.5196 0.292893 13.7071C0.48043 13.8946 0.734784 14 1 14H15C15.2652 14 15.5196 13.8946 15.7071 13.7071C15.8946 13.5196 16 13.2652 16 13C16 12.7348 15.8946 12.4804 15.7071 12.2929C15.5196 12.1054 15.2652 12 15 12H1Z"
+          fill="#193054" />
+      </svg>
     </div>
+
+
+
+
+
   </div>
   <div class="navbar__search">
     <input class="navbar__search-field" required type="text" name="name" placeholder="Que recherchez-vous?"
@@ -53,7 +61,7 @@
     </svg>
   </div>
 
-  <ul class="navbar__nav-list-hidden">
+  <div class="navbar__nav-list-hidden">
     <li class="navbar__nav-item-hidden" onclick="{{hAbout}}">About</li>
     <li class="navbar__nav-item-hidden" onclick="window.location.href='index.html'">Home</li>
     <li class="navbar__nav-item-hidden-important" onclick="{{fav}}">Favoris</li>
@@ -65,5 +73,17 @@
       <path d="M59.9424 103.827L105.827 57.9424" stroke="white" stroke-width="7" />
       <path d="M105.827 103.827L59.9424 57.9424" stroke="white" stroke-width="7" />
     </svg>
-  </ul>
+
+    <div class="navbar__nav-profile-hidden">
+      <label class="navbar__nav-profile-label">Profil :</label>
+      <select id="profile-select" class="navbar__nav-profile-select" onchange="{{handler}}">
+        {{options}}
+      </select>
+      <div class="navbar__nav-profile-picture">
+        <img id="profile-picture" class="navbar__nav-profile-picture-img" src="../server/images/{{image}}"
+          alt="Photo de profil" />
+      </div>
+    </div>
+
+  </div>
 </nav>

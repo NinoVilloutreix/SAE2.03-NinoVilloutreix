@@ -5,9 +5,9 @@ let NavBar = {};
 
 NavBar.format = function (hAbout, profiles) {
   let html = template;
-  html = html.replace("{{hAbout}}", hAbout);
+  html = html.replaceAll("{{hAbout}}", hAbout);
   // console.log("NavBar format", profiles);
-  html = html.replace("{{fav}}", "C.handlerFavorisList()");
+  html = html.replaceAll("{{fav}}", "C.handlerFavorisList()");
 
   let options = `<option value="">Choisir un profil</option>`; // Option par défaut
   for (let i = 0; i < profiles.length; i++) {
@@ -17,15 +17,15 @@ NavBar.format = function (hAbout, profiles) {
 
   let image = profiles[0]?.avatar || "";
 
-  html = html.replace("{{options}}", options);
-  html = html.replace("{{image}}", image);
-  html = html.replace("{{handler}}", "C.handlerProfileChange(this)");
-  html = html.replace("{{handlerSearch}}", "C.handlerSearch()");
-  html = html.replace("{{handlerSearchToggle}}", "C.handlerSearchToggle()");
-  html = html.replace("{{handlerCloseSearch}}", "C.handlerCloseSearch()");
+  html = html.replaceAll("{{options}}", options);
+  html = html.replaceAll("{{image}}", image);
+  html = html.replaceAll("{{handler}}", "C.handlerProfileChange(this)");
+  html = html.replaceAll("{{handlerSearch}}", "C.handlerSearch()");
+  html = html.replaceAll("{{handlerSearchToggle}}", "C.handlerSearchToggle()");
+  html = html.replaceAll("{{handlerCloseSearch}}", "C.handlerCloseSearch()");
 
-  html = html.replace("{{handlerListToggle}}", "C.handlerListToggle()");
-  html = html.replace("{{handlerCloseList}}", "C.handlerCloseList()");
+  html = html.replaceAll("{{handlerListToggle}}", "C.handlerListToggle()");
+  html = html.replaceAll("{{handlerCloseList}}", "C.handlerCloseList()");
   return html;
 };
 

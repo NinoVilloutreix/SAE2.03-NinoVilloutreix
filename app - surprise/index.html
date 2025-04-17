@@ -161,46 +161,47 @@ function calculateAge(dob) {
 
 
 C.handlerProfileChange = async function () {
-    const select = document.getElementById("profile-select");
-    const avatarImg = document.getElementById("profile-picture");
+    // Cibler les deux menus déroulants
+    const selects = document.querySelectorAll("#profile-select");
+    const avatarImgs = document.querySelectorAll("#profile-picture");
 
-    if (!select || !avatarImg) {
-        console.error("Éléments HTML non trouvés");
+    if (selects.length === 0 || avatarImgs.length === 0) {
+        console.error("Éléments HTML pour le changement de profil non trouvés !");
         return;
     }
 
-    const baseURL = "https://mmi.unilim.fr/~villoutreix8/SAE2.03-NinoVilloutreix/server/images/";
-    const defaultImage = baseURL + "default.avif";
+    // Récupérer le menu déroulant actuellement sélectionné
+    for (let i = 0; i < selects.length; i++) {
+        const select = selects[i];
+        const avatarImg = avatarImgs[i];
 
-    // Récupérer l'option actuellement sélectionnée
-    const selectedOption = select.options[select.selectedIndex];
-    if (selectedOption) {
-        if (selectedOption.value === "") {
-            // Aucun profil sélectionné, afficher l'image par défaut et masquer
-            avatarImg.src = defaultImage;
-            avatarImg.classList.remove("hidden"); // Assurez-vous que l'image est visible
-        } else {
-            // Profil sélectionné : mettre à jour l'image et afficher
-            const avatarPath = selectedOption.getAttribute("data-img");
-            avatarImg.src = avatarPath ? baseURL + avatarPath : defaultImage;
-            avatarImg.classList.remove("hidden");
+        const baseURL = "https://mmi.unilim.fr/~villoutreix8/SAE2.03-NinoVilloutreix/server/images/";
+        const defaultImage = baseURL + "default.avif";
 
-            // Récupération de la date de naissance pour calculer l'âge
-            const dob = selectedOption.getAttribute("data-age");
-            if (dob) {
-                const age = calculateAge(dob); // Conversion de la date en âge
-                // console.log("Âge calculé :", age);
-
-                // Recharger les films en fonction de l'âge
-                await C.getMovieCategory(age);
+        // Récupérer l'option actuellement sélectionnée
+        const selectedOption = select.options[select.selectedIndex];
+        if (selectedOption) {
+            if (selectedOption.value === "") {
+                // Aucun profil sélectionné, afficher l'image par défaut
+                avatarImg.src = defaultImage;
             } else {
-                console.warn("Aucune date de naissance trouvée !");
-                await C.getMovieCategory(null); // Aucun filtre
-            }
-        }
+                // Profil sélectionné : mettre à jour l'image
+                const avatarPath = selectedOption.getAttribute("data-img");
+                avatarImg.src = avatarPath ? baseURL + avatarPath : defaultImage;
 
-        // Sauvegarder l'ID du profil sélectionné dans localStorage
-        localStorage.setItem("selectedProfileId", selectedOption.value);
+                // Récupération de la date de naissance pour calculer l'âge
+                const dob = selectedOption.getAttribute("data-age");
+                if (dob) {
+                    const age = calculateAge(dob); // Conversion de la date en âge
+                    await C.getMovieCategory(age); // Recharger les films en fonction de l'âge
+                } else {
+                    await C.getMovieCategory(null); // Aucun filtre
+                }
+            }
+
+            // Sauvegarder l'ID du profil sélectionné dans localStorage
+            localStorage.setItem("selectedProfileId", selectedOption.value);
+        }
     }
 };
 
