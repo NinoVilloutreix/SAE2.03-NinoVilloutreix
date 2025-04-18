@@ -1,0 +1,89 @@
+.landing__body{
+    background-color: var(--clr-bg-blue-1);
+    margin: 0;
+    padding: 10rem;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    text-align: center;
+}
+
+.landing__quote{
+    font-weight: normal;
+    font-size: 1.5rem;
+    color: var(--clr-white);
+    top: 8rem;
+}
+
+.landing__quote-blue{
+    border: 2px solid var(--color-gray);
+    background-color: var(--color-blue-detail);
+    border-radius: 0.25rem;
+    font-weight: bold;
+    color: var(--clr-bright);
+}
+
+.landing__quote-red{
+    font-weight: bold;
+    color: var(--clr-red);
+}
+
+.landing__name{
+    font-weight: bold;
+    color: var(--clr-white);
+    font-size: 1rem;
+    padding-top: 2rem;
+}
+
+.landing__buttons {
+    /* Propriété display */
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    gap: 3rem;
+    width: 100%;
+    height: 100%;
+    /* Positionnement */
+    position: relative;
+    margin-right: 0rem;
+    justify-content: center;
+    align-items: center;
+    /* border: blue solid 1px; */
+}
+
+.landing__buttons-blue {
+    font-size: 2rem;
+    font-weight: bolder;
+    padding: 1.5rem;
+    width: 20%;
+    background-color: var(--clr-blue);
+    border: solid 0px red;
+    border-radius: 1.5rem;
+    cursor: pointer;
+    transition: background-color 0.5s ease, transform 0.3s ease;
+}
+
+.landing__buttons-blue:hover {
+    background-color: var(--clr-blue-2);
+    transform: scale(1.1);
+}
+
+.landing__buttons-red {
+    font-size: 2rem;
+    font-weight: bolder;
+    padding: 1.5rem;
+    width: 20%;
+    color: var(--clr-white);
+    background-color: var(--clr-dark);
+    border: solid 0px red;
+    border-radius: 1.5rem;
+    cursor: pointer;
+    transition: background-color 0.5s ease, transform 0.3s ease;
+}
+
+.landing__buttons-red:hover {
+    background-color: var(--clr-red);
+    transform: scale(1.1);
+}
