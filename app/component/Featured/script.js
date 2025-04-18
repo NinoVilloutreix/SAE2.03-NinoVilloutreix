@@ -52,17 +52,19 @@ Featured.formatMany = function (features) {
 };
 
 
-document.querySelectorAll('.feature__heart').forEach((heart) => {
-  heart.addEventListener('click', (event) => {
+const hearts = document.querySelectorAll('.feature__heart');
+
+for (let i = 0; i < hearts.length; i++) {
+  hearts[i].addEventListener('click', (event) => {
     const element = event.target;
 
     element.classList.add('feature__heart-clicked');
 
-    console.log("soir")
+    console.log("soir");
     setTimeout(() => {
       element.classList.remove('feature__heart-clicked');
     }, 1000);
   });
-});
+}
 
 export { Featured };

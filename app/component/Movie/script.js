@@ -25,17 +25,19 @@ Movie.formatMany = function(movies) {
   return html;
 };
 
-document.querySelectorAll('.movie__heart').forEach((heart) => {
-  heart.addEventListener('click', (event) => {
+const hearts = document.querySelectorAll('.movie__heart');
+
+for (let i = 0; i < hearts.length; i++) {
+  hearts[i].addEventListener('click', (event) => {
     const element = event.target;
 
     element.classList.add('movie__heart-clicked');
 
-    console.log("soir")
+    console.log("soir");
     setTimeout(() => {
       element.classList.remove('movie__heart-clicked');
     }, 1000);
   });
-});
+}
 
 export { Movie };

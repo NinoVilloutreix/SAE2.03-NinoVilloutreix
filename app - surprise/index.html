@@ -170,7 +170,7 @@ C.handlerProfileChange = async function () {
         const select = selects[i];
         const avatarImg = avatarImgs[i];
 
-        const baseURL = "https://mmi.unilim.fr/~villoutreix8/SAE2.03-NinoVilloutreix/server/images/";
+        const baseURL = "../server/images/";
         const defaultImage = baseURL + "default.avif";
 
         // Récupérer l'option actuellement sélectionnée
@@ -497,9 +497,11 @@ C.initCarousel = function () {
   });
 
   // Initialisation : positionner les slides côte à côte
-  slides.forEach((slide, index) => {
+  let index = 0;
+  for (const slide of slides) {
     slide.style.left = `${index * 100}%`;
-  });
+    index++;
+  }
 
   // Démarrer le défilement automatique
   startAutoScroll();

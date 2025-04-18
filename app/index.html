@@ -114,7 +114,7 @@ C.handlerProfileChange = async function () {
         return;
     }
 
-    const baseURL = "https://mmi.unilim.fr/~villoutreix8/SAE2.03-NinoVilloutreix/server/images/";
+    const baseURL = "../server/images/";
     const defaultImage = baseURL + "default.avif";
 
     // Récupérer l'option actuellement sélectionnée
@@ -250,7 +250,6 @@ C.getFeaturedMovies = async function () {
     if (!featuredMovies || featuredMovies.length === 0) {
         content.innerHTML = "<p>Aucun film mis en avant pour le moment.</p>";
     } else {
-        // featuredMovies.forEach(movie => console.log("Film mis en avant :", movie)); // Test
         content.innerHTML = Featured.formatMany(featuredMovies);
     }
 };

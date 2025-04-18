@@ -24,18 +24,19 @@ Movie.formatMany = function(movies) {
   return html;
 };
 
-document.querySelectorAll('.movie__heart').forEach((heart) => {
+const hearts = document.querySelectorAll('.movie__heart');
+
+for (const heart of hearts) {
   heart.addEventListener('click', (event) => {
     const element = event.target;
 
     element.classList.add('movie__heart-clicked');
 
-    // console.log("'soir")
     setTimeout(() => {
       element.classList.remove('movie__heart-clicked');
     }, 1000);
   });
-});
+}
 
 
 
