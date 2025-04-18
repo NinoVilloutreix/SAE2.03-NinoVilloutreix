@@ -32,7 +32,7 @@
   width: 10rem;
   height: 15rem;
   overflow: hidden;
-  border: 2px solid var(--color-gray);
+  border: 2px solid hsl(0, 0%, 50%);
   border-radius: 0.25rem;
 }
 
