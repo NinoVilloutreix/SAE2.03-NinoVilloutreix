@@ -13,15 +13,15 @@
  * DBLOGIN : Nom d'utilisateur pour se connecter à la base de données.
  * DBPWD : Mot de passe pour se connecter à la base de données.
  */
-// define("HOST", "localhost");
-// define("DBNAME", "SAE203");
-// define("DBLOGIN", "villoutreix");
-// define("DBPWD", "kakoubim");
-
 define("HOST", "localhost");
-define("DBNAME", "villoutreix8");
-define("DBLOGIN", "villoutreix8");
-define("DBPWD", "villoutreix8");
+define("DBNAME", "SAE203");
+define("DBLOGIN", "villoutreix");
+define("DBPWD", "kakoubim");
+
+// define("HOST", "localhost");
+// define("DBNAME", "villoutreix8");
+// define("DBLOGIN", "villoutreix8");
+// define("DBPWD", "villoutreix8");
 /**
  * Récupère le menu pour un jour spécifique dans la base de données.
  *
