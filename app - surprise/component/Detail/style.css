@@ -90,9 +90,10 @@
 
 .detail_right-pegi {
   font-size: 2rem;
-  background-color: var(--color-blue-detail-light);
-  border-radius: 10rem 0rem 0rem 10rem;
+  background: linear-gradient(354.93deg, #E50C30 0%, #152849 100%);
+  border-radius: 0rem 0rem 0rem 0rem;
   padding: 1rem;
+  color: var(--color-bright);
 }
 
 .detail__right-card {
@@ -128,7 +129,9 @@
   height: 100%;
   border: none;
 }
-
+.detail__left-title{
+  font-size: 3rem;
+}
 .detail__name {
   color: var(--color-white);
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;

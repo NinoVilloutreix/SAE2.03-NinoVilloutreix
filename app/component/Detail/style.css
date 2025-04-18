@@ -114,6 +114,10 @@
   text-align: start;
 }
 
+.detail__left-title{
+  font-size: 3rem;
+}
+
 .detail__right-card-trailer {
   position: relative;
   width: 100%;
