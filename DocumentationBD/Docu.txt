@@ -1,11 +1,12 @@
 Ce document rendra compte des modifications réalisées sur la base de donnée.
 
+
+
 -J'ai rajouté un film, Ponyo sur la falaise, pour vérifier que mon I1 l'affichait bien.
 Elle l'affiche bien.
 Commande: INSERT INTO Movie (name, year, length, description, director, id_category, image, trailer, min_age) VALUES (...)
 
--J'ai rajouté le film Minecraft (beurk), pour tester le formulaire de mon I2.
-Il marche bien.
+-J'ai rajouté le film Minecraft, pour tester le formulaire de mon I2.
 
 -J'ai trouvé une requête SQL qui me faciliterait la catégorisation: SELECT Movie.id,
                                                                     Movie.name,
@@ -24,7 +25,6 @@ SELECT Movie.id, Movie.name, Movie.year, Movie.length, Movie.description, Movie.
             FROM Movie JOIN Category ON Movie.id_category = Category.id 
             WHERE Category.id = :category"
 
-Elles marchent bien (j'espère)
 
 -Création d'une nouvelle table Profile contenant un premier utilisateur par défaut:
 CREATE TABLE Profile (
@@ -37,8 +37,6 @@ min_age INT(3)
 INSERT INTO Profile(name, avatar, min_age) VALUES ("Kévin","kevin.png","1995-05-05")
 
 
-INSERT INTO Movie (name, year, length, description, director, id_category, image, trailer, min_age) VALUES ("Wall-E",2008,98,"Wall-E, dernier robot resté sur Terre, se retrouve malgré lui emporté dans un conflit décisif dans l'avenir de l'humanité.","Andrew Stanton",5,"walle.jpg","https://youtu.be/twS3hYLmQI4",6)
-
 -Création d'une nouvelle table Favoris contenant un premier favori par défaut:
 CREATE TABLE Favoris (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -48,3 +46,7 @@ CREATE TABLE Favoris (
     FOREIGN KEY (id_profile) REFERENCES Profile(id)
 );
 INSERT INTO Favoris(id_movie, id_profile) VALUES (49,9)
+
+-Ajout d'un champ booléen "featured" dans la table Movies pour mon I12
+ALTER TABLE Movie
+ADD featured BOOLEAN;

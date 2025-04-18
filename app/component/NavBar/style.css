@@ -5,6 +5,7 @@
   padding: 1rem 2rem;
   background-color: var(--color-gray-dark);
   color: var(--color-fg);
+  flex-wrap: wrap;
 }
 
 .navbar__logo {
