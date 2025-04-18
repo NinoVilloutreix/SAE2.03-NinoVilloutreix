@@ -22,7 +22,7 @@
   box-sizing: border-box; /* Inclut les bordures et paddings dans la taille totale */
   aspect-ratio: 16 / 10;
   overflow: hidden;
-  transform: scale(0.975); /* Modifie la taille initiale */
+  transform: scale(0.975);
   transition: transform 0.6s ease; /* Animation fluide de la transformation */
 }
 

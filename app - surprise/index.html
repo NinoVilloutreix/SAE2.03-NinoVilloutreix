@@ -86,10 +86,30 @@ C.handlerCloseList = function () {
   document.body.classList.remove("no-scroll"); // Réactive le scroll
 };
 
+// &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+document.addEventListener("DOMContentLoaded", () => {
+  const content = document.querySelector("#content");
+
+  content.addEventListener("click", (event) => {
+    if (event.target.classList.contains("movie__heart")) {
+      const element = event.target;
+
+      element.classList.add("movie__heart-clicked");
+
+      setTimeout(() => {
+        element.classList.remove("movie__heart-clicked");
+      }, 1000);
+    }
+
+    if (event.target.classList.contains("movie__trash")) {
+      const movieId = event.target.getAttribute("data-id"); // Exemple d'attribut pour identifier le film
+      C.handlerdeleteFavoris(movieId);
+    }
+  });
+});
 
 
-
-
+// &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
 
 
