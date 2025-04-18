@@ -14,9 +14,9 @@
  * DBPWD : Mot de passe pour se connecter à la base de données.
  */
 define("HOST", "localhost");
-define("DBNAME", "villoutreix8");
-define("DBLOGIN", "villoutreix8");
-define("DBPWD", "villoutreix8");
+define("DBNAME", "root");
+define("DBLOGIN", "usersae203");
+define("DBPWD", "kakouser");
 
 /**
  * Récupère le menu pour un jour spécifique dans la base de données.
