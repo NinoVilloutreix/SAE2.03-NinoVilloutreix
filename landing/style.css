@@ -1,5 +1,5 @@
 .landing__body{
-    background-color: var(--clr-bg-blue-1);
+    background-color: rgb(25, 27, 48);
     margin: 0;
     padding-block: 10rem;
     width: 100%;
@@ -12,13 +12,14 @@
     text-align: center;
 }
 
-.landing__quote{
+.landing__quote, .landing__quote-small{
     font-weight: normal;
     font-size: 1.5rem;
-    color: white;
-    top: 8rem;
+    color: rgb(255, 255, 255);
 }
-
+.landing__quote-small{
+    font-size: 0.5rem;
+}
 
 .landing__name{
     font-weight: bold;
@@ -50,10 +51,10 @@
     width: 20%;
     background-color: rgb(25, 27, 48);
     color: white;
-    border: none;
+    border: 1px solid rgb(255, 255, 255);
     border-radius: 1.5rem;
     cursor: pointer;
-    transition: background-color 0.5s ease, transform 0.3s ease;
+    transition: background-color 0.5s ease, color 0.4 ease, transform 0.3s ease;
 }
 
 .landing__buttons-b:hover {
