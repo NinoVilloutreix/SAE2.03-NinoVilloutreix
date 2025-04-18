@@ -16,7 +16,7 @@
 define("HOST", "localhost");
 define("DBNAME", "root");
 define("DBLOGIN", "usersae203");
-define("DBPWD", "kakouser");
+define("DBPWD", "kaku");
 
 /**
  * Récupère le menu pour un jour spécifique dans la base de données.
